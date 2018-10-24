@@ -1,0 +1,70 @@
+// Gordian by Daniel Luna
+
+#include "GordianEngine/Actor/Public/Actor.h"
+
+#include <cassert>
+
+#include "GordianEngine/Reflection/Public/Type_Struct.h"
+#include "GordianEngine/Actor/Public/ActorComponent.h"
+#include "GordianEngine/GlobalLibraries/Public/GlobalObjectLibrary.h"
+
+#include "GordianEngine/ActorComponents/Public/SimpleSpriteComponent.h"
+
+using namespace Gordian;
+
+AActor::AActor(const std::string& InName, OObject* InOwningObject)
+	: Parent(InName, InOwningObject)
+	, _ActorComponents{}
+	, _bIsTicking(false)
+{
+}
+
+AActor::~AActor()
+{
+
+}
+
+void AActor::Initialize()
+{
+	PreInitializeComponents();
+	InitializeComponents();
+	PostInitializeComponents();
+}
+
+void AActor::InitializeComponents()
+{
+	for (OActorComponent* ActorComponent : _ActorComponents)
+	{
+		ActorComponent->Initialize(this);
+	}
+}
+
+void AActor::BeginPlay()
+{
+	assert(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
+
+	for (OActorComponent* ActorComponent : _ActorComponents)
+	{
+		ActorComponent->OnBeginPlay();
+	}
+
+	assert(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
+}
+
+void AActor::Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const
+{
+	for (const OActorComponent* ActorComponent : _ActorComponents)
+	{
+		const OSimpleSpriteComponent* RenderComponent = Cast<OSimpleSpriteComponent>(ActorComponent);
+		if (RenderComponent != nullptr)
+		{
+			RenderComponent->Render(BlendTime, Target, States);
+		}
+	}
+}
+
+
+RCLASS_MEMBER_BEGIN(AActor)
+RCLASS_MEMBER_ADD(_bIsTicking)
+RCLASS_MEMBER_ADD(_ActorComponents)
+RCLASS_MEMBER_END()

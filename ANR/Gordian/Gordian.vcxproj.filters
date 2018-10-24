@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Gordian">
+      <UniqueIdentifier>{0fbe3522-7a28-4c97-8f71-656e08160163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\Core">
+      <UniqueIdentifier>{f21cb5b9-221b-451a-9531-7d681ca7abab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian">
+      <UniqueIdentifier>{cf62d214-918d-43bd-9077-feb97a787694}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\Core">
+      <UniqueIdentifier>{40e3deee-7692-4d63-853e-e07d34737eea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\BitSet">
+      <UniqueIdentifier>{0eb68f44-9e58-47a1-9f83-8a8a0539cd0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\World">
+      <UniqueIdentifier>{4598c924-cf35-466d-b8aa-e2ba7d1099fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\World">
+      <UniqueIdentifier>{1cfccee7-620d-4ad8-8232-dd9493d264da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\GlobalLibraries">
+      <UniqueIdentifier>{23bfe95d-fc2c-4402-a713-9932db44cb50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\GlobalLibraries">
+      <UniqueIdentifier>{a20a1228-095c-47ce-bbb3-d16b42710554}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\Reflection">
+      <UniqueIdentifier>{35927551-760e-4258-9f86-477d61755cf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\Reflection">
+      <UniqueIdentifier>{d801622f-3bd4-47d4-92ae-6230f46f3ee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\Containers">
+      <UniqueIdentifier>{85a80e1f-341d-4f0b-8a92-4d7f34d0d5dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\Actor">
+      <UniqueIdentifier>{42d6e38f-ef01-4a6c-a8ee-9cf11cd101dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\Actor">
+      <UniqueIdentifier>{c1386df4-46b1-494c-8536-106322ca25d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\ActorComponents">
+      <UniqueIdentifier>{5290f667-ed3d-437c-8dcf-653a72107273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\ActorComponents">
+      <UniqueIdentifier>{0bef0d00-d1b3-4f39-9951-108ef0d47d63}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\GordianEngine\World\Private\World.cpp">
+      <Filter>Source Files\Gordian\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Reflection\Private\Type.cpp">
+      <Filter>Source Files\Gordian\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Core\Private\EngineLoop.cpp">
+      <Filter>Source Files\Gordian\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Core\Private\Object.cpp">
+      <Filter>Source Files\Gordian\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Struct.cpp">
+      <Filter>Source Files\Gordian\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Core\main.cpp">
+      <Filter>Source Files\Gordian\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Primitives.cpp">
+      <Filter>Source Files\Gordian\Reflection</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Actor\Private\Actor.cpp">
+      <Filter>Source Files\Gordian\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\World\Private\Level.cpp">
+      <Filter>Source Files\Gordian\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\ActorComponents\Private\ActorComponent.cpp">
+      <Filter>Source Files\Gordian\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\ActorComponents\Private\SimpleSpriteComponent.cpp">
+      <Filter>Source Files\Gordian\ActorComponents</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\GordianEngine\BitSet\Public\BitSet.h">
+      <Filter>Header Files\Gordian\BitSet</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\World\Public\World.h">
+      <Filter>Header Files\Gordian\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\GlobalObjectLibrary.h">
+      <Filter>Header Files\Gordian\GlobalLibraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\ReflectionMacros.h">
+      <Filter>Header Files\Gordian\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\Type.h">
+      <Filter>Header Files\Gordian\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\TypeResolver.h">
+      <Filter>Header Files\Gordian\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Core\Public\EngineLoop.h">
+      <Filter>Header Files\Gordian\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Core\Public\Object.h">
+      <Filter>Header Files\Gordian\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\Reflection.h">
+      <Filter>Header Files\Gordian\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\Type_Struct.h">
+      <Filter>Header Files\Gordian\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Actor\Public\Actor.h">
+      <Filter>Header Files\Gordian\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\World\Public\Level.h">
+      <Filter>Header Files\Gordian\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Actor\Public\ActorComponent.h">
+      <Filter>Header Files\Gordian\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Core\Public\Renderable.h">
+      <Filter>Header Files\Gordian\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\ActorComponents\Public\SimpleSpriteComponent.h">
+      <Filter>Header Files\Gordian\ActorComponents</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

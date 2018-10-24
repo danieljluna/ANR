@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "NDB_Scraper", "NDB_Scraper\NDB_Scraper.pyproj", "{ED03ABDB-8BAD-4D25-A6D8-F87D28F60CB9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gordian", "Gordian\Gordian.vcxproj", "{736E5802-88CB-47F2-B1DB-779C57227674}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Netrunner", "Netrunner\Netrunner.vcxproj", "{E07BDBA2-EF70-44C3-9978-66B1623BE23D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{3709B74D-3114-46F2-9608-140236498CE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{55CFA07C-9D56-4EFB-A660-A304C6EE4E1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED03ABDB-8BAD-4D25-A6D8-F87D28F60CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED03ABDB-8BAD-4D25-A6D8-F87D28F60CB9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ED03ABDB-8BAD-4D25-A6D8-F87D28F60CB9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ED03ABDB-8BAD-4D25-A6D8-F87D28F60CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED03ABDB-8BAD-4D25-A6D8-F87D28F60CB9}.Release|x64.ActiveCfg = Release|Any CPU
+		{ED03ABDB-8BAD-4D25-A6D8-F87D28F60CB9}.Release|x86.ActiveCfg = Release|Any CPU
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Debug|x64.ActiveCfg = Debug|x64
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Debug|x64.Build.0 = Debug|x64
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Debug|x86.ActiveCfg = Debug|Win32
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Debug|x86.Build.0 = Debug|Win32
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Release|Any CPU.ActiveCfg = Release|Win32
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Release|x64.ActiveCfg = Release|x64
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Release|x64.Build.0 = Release|x64
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Release|x86.ActiveCfg = Release|Win32
+		{736E5802-88CB-47F2-B1DB-779C57227674}.Release|x86.Build.0 = Release|Win32
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Debug|x64.ActiveCfg = Debug|x64
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Debug|x64.Build.0 = Debug|x64
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Debug|x86.ActiveCfg = Debug|Win32
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Debug|x86.Build.0 = Debug|Win32
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Release|Any CPU.ActiveCfg = Release|Win32
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Release|x64.ActiveCfg = Release|x64
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Release|x64.Build.0 = Release|x64
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Release|x86.ActiveCfg = Release|Win32
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED03ABDB-8BAD-4D25-A6D8-F87D28F60CB9} = {3709B74D-3114-46F2-9608-140236498CE1}
+		{736E5802-88CB-47F2-B1DB-779C57227674} = {55CFA07C-9D56-4EFB-A660-A304C6EE4E1F}
+		{E07BDBA2-EF70-44C3-9978-66B1623BE23D} = {55CFA07C-9D56-4EFB-A660-A304C6EE4E1F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37539CB8-E7CA-42A4-AA27-4700D2EF341C}
+	EndGlobalSection
+EndGlobal
