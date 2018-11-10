@@ -51,6 +51,15 @@ void AActor::BeginPlay()
 	assert(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
 }
 
+bool AActor::AddComponent(OActorComponent* ComponentToAdd)
+{
+	_ActorComponents.push_back(ComponentToAdd);
+
+	ComponentToAdd->Initialize(this);
+
+	return true;
+}
+
 void AActor::Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const
 {
 	for (const OActorComponent* ActorComponent : _ActorComponents)

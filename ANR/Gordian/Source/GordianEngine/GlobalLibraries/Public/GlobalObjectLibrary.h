@@ -49,6 +49,8 @@ public:
 						   const OType_Struct* ObjectType, 
 						   const std::string& ObjectName = "")
 	{
+		// todo: create object based on ObjectType not T
+
 		// todo: this should eventually use pooled objects where possible
 		OObject* NewObject = new T(ObjectName != "" ? ObjectName : ObjectType->GetName()
 								  , OwningObject);

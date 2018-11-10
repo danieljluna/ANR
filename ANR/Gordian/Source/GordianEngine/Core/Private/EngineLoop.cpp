@@ -106,6 +106,10 @@ void FEngineLoop::Render(const sf::Time& BlendTime)
 {
 	assert(GameWindow != nullptr);
 
+	if (GameWorld != nullptr)
+	{
+		GameWorld->Render(BlendTime, *GameWindow, sf::RenderStates::Default);
+	}
     GameWindow->display();
 }
 

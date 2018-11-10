@@ -24,7 +24,7 @@ void OSimpleSpriteComponent::Initialize(AActor* ActorInitializingFrom)
 	_FileToLoadTextureFrom = "F:/Programming/GitHub/ANR/ANR/NDB_Scraper/Output/06041.png";
 	_TextureToRender.loadFromFile(_FileToLoadTextureFrom);
 	_SpriteToRender.setTexture(_TextureToRender);
-	sf::IntRect DefaultCardRect(0, 0, 300, 419);
+	sf::IntRect DefaultCardRect(3600, 419, 300, 419);
 	_SpriteToRender.setTextureRect(DefaultCardRect);
 }
 

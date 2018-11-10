@@ -4,6 +4,7 @@
 
 #include "GordianEngine/Actor/Public/Actor.h"
 #include "GordianEngine/Reflection/Public/Type_Struct.h"
+#include "GordianEngine/ActorComponents/Public/SimpleSpriteComponent.h"
 
 using namespace Gordian;
 
@@ -27,6 +28,9 @@ void OWorld::BeginPlay()
 	//-Temp-Initialization-Logic----------------------------------------
 
 	AActor* TestActor = SpawnActor<AActor>(AActor::GetStaticType(), "TestActor_0");
+	OSimpleSpriteComponent* SimpleSpriteComponent = FGlobalObjectLibrary::CreateObject<OSimpleSpriteComponent>(TestActor, OSimpleSpriteComponent::GetStaticType(), "SimpleSprite");
+	assert(TestActor != nullptr && SimpleSpriteComponent != nullptr);
+	TestActor->AddComponent(SimpleSpriteComponent);
 
 	//-End-Temp-Initialization-Logic------------------------------------
 

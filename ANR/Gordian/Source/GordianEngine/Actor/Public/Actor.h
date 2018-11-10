@@ -32,6 +32,9 @@ public:
 	// Destroys this actor.
 	void Destroy() {};
 
+	// Adds the passed component to this actor, removing
+	bool AddComponent(OActorComponent* ComponentToAdd);
+
 	// Temp ease of use to render
 	virtual void Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const override;
 
