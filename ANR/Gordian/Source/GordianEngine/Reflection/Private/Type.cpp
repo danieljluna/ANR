@@ -1,8 +1,8 @@
 // Gordian by Daniel Luna
 
 #include "GordianEngine/Reflection/Public/Type.h"
+#include "GordianEngine/Core/Public/Gordian.h"
 
-#include "GordianEngine/Reflection/Public/Type_Struct.h"
 
 using namespace Gordian;
 
@@ -31,12 +31,12 @@ std::string OType::GetFullName() const
 void OType::Dump(const void* Data) const
 {
 	// Preserve existing format flags
-	std::ios_base::fmtflags PreviousFormat(std::cout.flags());
+	std::ios_base::fmtflags PreviousFormat(std::clog.flags());
 
 	Dump_Internal(Data, 0);
 
 	// Load back up old formatting
-	std::cout.flags(PreviousFormat);
+	std::clog.flags(PreviousFormat);
 }
 
 RCLASS_MEMBER_BEGIN(OType)

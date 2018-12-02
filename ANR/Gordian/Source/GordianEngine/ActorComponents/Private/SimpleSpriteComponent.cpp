@@ -1,10 +1,10 @@
 // Gordian by Daniel Luna
 
 #include "GordianEngine/ActorComponents/Public/SimpleSpriteComponent.h"
+#include "GordianEngine/Core/Public/Gordian.h"
 
 #include "SFML/Graphics/Rect.hpp"
 
-#include "GordianEngine/Reflection/Public/Type_Struct.h"
 
 using namespace Gordian;
 

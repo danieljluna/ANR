@@ -141,11 +141,17 @@
     <ClInclude Include="Source\GordianEngine\Actor\Public\Actor.h" />
     <ClInclude Include="Source\GordianEngine\Actor\Public\ActorComponent.h" />
     <ClInclude Include="Source\GordianEngine\BitSet\Public\BitSet.h" />
+    <ClInclude Include="Source\GordianEngine\Containers\Public\SimpleSet.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\EngineLoop.h" />
+    <ClInclude Include="Source\GordianEngine\Core\Public\Gordian.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\Object.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\Renderable.h" />
+    <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h" />
+    <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
+    <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\GlobalObjectLibrary.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Reflection.h" />
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\StructMember.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\ReflectionMacros.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\TypeResolver.h" />

@@ -1,10 +1,10 @@
 // Gordian by Daniel Luna
 
 #include "GordianEngine/Actor/Public/Actor.h"
+#include "GordianEngine/Core/Public/Gordian.h"
 
 #include <cassert>
 
-#include "GordianEngine/Reflection/Public/Type_Struct.h"
 #include "GordianEngine/Actor/Public/ActorComponent.h"
 #include "GordianEngine/GlobalLibraries/Public/GlobalObjectLibrary.h"
 

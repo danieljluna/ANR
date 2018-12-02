@@ -23,7 +23,7 @@ public:
 protected:
 	virtual void Dump_Internal(const void* Data, int) const override
 	{
-		std::cout << std::boolalpha << "bool {" << *(static_cast<const bool*>(Data)) << "}";
+		std::clog << std::boolalpha << "bool {" << *(static_cast<const bool*>(Data)) << "}";
 	}
 
 };
@@ -49,7 +49,7 @@ public:
 protected:
 	virtual void Dump_Internal(const void* Data, int) const override
 	{
-		std::cout << std::dec << std::noshowbase << "int {" << *(static_cast<const int*>(Data)) << "}";
+		std::clog << std::dec << std::noshowbase << "int {" << *(static_cast<const int*>(Data)) << "}";
 	}
 };
 
@@ -73,7 +73,7 @@ public:
 protected:
 	virtual void Dump_Internal(const void* Data, int) const override
 	{
-		std::cout << "string {\"" << *(static_cast<const std::string*>(Data)) << "\"}";
+		std::clog << "string {\"" << *(static_cast<const std::string*>(Data)) << "\"}";
 	}
 };
 

@@ -1,9 +1,9 @@
 // Gordian by Daniel Luna
 
 #include "GordianEngine/World/Public/World.h"
+#include "GordianEngine/Core/Public/Gordian.h"
 
 #include "GordianEngine/Actor/Public/Actor.h"
-#include "GordianEngine/Reflection/Public/Type_Struct.h"
 #include "GordianEngine/ActorComponents/Public/SimpleSpriteComponent.h"
 
 using namespace Gordian;

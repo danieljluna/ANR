@@ -114,7 +114,7 @@ def BuildSheets(MaxSheetSize):
         if SheetEndCode != LastCompletedSheetCode:
             SheetManager.SpriteSheet.save(GlobalSettings.OutputFolder + SheetEndCode + ".png")
             print("Final Sheet {} Complete!".format(SheetEndCode))
-        return DidScrapeAnyImages
+        return True
 
     except Exception as e:
         print(e)

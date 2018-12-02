@@ -1,10 +1,10 @@
 // Gordian by Daniel Luna
 
 #include "GordianEngine/Core/Public/Object.h"
+#include "GordianEngine/Core/Public/Gordian.h"
 
 #include <cassert>
 
-#include "GordianEngine/Reflection/Public/Type_Struct.h"
 #include "GordianEngine/World/Public/World.h"
 
 using namespace Gordian;

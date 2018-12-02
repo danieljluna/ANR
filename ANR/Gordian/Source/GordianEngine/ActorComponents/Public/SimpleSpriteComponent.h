@@ -30,7 +30,7 @@ public:
 
 	//-End-OActorComponent------------------
 
-	virtual void Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const;
+	virtual void Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const override;
 
 private:
 

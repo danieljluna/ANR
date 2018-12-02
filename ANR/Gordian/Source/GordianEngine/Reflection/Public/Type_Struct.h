@@ -3,8 +3,11 @@
 #pragma once
 
 #include "Type.h"
+
 #include <cassert>
 #include <vector>
+
+#include "StructMember.h"
 
 namespace Gordian
 {
@@ -17,14 +20,8 @@ class OType_Struct : public OType
 	REFLECT_CLASS(OType)
 
 public:
-	struct FMember
-	{
-		const char* Name;
-		size_t Offset;
-		const OType* Type;
-	};
 
-	static FMember NullMember;
+	static FStructMember NullMember;
 
 	OType_Struct();
 
@@ -53,6 +50,7 @@ public:
 						   std::end(ParentClass->Members));
 		}
 	}
+
 	// If T is void
 	template<typename Parent>
 	typename std::enable_if<std::is_same<Parent, void>::value>::type SetParentClass(const Parent*)
@@ -63,19 +61,19 @@ public:
 
 
 	// Adds non-inherited members to class
-	inline void DeclareMembers(const std::initializer_list<FMember>& InMembers)
+	inline void DeclareMembers(const std::initializer_list<FStructMember>& InMembers)
 	{
 		Members.insert(Members.end(), InMembers);
 	}
 	// Returns all members
-	inline const std::vector<FMember>& GetMembers() const
+	inline const std::vector<FStructMember>& GetMembers() const
 	{
 		return Members;
 	}
 	// Returns the first member with the given name
-	inline const FMember* GetMember(const char* MemberName) const
+	inline const FStructMember* GetMember(const char* MemberName) const
 	{
-		for (const FMember& Member : Members)
+		for (const FStructMember& Member : Members)
 		{
 			if (std::strcmp(MemberName, Member.Name) == 0)
 			{
@@ -88,7 +86,7 @@ public:
 	// Returns true if a member with the given name exists
 	inline bool DoesMemberExist(const char* MemberName) const
 	{
-		for (const FMember& Member : Members)
+		for (const FStructMember& Member : Members)
 		{
 			if (std::strcmp(MemberName, Member.Name) == 0)
 			{
@@ -126,7 +124,7 @@ protected:
 
 	virtual void Dump_Internal(const void* Data, int IndentationLevel) const override;
 
-	std::vector<FMember> Members;
+	std::vector<FStructMember> Members;
 	const OType_Struct* ParentClass;
 	// Describes how far this class is from it's inheritance root.
 	unsigned int ClassDepth;

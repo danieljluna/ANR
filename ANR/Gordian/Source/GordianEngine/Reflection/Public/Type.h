@@ -99,33 +99,33 @@ protected:
 	virtual void Dump_Internal(const void* Data, int IndentationLevel) const override
 	{
 		size_t VectorSize = GetSize(Data);
-		std::cout << GetFullName() << " {size: " << std::dec << VectorSize << "}";
+		std::clog << GetFullName() << " {size: " << std::dec << VectorSize << "}";
 
 		if (VectorSize <= 0)
 		{
-			std::cout << " {}";
+			std::clog << " {}";
 		}
 		else
 		{
 			std::string Indent(IndentationLevel, ' ');
-			std::cout << std::endl << Indent << "{" << std::endl;
+			std::clog << std::endl << Indent << "{" << std::endl;
 
 			std::string ItemIndent(IndentationLevel + k_IndentationWidth, ' ');
 			for (size_t i = 0; i < VectorSize; ++i)
 			{
-				std::cout << ItemIndent << "[" << i << "]: ";
+				std::clog << ItemIndent << "[" << i << "]: ";
 				const void* ItemLocation = GetItem(Data, i);
 				ItemType->Dump_Internal(ItemLocation, IndentationLevel + k_IndentationWidth);
-				std::cout << std::endl;
+				std::clog << std::endl;
 
 				if (i == k_MaxItemDisplayCount && VectorSize > 1)
 				{
 					i = VectorSize - 1;
-					std::cout << "..." << std::endl;
+					std::clog << "..." << std::endl;
 				}
 			}
 
-			std::cout << Indent << "}";
+			std::clog << Indent << "}";
 		}
 	}
 
@@ -180,24 +180,24 @@ protected:
 
 	virtual void Dump_Internal(const void* Data, int IndentationLevel) const override
 	{
-		std::cout << GetFullName();
+		std::clog << GetFullName();
 		const void * const * PtrAtData = static_cast<const void * const *>(Data);
 
 		if (*PtrAtData == nullptr)
 		{
-			std::cout << " (" << std::hex << "0x" << *PtrAtData << ")";
+			std::clog << " (" << std::hex << "0x" << *PtrAtData << ")";
 		}
 		else
 		{
 			std::string Indent(IndentationLevel, ' ');
-			std::cout << " (" << std::hex << "0x" << *PtrAtData << "):";
-			std::cout << std::endl << Indent << "{" << std::endl;
+			std::clog << " (" << std::hex << "0x" << *PtrAtData << "):";
+			std::clog << std::endl << Indent << "{" << std::endl;
 
 			// todo: Dump pointer types with actual type instead of pointer type
 
 			ItemType->Dump_Internal(*PtrAtData, IndentationLevel + k_IndentationWidth);
 
-			std::cout << Indent << "}";
+			std::clog << Indent << "}";
 		}
 	}
 
