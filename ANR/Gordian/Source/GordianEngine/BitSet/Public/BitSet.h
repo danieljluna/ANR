@@ -33,6 +33,12 @@ public:
         return *this;
     }
 
+	TBitSet& operator^=(const T& EnumAsFlag)
+	{
+		BitSet_.flip(static_cast<UnderlyingType_>(EnumAsFlag));
+		return *this;
+	}
+
     TBitSet& operator|=(const TBitSet& MatchingBitSet)
     {
         BitSet_ |= MatchingBitSet;
@@ -44,6 +50,12 @@ public:
         BitSet_ &= MatchingBitSet;
         return *this;
     }
+
+	TBitSet& operator^=(const TBitSet& MatchingBitSet)
+	{
+		BitSet_ ^= MatchingBitSet;
+		return *this;
+	}
 
     
     TBitSet operator|(const T& EnumAsFlag) const
@@ -59,6 +71,13 @@ public:
         ReturnValue &= EnumAsFlag;
         return ReturnValue;
     }
+
+	TBitSet operator^(const T& EnumAsFlag) const
+	{
+		TBitSet ReturnValue(*this);
+		ReturnValue ^= EnumAsFlag;
+		return ReturnValue;
+	}
     
     TBitSet operator|(const TBitSet& MatchingBitSet) const
     {
@@ -73,6 +92,13 @@ public:
         ReturnValue.BitSet_ &= MatchingBitSet.BitSet_;
         return ReturnValue;
     }
+
+	TBitSet operator^(const TBitSet& MatchingBitSet) const
+	{
+		TBitSet ReturnValue(*this);
+		ReturnValue.BitSet_ ^= MatchingBitSet.BitSet_;
+		return ReturnValue;
+	}
 
 
     TBitSet operator~() const

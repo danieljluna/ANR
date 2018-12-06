@@ -64,6 +64,12 @@
     <Filter Include="Header Files\Gordian\Delegates">
       <UniqueIdentifier>{45790041-42ab-418d-a72b-afcbab86abc2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Gordian\Input">
+      <UniqueIdentifier>{c1e3b2a6-daef-4dac-b689-bbb703f38c06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\Input">
+      <UniqueIdentifier>{8d3e58ac-1338-44ac-b147-56b10b1c49a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GordianEngine\World\Private\World.cpp">
@@ -98,6 +104,15 @@
     </ClCompile>
     <ClCompile Include="Source\GordianEngine\ActorComponents\Private\SimpleSpriteComponent.cpp">
       <Filter>Source Files\Gordian\ActorComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Input\Private\InputManager.cpp">
+      <Filter>Source Files\Gordian\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Input\Private\InputBindingTypes.cpp">
+      <Filter>Source Files\Gordian\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp">
+      <Filter>Source Files\Gordian\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +178,18 @@
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h">
       <Filter>Header Files\Gordian\Delegates</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Input\Public\InputManager.h">
+      <Filter>Header Files\Gordian\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Input\Public\InputCommand.h">
+      <Filter>Header Files\Gordian\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Input\Public\InputBindingTypes.h">
+      <Filter>Header Files\Gordian\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Input\Public\InputKeys.h">
+      <Filter>Header Files\Gordian\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

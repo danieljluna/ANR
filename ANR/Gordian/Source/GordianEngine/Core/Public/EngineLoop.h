@@ -18,6 +18,7 @@ namespace Gordian
 {
 
 class OWorld;
+class FInputManager;
 
 /// Logic for the main game loop.
 class FEngineLoop : public sf::NonCopyable
@@ -57,6 +58,10 @@ protected:
 
     // For now, we store the game window here.
     sf::RenderWindow* GameWindow;
+	// For now, we store the input manager here.
+	// todo: combine the input manager with the render window?
+	FInputManager* InputManager;
+	// Store a reference to the game world
 	OWorld* GameWorld;
 
     // Tracks time between loop iterations

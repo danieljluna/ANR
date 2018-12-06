@@ -7,12 +7,14 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 
+#include "GordianEngine/Input/Public/InputManager.h"
 #include "GordianEngine/World/Public/World.h"
 
 using namespace Gordian;
 
 FEngineLoop::FEngineLoop()
     : GameWindow(nullptr)
+	, InputManager(nullptr)
 	, GameWorld(nullptr)
     , TickConsumptionStepSize(sf::Time::Zero)
     , TimePendingTickConsumption(sf::Time::Zero)
@@ -24,7 +26,7 @@ FEngineLoop::FEngineLoop()
 FEngineLoop::~FEngineLoop()
 {
 	// If GameWindow is non-null after main ends, sfml will crash
-	assert(GameWindow == nullptr && GameWorld == nullptr);
+	assert(GameWindow == nullptr && InputManager == nullptr && GameWorld == nullptr);
 }
 
 sf::Int32 FEngineLoop::Init()
@@ -36,10 +38,11 @@ sf::Int32 FEngineLoop::Init()
         return ErrorCode;
     }
 
+	InputManager = new FInputManager();
 	GameWorld = new OWorld();
     bIsRequestingExit = false;
     TickDurationClock.restart();
-    return 0;
+    return ErrorCode;
 }
 
 sf::Int32 FEngineLoop::InitializeGameWindow()
@@ -80,7 +83,7 @@ void FEngineLoop::Tick()
 
 void FEngineLoop::ParseInput()
 {
-	assert(GameWindow != nullptr);
+	assert(GameWindow != nullptr && InputManager != nullptr);
 
     sf::Event Event;
     while (GameWindow->pollEvent(Event))
@@ -89,6 +92,10 @@ void FEngineLoop::ParseInput()
         {
             RequestExit();
         }
+		else
+		{
+			InputManager->HandleWindowEvent(Event);
+		}
     }
 }
 
@@ -128,6 +135,12 @@ void FEngineLoop::Exit()
 	{
 		delete GameWorld;
 		GameWorld = nullptr;
+	}
+
+	if (InputManager != nullptr)
+	{
+		delete InputManager;
+		InputManager = nullptr;
 	}
 }
 

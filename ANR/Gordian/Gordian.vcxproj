@@ -130,6 +130,9 @@
     <ClCompile Include="Source\GordianEngine\Core\main.cpp" />
     <ClCompile Include="Source\GordianEngine\Core\Private\EngineLoop.cpp" />
     <ClCompile Include="Source\GordianEngine\Core\Private\Object.cpp" />
+    <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp" />
+    <ClCompile Include="Source\GordianEngine\Input\Private\InputManager.cpp" />
+    <ClCompile Include="Source\GordianEngine\Input\Private\InputBindingTypes.cpp" />
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type.cpp" />
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Struct.cpp" />
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Primitives.cpp" />
@@ -150,6 +153,10 @@
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\GlobalObjectLibrary.h" />
+    <ClInclude Include="Source\GordianEngine\Input\Public\InputCommand.h" />
+    <ClInclude Include="Source\GordianEngine\Input\Public\InputKeys.h" />
+    <ClInclude Include="Source\GordianEngine\Input\Public\InputManager.h" />
+    <ClInclude Include="Source\GordianEngine\Input\Public\InputBindingTypes.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Reflection.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\StructMember.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type.h" />
