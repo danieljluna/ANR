@@ -10,7 +10,7 @@ namespace Gordian
 
 namespace InputKeys
 {
-	enum EInputKeyTypes
+	enum class EInputKeyTypes
 	{
 		Keyboard,
 		Mouse,
@@ -22,7 +22,7 @@ namespace InputKeys
 	using EMouseButtons = sf::Mouse::Button;
 	// Typical Joystick Buttons
 	// todo: split into XBOX and generic
-	enum EGamepadButtons
+	enum class EGamepadButtons
 	{
 		DPad_Up,
 		DPad_Right,
@@ -42,6 +42,8 @@ namespace InputKeys
 		// Due to sfml limits, a joystick can only have this many registered buttons
 		MaxButtons = sf::Joystick::ButtonCount
 	};
+
+	InputKeys::EGamepadButtons ConvertJoystickKeyCodeToGamepadButton(unsigned int JoystickKeyCode);
 };
 
 
@@ -53,20 +55,26 @@ public:
 	EGenericInputKey();
 	EGenericInputKey(const EGenericInputKey& InGenericKey);
 
-	EGenericInputKey(InputKeys::EKeyboardKeys InKeyboardKey);
-	EGenericInputKey(InputKeys::EMouseButtons InMouseKey);
-	EGenericInputKey(InputKeys::EGamepadButtons InGamepadKey);
+	EGenericInputKey(const InputKeys::EKeyboardKeys& InKeyboardKey);
+	EGenericInputKey(const InputKeys::EMouseButtons& InMouseKey);
+	EGenericInputKey(const InputKeys::EGamepadButtons& InGamepadKey);
+	EGenericInputKey(const sf::Event& InInputEvent);
 
 	operator InputKeys::EKeyboardKeys() const;
 	operator InputKeys::EMouseButtons() const;
 	operator InputKeys::EGamepadButtons() const;
 
 	const EGenericInputKey& operator=(const EGenericInputKey& Other);
-	const EGenericInputKey& operator=(const InputKeys::EKeyboardKeys& Other);
-	const EGenericInputKey& operator=(const InputKeys::EMouseButtons& Other);
-	const EGenericInputKey& operator=(const InputKeys::EGamepadButtons& Other);
+	const EGenericInputKey& operator=(const InputKeys::EKeyboardKeys& InKeyboardKey);
+	const EGenericInputKey& operator=(const InputKeys::EMouseButtons& InMouseKey);
+	const EGenericInputKey& operator=(const InputKeys::EGamepadButtons& InGamepadKey);
+	const EGenericInputKey& operator=(const sf::Event& InInputEvent);
+
+	const InputKeys::EInputKeyTypes& GetKeyType() const;
 
 	bool operator==(const EGenericInputKey& Other) const;
+	bool operator!=(const EGenericInputKey& Other) const;
+	bool operator<(const EGenericInputKey& Other) const;
 
 	bool IsValid() const;
 
@@ -78,7 +86,7 @@ private:
 	{
 		InputKeys::EKeyboardKeys _KeyboardKey;
 		InputKeys::EMouseButtons _MouseKey;
-		InputKeys::EGamepadButtons _GamepadKey;
+		unsigned int _GamepadKey;
 	};
 };
 

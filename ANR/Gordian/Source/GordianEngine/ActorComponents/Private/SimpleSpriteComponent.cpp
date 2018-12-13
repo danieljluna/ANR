@@ -5,6 +5,7 @@
 
 #include "SFML/Graphics/Rect.hpp"
 
+#include "GordianEngine/Input/Public/InputManager.h"
 
 using namespace Gordian;
 
@@ -24,8 +25,11 @@ void OSimpleSpriteComponent::Initialize(AActor* ActorInitializingFrom)
 	_FileToLoadTextureFrom = "F:/Programming/GitHub/ANR/ANR/NDB_Scraper/Output/06041.png";
 	_TextureToRender.loadFromFile(_FileToLoadTextureFrom);
 	_SpriteToRender.setTexture(_TextureToRender);
-	sf::IntRect DefaultCardRect(3600, 419, 300, 419);
+	sf::IntRect DefaultCardRect(0, 0, 300, 419);
 	_SpriteToRender.setTextureRect(DefaultCardRect);
+	std::cout << "Initiating Bind" << std::endl;
+	FInputManager::Singleton->BindToDigitalCommand("TestCommand", EDigitalEventType::Pressed, this, &OSimpleSpriteComponent::TestFunction);
+	std::cout << "Bind Complete" << std::endl;
 }
 
 void OSimpleSpriteComponent::Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const
@@ -34,6 +38,29 @@ void OSimpleSpriteComponent::Render(sf::Time BlendTime, sf::RenderTarget& Target
 	// Then offset it by the movement component's offset for the given blend time
 
 	Target.draw(_SpriteToRender, States);
+}
+
+void OSimpleSpriteComponent::TestFunction()
+{
+	const sf::Texture* SpriteTexture = _SpriteToRender.getTexture();
+	if (SpriteTexture != nullptr)
+	{
+		sf::IntRect Position = _SpriteToRender.getTextureRect();
+		Position.left += 300;
+
+		if (Position.left >= (int)(SpriteTexture->getSize().x))
+		{
+			Position.left = 0;
+			Position.top += 419;
+			if (Position.top >= (int)(SpriteTexture->getSize().y))
+			{
+				Position.top = 0;
+			}
+
+		}
+
+		_SpriteToRender.setTextureRect(Position);
+	}
 }
 
 RCLASS_MEMBER_BEGIN(OSimpleSpriteComponent)

@@ -182,14 +182,19 @@
     <ClInclude Include="Source\GordianEngine\Input\Public\InputManager.h">
       <Filter>Header Files\Gordian\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GordianEngine\Input\Public\InputCommand.h">
-      <Filter>Header Files\Gordian\Input</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GordianEngine\Input\Public\InputBindingTypes.h">
       <Filter>Header Files\Gordian\Input</Filter>
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Input\Public\InputKeys.h">
       <Filter>Header Files\Gordian\Input</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\GordianEngine\Input\Private\InputManager.inl">
+      <Filter>Source Files\Gordian\Input</Filter>
+    </None>
+    <None Include="Config\InputConfig.ini">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -24,7 +24,7 @@ public:
 
 	REFLECT_CLASS(OObject)
 
-	OWorld();
+	OWorld(const std::string& InName, OObject* InOwningObject);
 
 	virtual const OWorld* GetWorld() const;
 

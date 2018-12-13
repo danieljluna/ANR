@@ -39,7 +39,7 @@ sf::Int32 FEngineLoop::Init()
     }
 
 	InputManager = new FInputManager();
-	GameWorld = new OWorld();
+	GameWorld = new OWorld("GameWorld", nullptr);
     bIsRequestingExit = false;
     TickDurationClock.restart();
     return ErrorCode;
@@ -113,10 +113,13 @@ void FEngineLoop::Render(const sf::Time& BlendTime)
 {
 	assert(GameWindow != nullptr);
 
+	GameWindow->clear();
+
 	if (GameWorld != nullptr)
 	{
 		GameWorld->Render(BlendTime, *GameWindow, sf::RenderStates::Default);
 	}
+
     GameWindow->display();
 }
 

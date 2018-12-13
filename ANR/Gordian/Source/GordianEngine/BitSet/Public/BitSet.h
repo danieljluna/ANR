@@ -125,6 +125,30 @@ public:
         return BitSet_.size();
     }
 
+	/// Returns size of bitset (equal to T::MAX_VALUE).
+	unsigned long to_ulong() const
+	{
+		return BitSet_.to_ulong();
+	}
+
+	/// Whether or not no bits are set
+	bool none() const
+	{
+		return BitSet_.none();
+	}
+
+	/// Whether or not any bits are set
+	bool any() const
+	{
+		return BitSet_.any();
+	}
+
+	/// Whether or not all bits are set
+	bool all() const
+	{
+		return BitSet_.all();
+	}
+
     /// Returns number of set bits.
     std::size_t count() const
     {

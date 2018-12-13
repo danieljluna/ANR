@@ -2,20 +2,22 @@
 
 #pragma once
 
-#include <string>
-#include <map>
+#include <cassert>
 #include <list>
+#include <map>
+#include <string>
 
 #include <SFML/Window/Event.hpp>
 
 #include "InputBindingTypes.h"
+#include "GordianEngine/Core/Public/Object.h"
 #include "GordianEngine/Delegates/MulticastDelegate.h"
 
 namespace Gordian
 {
 
 
-using KeyboardDelegate = MulticastDelegate0<void>;
+using DigitalDelegate = MulticastDelegate0<void>;
 
 // Defines a Keyboard binding
 
@@ -26,15 +28,66 @@ class FInputManager
 public:
 	FInputManager();
 
+	static FInputManager* Singleton;
+
 	void HandleWindowEvent(sf::Event& EventData);
 
+	// Bind to a digital command using a non-const member function
+	template<class X, class Y>
+	inline bool BindToDigitalCommand(const FCommand& CommandToBind,
+									 const EDigitalEventType& EventType,
+									 const Y* ObjectToBindTo,
+									 void (X::*FunctionToBind)() const);
+
+	// Bind to a digital command using a non-const member function
+	template<class X, class Y>
+	inline bool BindToDigitalCommand(const FCommand& CommandToBind,
+									 const EDigitalEventType& EventType,
+									 Y* ObjectToBindTo,
+									 void (X::*FunctionToBind)());
+
+	// Bind to a digital command using a non-const member function
+	inline bool BindToDigitalCommand(const FCommand& CommandToBind,
+									 const EDigitalEventType& EventType,
+									 void (*Function_To_Bind)());
+
 private:
-	// A mapping of commands (which are merely identified as strings for now) to digital bindings.
-	// This is the way the user will construct the input bindings, but this is now how they will be used in real time.
-	std::map<std::string, std::list<FDigitalBinding>> _DigitalCommandMappings;
 
-	TBitSet<FDigitalBinding::EComboKey> _DigitalComboKeyState;
+	void ReloadFromConfig();
+
+	// Given a generic key, returns commands to trigger.
+	// Loaded from an ini file
+	std::set<FDigitalBinding> DigitalBindingSet;
+
+	// Runtime state of all combo keys
+	TBitSet<EComboKey> _DigitalComboKeyState;
+
+	void GenerateCommandDelegates();
+
+	// Call when key state might have changed. Do not pass in non-key sf::events.
+	void CheckForComboKeyStateChange(const sf::Event& EventData);
+
+	void HandleDigitalEvent(const sf::Event& EventData);
+
+	bool IsDigitalEvent(const sf::Event& EventData) const;
+	EDigitalEventType GetDigitalEventType(const sf::Event& EventData) const;
+
+	void TriggerDigitalCommand(const FCommand& CommandToTrigger, EDigitalEventType EventType);
+
+	struct FDigitalBroadcaster
+	{
+		DigitalDelegate OnPressed;
+		DigitalDelegate OnReleased;
+	};
+
+	// Maps commands to the delegates they fire.
+	std::map<FCommand, FDigitalBroadcaster> _DigitalCommandDelegates;
+
+	bool _bHasGeneratedDelegateMap;
 };
 
 
 };
+
+
+#include "../Private/InputManager.inl"

@@ -153,7 +153,6 @@
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\GlobalObjectLibrary.h" />
-    <ClInclude Include="Source\GordianEngine\Input\Public\InputCommand.h" />
     <ClInclude Include="Source\GordianEngine\Input\Public\InputKeys.h" />
     <ClInclude Include="Source\GordianEngine\Input\Public\InputManager.h" />
     <ClInclude Include="Source\GordianEngine\Input\Public\InputBindingTypes.h" />
@@ -165,6 +164,10 @@
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type_Struct.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\Level.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\InputConfig.ini" />
+    <None Include="Source\GordianEngine\Input\Private\InputManager.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

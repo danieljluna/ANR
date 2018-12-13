@@ -87,16 +87,15 @@ public:
 	}
 
 	// Broadcasts to all bound functions
-	inline void Broadcast() const
+	inline void Broadcast()
 	{
-		for (auto it = _DelegateSet.rbegin(); it != _DelegateSet.rend();)
+		using ReverseIteratorType = std::set<DelegateType>::reverse_iterator;
+		for (ReverseIteratorType it = _DelegateSet.rbegin(); it != _DelegateSet.rend();)
 		{
-			DelegateType& DelegateAtIndex = *it;
+			const DelegateType& DelegateAtIndex = *it;
 			if (DelegateAtIndex.empty())
 			{
-				const auto DelegateToRemove = it;
-				++it;
-				_DelegateSet.erase(DelegateToRemove);
+				_DelegateSet.erase(std::next(it).base());
 			}
 			else
 			{

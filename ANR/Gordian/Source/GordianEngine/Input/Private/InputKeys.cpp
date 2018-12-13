@@ -17,19 +17,24 @@ EGenericInputKey::EGenericInputKey(const EGenericInputKey& InGenericKey)
 	*this = InGenericKey;
 }
 
-EGenericInputKey::EGenericInputKey(InputKeys::EKeyboardKeys InKeyboardKey)
+EGenericInputKey::EGenericInputKey(const InputKeys::EKeyboardKeys& InKeyboardKey)
 {
 	*this = InKeyboardKey;
 }
 
-EGenericInputKey::EGenericInputKey(InputKeys::EMouseButtons InMouseKey)
+EGenericInputKey::EGenericInputKey(const InputKeys::EMouseButtons& InMouseKey)
 {
 	*this = InMouseKey;
 }
 
-EGenericInputKey::EGenericInputKey(InputKeys::EGamepadButtons InGamepadKey)
+EGenericInputKey::EGenericInputKey(const InputKeys::EGamepadButtons& InGamepadKey)
 {
 	*this = InGamepadKey;
+}
+
+EGenericInputKey::EGenericInputKey(const sf::Event& InInputEvent)
+{
+	*this = InInputEvent;
 }
 
 EGenericInputKey::operator InputKeys::EKeyboardKeys() const
@@ -60,7 +65,7 @@ EGenericInputKey::operator InputKeys::EGamepadButtons() const
 {
 	if (_KeyType == InputKeys::EInputKeyTypes::Gamepad)
 	{
-		return _GamepadKey;
+		return InputKeys::ConvertJoystickKeyCodeToGamepadButton(_GamepadKey);
 	}
 	else
 	{
@@ -93,25 +98,57 @@ const EGenericInputKey& EGenericInputKey::operator=(const EGenericInputKey& Othe
 	return *this;
 }
 
-const EGenericInputKey& EGenericInputKey::operator=(const InputKeys::EKeyboardKeys& Other)
+const EGenericInputKey& EGenericInputKey::operator=(const InputKeys::EKeyboardKeys& InKeyboardKey)
 {
 	_KeyType = InputKeys::EInputKeyTypes::Keyboard;
-	_KeyboardKey = Other;
+	_KeyboardKey = InKeyboardKey;
 	return *this;
 }
 
-const EGenericInputKey& EGenericInputKey::operator=(const InputKeys::EMouseButtons& Other)
+const EGenericInputKey& EGenericInputKey::operator=(const InputKeys::EMouseButtons& InMouseKey)
 {
 	_KeyType = InputKeys::EInputKeyTypes::Mouse;
-	_MouseKey = Other;
+	_MouseKey = InMouseKey;
 	return *this;
 }
 
-const EGenericInputKey& EGenericInputKey::operator=(const InputKeys::EGamepadButtons& Other)
+const EGenericInputKey& EGenericInputKey::operator=(const InputKeys::EGamepadButtons& InGamepadKey)
 {
 	_KeyType = InputKeys::EInputKeyTypes::Gamepad;
-	_GamepadKey = Other;
+	_GamepadKey = static_cast<unsigned int>(InGamepadKey);
 	return *this;
+}
+
+const EGenericInputKey& EGenericInputKey::operator=(const sf::Event& InInputEvent)
+{
+	switch (InInputEvent.type)
+	{
+		case sf::Event::KeyPressed:
+		case sf::Event::KeyReleased:
+			_KeyType = InputKeys::EInputKeyTypes::Keyboard;
+			_KeyboardKey = InInputEvent.key.code;
+			break;
+		case sf::Event::MouseButtonPressed:
+		case sf::Event::MouseButtonReleased:
+			_KeyType = InputKeys::EInputKeyTypes::Mouse;
+			_MouseKey = InInputEvent.mouseButton.button;
+			break;
+		case sf::Event::JoystickButtonPressed:
+		case sf::Event::JoystickButtonReleased:
+			_KeyType = InputKeys::EInputKeyTypes::Gamepad;
+			_GamepadKey = InInputEvent.joystickButton.button;
+			break;
+		default:
+			_KeyType = InputKeys::EInputKeyTypes::Unknown;
+			break;
+	}
+
+	return *this;
+}
+
+const InputKeys::EInputKeyTypes& EGenericInputKey::GetKeyType() const
+{
+	return _KeyType;
 }
 
 bool EGenericInputKey::operator==(const EGenericInputKey& Other) const
@@ -132,7 +169,7 @@ bool EGenericInputKey::operator==(const EGenericInputKey& Other) const
 				bDoesKeyMatch = _GamepadKey == Other._GamepadKey;
 				break;
 			case InputKeys::EInputKeyTypes::Unknown:
-				bDoesKeyMatch = _KeyboardKey == InputKeys::EKeyboardKeys::KeyCount;
+				bDoesKeyMatch = true;
 				break;
 			default:
 				assert(false);
@@ -141,6 +178,42 @@ bool EGenericInputKey::operator==(const EGenericInputKey& Other) const
 	}
 
 	return bDoesKeyMatch;
+}
+
+bool EGenericInputKey::operator!=(const EGenericInputKey& Other) const
+{
+	return !(*this == Other);
+}
+
+bool EGenericInputKey::operator<(const EGenericInputKey& Other) const
+{
+	if (_KeyType != Other._KeyType)
+	{
+		return _KeyType < Other._KeyType;
+	}
+	else
+	{
+		switch (_KeyType)
+		{
+			case InputKeys::EInputKeyTypes::Keyboard:
+				return _KeyboardKey < Other._KeyboardKey;
+				break;
+			case InputKeys::EInputKeyTypes::Mouse:
+				return _MouseKey < Other._MouseKey;
+				break;
+			case InputKeys::EInputKeyTypes::Gamepad:
+				return _GamepadKey < Other._GamepadKey;
+				break;
+			case InputKeys::EInputKeyTypes::Unknown:
+				return false;
+				break;
+			default:
+				assert(false);
+				break;
+		}
+	}
+
+	return false;
 }
 
 bool EGenericInputKey::IsValid() const
@@ -156,7 +229,7 @@ bool EGenericInputKey::IsValid() const
 			bIsValid = _GamepadKey != InputKeys::EMouseButtons::ButtonCount;
 			break;
 		case InputKeys::EInputKeyTypes::Gamepad:
-			bIsValid = _GamepadKey != InputKeys::EGamepadButtons::ButtonCount;
+			bIsValid = _GamepadKey != static_cast<unsigned int>(InputKeys::EGamepadButtons::ButtonCount);
 			break;
 		case InputKeys::EInputKeyTypes::Unknown:
 			bIsValid = false;
@@ -167,4 +240,14 @@ bool EGenericInputKey::IsValid() const
 	}
 
 	return bIsValid;
+}
+
+InputKeys::EGamepadButtons InputKeys::ConvertJoystickKeyCodeToGamepadButton(unsigned int JoystickKeyCode)
+{
+	if (JoystickKeyCode >= static_cast<unsigned int>(InputKeys::EGamepadButtons::ButtonCount))
+	{
+		return InputKeys::EGamepadButtons::ButtonCount;
+	}
+
+	return static_cast<InputKeys::EGamepadButtons>(JoystickKeyCode);
 }

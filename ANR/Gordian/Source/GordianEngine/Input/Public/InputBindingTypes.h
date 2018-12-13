@@ -11,42 +11,49 @@ namespace Gordian
 {
 
 
-// All the different ways to bind to a digital input
-enum DigitalEventType
+// List of all possible combo keys
+enum class EComboKey
 {
-	Pressed,
-	Released,
+	Alt,
+	Control,
+	Shift,
+	System,
+	MAX_VALUE
 };
 
 
+// All the different ways to bind to a digital input
+enum class EDigitalEventType
+{
+	Pressed,
+	Released,
+	MAX_VALUE
+};
+
+using FCommand = std::string;
+
+
 // Manages all settings for a digital binding.
-// Digital bindings 
+// Digital bindings pass no values when triggered
 struct FDigitalBinding
 {
 	FDigitalBinding();
 
-	// Returns true if the key and combo keys for the event matches this binding.
-	// Does not check that the event type is appropriate for the key type! It is
-	//	expected that the caller can already prove this.
-	bool DoesEventMatch(const sf::Event& TestEvent) const;
-
 	// Denotes which key this binding listens for
 	EGenericInputKey TriggerKey;
-
-	// List of all possible combo keys
-	enum EComboKey
-	{
-		Alt,
-		Control,
-		Shift,
-		System,
-		MAX_VALUE
-	};
 
 	// Bitmask of required combo keys.
 	// Combo keys are ignored in release events
 	TBitSet<EComboKey> RequiredComboKeys;
+
+	// Command this binding should trigger
+	FCommand CommandToTrigger;
+
+	bool ShouldInputTriggerBinding(const EGenericInputKey& InputKey, const TBitSet<EComboKey>& ComboKeyState) const;
+
+	bool operator<(const FDigitalBinding& Other) const;
 };
 
-	
+
+
 };

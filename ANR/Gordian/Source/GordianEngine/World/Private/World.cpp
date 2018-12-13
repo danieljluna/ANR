@@ -8,8 +8,8 @@
 
 using namespace Gordian;
 
-OWorld::OWorld()
-	: Parent("GameWorld", nullptr)
+OWorld::OWorld(const std::string& InName, OObject* InOwningObject)
+	: Parent(InName, InOwningObject)
 	, _Actors{}
 	, _CurrentlyLoadedLevel(nullptr)
 {
