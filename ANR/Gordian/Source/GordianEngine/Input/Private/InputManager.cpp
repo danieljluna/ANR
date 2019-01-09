@@ -2,7 +2,7 @@
 
 #include "../Public/InputManager.h"
 
-#include <cassert>
+#include "GordianEngine/Debug/Public/Asserts.h"
 
 using namespace Gordian;
 
@@ -10,12 +10,10 @@ FInputManager* FInputManager::Singleton = nullptr;
 
 FInputManager::FInputManager()
 {
-	std::cout << "Create Input Manager" << std::endl;
 	FDigitalBinding TempBinding;
 	TempBinding.CommandToTrigger = "TestCommand";
 	TempBinding.TriggerKey = InputKeys::EKeyboardKeys::T;
 	DigitalBindingSet.insert(TempBinding);
-	std::cout << "Digital Input Mapped" << std::endl;
 	_bHasGeneratedDelegateMap = false;
 
 	GenerateCommandDelegates();
@@ -84,20 +82,16 @@ void FInputManager::HandleWindowEvent(sf::Event& EventData)
 			break;
 
 		default:
-			assert(false);
+			checkNoEntry();
 			break;
 	}
 }
 
 void FInputManager::GenerateCommandDelegates()
 {
-	assert(!_bHasGeneratedDelegateMap);
-
-	std::cout << "Clearing Command Delegates" << std::endl;
+	check(!_bHasGeneratedDelegateMap);
 
 	_DigitalCommandDelegates.clear();
-
-	std::cout << "Generating Command Delegates off of Digital Binding" << std::endl;
 
 	for (const FDigitalBinding& DigitalBinding : DigitalBindingSet)
 	{
@@ -114,7 +108,7 @@ void FInputManager::GenerateCommandDelegates()
 
 void FInputManager::CheckForComboKeyStateChange(const sf::Event& EventData)
 {
-	assert(EventData.type == sf::Event::KeyPressed
+	check(EventData.type == sf::Event::KeyPressed
 		   || EventData.type == sf::Event::KeyReleased);
 	
 	switch (EventData.key.code)
@@ -143,7 +137,7 @@ void FInputManager::CheckForComboKeyStateChange(const sf::Event& EventData)
 
 void FInputManager::HandleDigitalEvent(const sf::Event& EventData)
 {
-	assert(IsDigitalEvent(EventData));
+	check(IsDigitalEvent(EventData));
 
 	// Translate event to a generic key
 	EGenericInputKey KeyTranslation(EventData);
@@ -204,7 +198,7 @@ bool FInputManager::IsDigitalEvent(const sf::Event& EventData) const
 
 EDigitalEventType FInputManager::GetDigitalEventType(const sf::Event& EventData) const
 {
-	assert(IsDigitalEvent(EventData));
+	check(IsDigitalEvent(EventData));
 
 	switch (EventData.type)
 	{
@@ -241,7 +235,7 @@ void FInputManager::TriggerDigitalCommand(const FCommand& CommandToTrigger, EDig
 				CommandDelegatePair->second.OnReleased.Broadcast();
 				break;
 			default:
-				assert(false);
+				checkNoEntry();
 				break;
 		}
 	}

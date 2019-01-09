@@ -42,13 +42,13 @@ public:
 
 	inline ItemType& operator[](const size_t index)
 	{
-		assert(index < _ItemCount);
+		check(index < _ItemCount);
 		return _ArrayHead[index];
 	}
 
 	inline const ItemType& operator[](const size_t index) const
 	{
-		assert(index < _ItemCount);
+		check(index < _ItemCount);
 		return _ArrayHead[index];
 	}
 
@@ -139,7 +139,7 @@ public:
 	// Does not conserve item order, but does conserve iteration consistency
 	inline void RemoveSloppy(size_t IndexToRemove)
 	{
-		assert(IndexToRemove < _ItemCount);
+		check(IndexToRemove < _ItemCount);
 
 		const size_t LastItem = _ItemCount - 1;
 		if (IndexToRemove != LastItem)

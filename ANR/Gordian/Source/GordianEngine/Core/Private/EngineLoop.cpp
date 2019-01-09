@@ -2,13 +2,12 @@
 
 #include "GordianEngine/Core/Public/EngineLoop.h"
 
-#include <assert.h>
-
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 
 #include "GordianEngine/Input/Public/InputManager.h"
 #include "GordianEngine/World/Public/World.h"
+#include "GordianEngine/Debug/Public/Asserts.h"
 
 using namespace Gordian;
 
@@ -26,7 +25,7 @@ FEngineLoop::FEngineLoop()
 FEngineLoop::~FEngineLoop()
 {
 	// If GameWindow is non-null after main ends, sfml will crash
-	assert(GameWindow == nullptr && InputManager == nullptr && GameWorld == nullptr);
+	check(GameWindow == nullptr && InputManager == nullptr && GameWorld == nullptr);
 }
 
 sf::Int32 FEngineLoop::Init()
@@ -62,7 +61,7 @@ sf::Int32 FEngineLoop::InitializeGameWindow()
 
 void FEngineLoop::Tick()
 {
-    assert(!bIsRequestingExit);
+	check(!bIsRequestingExit);
 
     ParseInput();
 
@@ -77,13 +76,13 @@ void FEngineLoop::Tick()
     // In order to smooth motion of objects, we use the leftover time that has
     // not been passed through update to estimate positions of renderable objects.
     const float BlendFactor = TimePendingTickConsumption / TickConsumptionStepSize;
-    assert(BlendFactor >= 0.f && BlendFactor < 1.f);
+	check(BlendFactor >= 0.f && BlendFactor < 1.f);
     Render(TimePendingTickConsumption);
 }
 
 void FEngineLoop::ParseInput()
 {
-	assert(GameWindow != nullptr && InputManager != nullptr);
+	check(GameWindow != nullptr && InputManager != nullptr);
 
     sf::Event Event;
     while (GameWindow->pollEvent(Event))
@@ -101,7 +100,7 @@ void FEngineLoop::ParseInput()
 
 void FEngineLoop::Tick(const sf::Time& DeltaSeconds)
 {
-	assert(DeltaSeconds > sf::Time::Zero);
+	check(DeltaSeconds > sf::Time::Zero);
 
 	if (GameWorld != nullptr)
 	{
@@ -111,7 +110,7 @@ void FEngineLoop::Tick(const sf::Time& DeltaSeconds)
 
 void FEngineLoop::Render(const sf::Time& BlendTime)
 {
-	assert(GameWindow != nullptr);
+	check(GameWindow != nullptr);
 
 	GameWindow->clear();
 
@@ -125,7 +124,7 @@ void FEngineLoop::Render(const sf::Time& BlendTime)
 
 void FEngineLoop::Exit()
 {
-	assert(bIsRequestingExit);
+	check(bIsRequestingExit);
 
 	if (GameWindow != nullptr)
 	{

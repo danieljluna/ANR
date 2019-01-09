@@ -83,7 +83,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <PreLinkEvent />
@@ -103,6 +103,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -130,6 +131,7 @@
     <ClCompile Include="Source\GordianEngine\Core\main.cpp" />
     <ClCompile Include="Source\GordianEngine\Core\Private\EngineLoop.cpp" />
     <ClCompile Include="Source\GordianEngine\Core\Private\Object.cpp" />
+    <ClCompile Include="Source\GordianEngine\Debug\Private\Asserts.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputManager.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputBindingTypes.cpp" />
@@ -149,6 +151,7 @@
     <ClInclude Include="Source\GordianEngine\Core\Public\Gordian.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\Object.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\Renderable.h" />
+    <ClInclude Include="Source\GordianEngine\Debug\Public\Asserts.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />

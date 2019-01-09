@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include <cassert>
 #include <type_traits>
 
+#include "GordianEngine/Debug/Public/Asserts.h"
 #include "GordianEngine/Reflection/Public/Type.h"
 #include "GordianEngine/Reflection/Public/Type_Struct.h"
 
@@ -16,7 +16,7 @@ namespace Gordian
 template<typename TargetClass, typename std::enable_if<FDefaultTypeResolver::IsReflected<TargetClass>::value, int>::type = 0>
 TargetClass* Cast(OObject* Source)
 {
-	assert(Source->GetType() != nullptr);
+	check(Source->GetType() != nullptr);
 	if (Source->GetType()->IsChildClassOf(TargetClass::GetStaticType()))
 	{
 		return static_cast<TargetClass*>(Source);
@@ -28,7 +28,7 @@ TargetClass* Cast(OObject* Source)
 template<typename TargetClass, typename std::enable_if<FDefaultTypeResolver::IsReflected<TargetClass>::value, int>::type = 0>
 const TargetClass* Cast(const OObject* Source)
 {
-	assert(Source->GetType() != nullptr);
+	check(Source->GetType() != nullptr);
 	if (Source->GetType()->IsChildClassOf(TargetClass::GetStaticType()))
 	{
 		return static_cast<const TargetClass*>(Source);
@@ -55,7 +55,9 @@ public:
 		OObject* NewObject = new T(ObjectName != "" ? ObjectName : ObjectType->GetName()
 								  , OwningObject);
 
+		check(NewObject != nullptr);
 		NewObject->_PrivateType = ObjectType;
+		NewObject->Initialize();
 
 		return static_cast<T*>(NewObject);
 	}

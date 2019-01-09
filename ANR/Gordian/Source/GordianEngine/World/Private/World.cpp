@@ -6,6 +6,8 @@
 #include "GordianEngine/Actor/Public/Actor.h"
 #include "GordianEngine/ActorComponents/Public/SimpleSpriteComponent.h"
 
+#include "GordianEngine/Debug/Public/Asserts.h"
+
 using namespace Gordian;
 
 OWorld::OWorld(const std::string& InName, OObject* InOwningObject)
@@ -22,14 +24,14 @@ const OWorld* OWorld::GetWorld() const
 
 void OWorld::BeginPlay()
 {
-	assert(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
+	check(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
 
 
 	//-Temp-Initialization-Logic----------------------------------------
 
 	AActor* TestActor = SpawnActor<AActor>(AActor::GetStaticType(), "TestActor_0");
 	OSimpleSpriteComponent* SimpleSpriteComponent = FGlobalObjectLibrary::CreateObject<OSimpleSpriteComponent>(TestActor, OSimpleSpriteComponent::GetStaticType(), "SimpleSprite");
-	assert(TestActor != nullptr && SimpleSpriteComponent != nullptr);
+	check(TestActor != nullptr && SimpleSpriteComponent != nullptr);
 	TestActor->AddComponent(SimpleSpriteComponent);
 
 	//-End-Temp-Initialization-Logic------------------------------------
@@ -41,7 +43,7 @@ void OWorld::BeginPlay()
 	}
 
 	OWorld::GetStaticType()->Dump(this);
-	assert(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
+	check(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
 }
 
 void OWorld::Tick(const sf::Time& DeltaSeconds)
@@ -72,12 +74,13 @@ bool OWorld::LoadLevel(const OLevel* LevelToLoad)
 
 bool OWorld::RegisterActorWithWorld(AActor* ActorToRegister)
 {
-	assert(ActorToRegister != nullptr);
+	check(ActorToRegister != nullptr);
 
 	// todo: add checks to ensure object is already properly initialized before registering successfully
 	_Actors.push_back(ActorToRegister);
 
-	if (IsObjectFlagSet(EObjectFlags::HasCompleteBeginPlay))
+	if (IsObjectFlagSet(EObjectFlags::HasCompleteBeginPlay) 
+		&& !ActorToRegister->IsObjectFlagSet(EObjectFlags::HasInitiatedBeginPlay))
 	{
 		ActorToRegister->BeginPlay();
 	}

@@ -3,7 +3,8 @@
 #include "GordianEngine/Actor/Public/Actor.h"
 #include "GordianEngine/Core/Public/Gordian.h"
 
-#include <cassert>
+
+#include "GordianEngine/Debug/Public/Asserts.h"
 
 #include "GordianEngine/Actor/Public/ActorComponent.h"
 #include "GordianEngine/GlobalLibraries/Public/GlobalObjectLibrary.h"
@@ -41,14 +42,14 @@ void AActor::InitializeComponents()
 
 void AActor::BeginPlay()
 {
-	assert(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
+	check(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
 
 	for (OActorComponent* ActorComponent : _ActorComponents)
 	{
 		ActorComponent->OnBeginPlay();
 	}
 
-	assert(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
+	check(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
 }
 
 bool AActor::AddComponent(OActorComponent* ComponentToAdd)

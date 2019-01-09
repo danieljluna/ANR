@@ -27,9 +27,7 @@ void OSimpleSpriteComponent::Initialize(AActor* ActorInitializingFrom)
 	_SpriteToRender.setTexture(_TextureToRender);
 	sf::IntRect DefaultCardRect(0, 0, 300, 419);
 	_SpriteToRender.setTextureRect(DefaultCardRect);
-	std::cout << "Initiating Bind" << std::endl;
 	FInputManager::Singleton->BindToDigitalCommand("TestCommand", EDigitalEventType::Pressed, this, &OSimpleSpriteComponent::TestFunction);
-	std::cout << "Bind Complete" << std::endl;
 }
 
 void OSimpleSpriteComponent::Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const

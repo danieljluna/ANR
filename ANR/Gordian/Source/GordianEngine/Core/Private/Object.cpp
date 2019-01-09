@@ -3,8 +3,7 @@
 #include "GordianEngine/Core/Public/Object.h"
 #include "GordianEngine/Core/Public/Gordian.h"
 
-#include <cassert>
-
+#include "GordianEngine/Debug/Public/Asserts.h"
 #include "GordianEngine/World/Public/World.h"
 
 using namespace Gordian;
@@ -17,6 +16,11 @@ OObject::OObject(const std::string& InName, OObject* InOwningObject)
 }
 
 OObject::~OObject()
+{
+
+}
+
+void OObject::Initialize()
 {
 
 }
@@ -60,7 +64,7 @@ const OWorld* OObject::GetWorld() const
 
 bool OObject::IsSubclassOf(const OType_Struct* ClassToCheckAgainst) const
 {
-	assert(_PrivateType != nullptr);
+	check(_PrivateType != nullptr);
 	return _PrivateType->IsChildClassOf(ClassToCheckAgainst);
 }
 

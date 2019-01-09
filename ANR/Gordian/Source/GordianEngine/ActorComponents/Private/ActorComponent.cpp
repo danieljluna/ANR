@@ -18,14 +18,14 @@ OActorComponent::OActorComponent(const std::string& InName, OObject* InOwningObj
 void OActorComponent::Initialize(AActor* ActorInitializingFrom)
 {
 	// Sanity check to avoid bad owning trees
-	assert(ActorInitializingFrom == GetOwningActor());
+	check(ActorInitializingFrom == GetOwningActor());
 }
 
 void OActorComponent::OnBeginPlay()
 {
-	assert(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
+	check(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
 
-	assert(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
+	check(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
 }
 
 AActor* OActorComponent::GetOwningActor() const

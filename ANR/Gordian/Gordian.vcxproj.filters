@@ -70,6 +70,12 @@
     <Filter Include="Source Files\Gordian\Input">
       <UniqueIdentifier>{8d3e58ac-1338-44ac-b147-56b10b1c49a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Gordian\Debug">
+      <UniqueIdentifier>{a7053a77-5ba9-4ad5-9500-ba16e737a7d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\Debug">
+      <UniqueIdentifier>{fc6c580d-e162-41a3-a257-d1998f31dfe1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GordianEngine\World\Private\World.cpp">
@@ -113,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp">
       <Filter>Source Files\Gordian\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Debug\Private\Asserts.cpp">
+      <Filter>Source Files\Gordian\Debug</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Input\Public\InputKeys.h">
       <Filter>Header Files\Gordian\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\Asserts.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

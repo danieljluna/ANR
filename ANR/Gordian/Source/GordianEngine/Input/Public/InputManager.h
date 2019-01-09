@@ -12,6 +12,7 @@
 #include "InputBindingTypes.h"
 #include "GordianEngine/Core/Public/Object.h"
 #include "GordianEngine/Delegates/MulticastDelegate.h"
+#include "GordianEngine/Debug/Public/Asserts.h"
 
 namespace Gordian
 {

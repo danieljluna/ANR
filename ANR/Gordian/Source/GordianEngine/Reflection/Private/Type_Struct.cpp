@@ -4,9 +4,9 @@
 
 #include <iostream>
 #include <string>
-#include <cassert>
 
 #include "GordianEngine/Core/Public/Object.h"
+#include "GordianEngine/Debug/Public/Asserts.h"
 
 using namespace Gordian;
 
@@ -24,7 +24,7 @@ OType_Struct::OType_Struct()
 
 void OType_Struct::Initialize(void(*Initialize)(OType_Struct*))
 {
-	assert(Initialize != nullptr);
+	check(Initialize != nullptr);
 	if (_InitializationState == OType_Struct::Uninitialized)
 	{
 		_InitializationState = OType_Struct::MidInitialization;

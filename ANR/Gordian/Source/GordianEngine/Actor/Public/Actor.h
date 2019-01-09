@@ -23,8 +23,7 @@ public:
 	virtual ~AActor() override;
 
 	// Initializes the Actor, including its components
-	// todo: Initialize should eventually be driven through OObject
-	void Initialize();
+	virtual void Initialize() override;
 	// Starts up this actor.
 	virtual void BeginPlay();
 	// Tick this actor.

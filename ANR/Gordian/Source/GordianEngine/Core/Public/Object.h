@@ -47,6 +47,10 @@ public:
     OObject(const std::string& InName, OObject* InOwningObject);
     virtual ~OObject();
 
+	// This will get called immediately after spawning a new object.
+	// Manual object creation should be sure to call this.
+	virtual void Initialize();
+
     bool IsObjectFlagSet(EObjectFlags FlagToCheck) const;
     bool AreObjectFlagsSet(const TBitSet<EObjectFlags>& FlagsToCheck) const;
 

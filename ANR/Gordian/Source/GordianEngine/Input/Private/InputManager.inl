@@ -19,7 +19,7 @@ bool Gordian::FInputManager::BindToDigitalCommand(const FCommand& CommandToBind,
 				return true;
 				break;
 			default:
-				assert(false);
+				checkNoEntry();
 				break;
 		}
 	}
@@ -47,7 +47,7 @@ bool Gordian::FInputManager::BindToDigitalCommand(const FCommand& CommandToBind,
 				return true;
 				break;
 			default:
-				assert(false);
+				checkNoEntry();
 				break;
 		}
 	}
@@ -73,7 +73,7 @@ bool Gordian::FInputManager::BindToDigitalCommand(const FCommand& CommandToBind,
 				return true;
 				break;
 			default:
-				assert(false);
+				checkNoEntry();
 				break;
 		}
 	}

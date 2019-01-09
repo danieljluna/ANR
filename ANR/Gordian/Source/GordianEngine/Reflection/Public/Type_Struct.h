@@ -4,10 +4,10 @@
 
 #include "Type.h"
 
-#include <cassert>
 #include <vector>
 
 #include "StructMember.h"
+#include "GordianEngine/Debug/Public/Asserts.h"
 
 namespace Gordian
 {
@@ -32,7 +32,7 @@ public:
 	typename std::enable_if<!std::is_same<Parent, void>::value>::type SetParentClass(const Parent*)
 	{
 		const OType* ParentType = FTypeResolver<Parent>::Get();
-		assert(ParentType->IsStruct());
+		check(ParentType->IsStruct());
 		
 		ParentClass = static_cast<const OType_Struct*>(ParentType);
 		if (ParentClass != nullptr)
@@ -40,7 +40,7 @@ public:
 			if (ParentClass->IsChildClassOf(this))
 			{
 				// todo: Print some error msg about circular parent classes
-				assert(false);
+				checkNoEntry();
 				return;
 			}
 

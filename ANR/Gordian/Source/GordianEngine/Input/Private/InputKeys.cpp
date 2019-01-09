@@ -2,7 +2,7 @@
 
 #include "../Public/InputKeys.h"
 
-#include <cassert>
+#include "GordianEngine/Debug/Public/Asserts.h"
 
 using namespace Gordian;
 
@@ -91,7 +91,7 @@ const EGenericInputKey& EGenericInputKey::operator=(const EGenericInputKey& Othe
 			_KeyboardKey = InputKeys::EKeyboardKeys::Unknown;
 			break;
 		default:
-			assert(false);
+			checkNoEntry();
 			break;
 	}
 
@@ -172,7 +172,7 @@ bool EGenericInputKey::operator==(const EGenericInputKey& Other) const
 				bDoesKeyMatch = true;
 				break;
 			default:
-				assert(false);
+				checkNoEntry();
 				break;
 		}
 	}
@@ -208,7 +208,7 @@ bool EGenericInputKey::operator<(const EGenericInputKey& Other) const
 				return false;
 				break;
 			default:
-				assert(false);
+				checkNoEntry();
 				break;
 		}
 	}
@@ -235,7 +235,7 @@ bool EGenericInputKey::IsValid() const
 			bIsValid = false;
 			break;
 		default:
-			assert(false);
+			checkNoEntry();
 			break;
 	}
 
