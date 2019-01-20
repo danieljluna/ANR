@@ -9,18 +9,43 @@
 namespace Gordian
 {
 
+
+//
+// Assert helpers.
+//
+class FAssert
+{
+public:
+	enum class EAssertBehavior : sf::Uint8
+	{
+		Ignore,
+		Pause,
+		PauseThenAbort,
+		Abort,
+	};
+
+	static EAssertBehavior OnEnsureFail(const char* LogText,
+										const char* FileName,
+										int LineNumber);
+
+	static EAssertBehavior OnAssertFail(const char* LogText,
+										const char* FileName,
+										int LineNumber);
+};
+
+
 // Body of switch on EAssertBehavior that handles any breaks / halts
 #define __DEBUG_ASSERT_SWITCH()							\
 	{													\
 		case FAssert::EAssertBehavior::Pause:			\
-			__GE_DEBUG_BREAK();							\
+			_GE_DEBUG_BREAK();							\
 			break;										\
 		case FAssert::EAssertBehavior::PauseThenAbort:	\
-			__GE_DEBUG_BREAK();							\
-			__GE_DEBUG_HALT();							\
+			_GE_DEBUG_BREAK();							\
+			_GE_DEBUG_HALT();							\
 			break;										\
 		case FAssert::EAssertBehavior::Abort:			\
-			__GE_DEBUG_HALT();							\
+			_GE_DEBUG_HALT();							\
 			break;										\
 		default:										\
 			break;										\
@@ -35,9 +60,9 @@ namespace Gordian
 // ----------------------------------------------------------------
 #ifdef GE_SHIPPING
 
-	#define ensure(a) __GE_NO_OP(a)
-	#define ensureAlways(a) __GE_NO_OP(a)
-    #define ensureMsgf(a, b) __GE_NO_OP(a)
+	#define ensure(a) GE_NO_OP(a)
+	#define ensureAlways(a) GE_NO_OP(a)
+    #define ensureMsgf(a, b) GE_NO_OP(a)
 
 #else	// !GE_SHIPPING
 
@@ -45,7 +70,7 @@ namespace Gordian
 		{																					\
 			if (!(Condition))																\
 			{																				\
-				__GE_RUN_ONCE(switch (FAssert::OnEnsureFail(#Condition, __FILE__, __LINE__)) __DEBUG_ASSERT_SWITCH());	\
+				_GE_RUN_ONCE(switch (FAssert::OnEnsureFail(#Condition, __FILE__, __LINE__)) __DEBUG_ASSERT_SWITCH());	\
 			}																				\
         } while (0)
 
@@ -62,7 +87,7 @@ namespace Gordian
         {																					\
 			if (!(Condition))																\
 			{																				\
-				__GE_RUN_ONCE(switch (FAssert::OnEnsureFail(#LogText, __FILE__, __LINE__)) __DEBUG_ASSERT_SWITCH());	\
+				_GE_RUN_ONCE(switch (FAssert::OnEnsureFail(#LogText, __FILE__, __LINE__)) __DEBUG_ASSERT_SWITCH());	\
 			}																				\
         } while (0)
 
@@ -100,27 +125,4 @@ namespace Gordian
     } while (0)
 
 
-//
-// Assert helpers.
-//
-class FAssert
-{
-public:
-	enum class EAssertBehavior : sf::Uint8
-	{
-		Ignore,
-		Pause,
-		PauseThenAbort,
-		Abort,
-	};
-
-	static EAssertBehavior OnEnsureFail(const char* LogText,
-										const char* FileName,
-										int LineNumber);
-
-	static EAssertBehavior OnAssertFail(const char* LogText,
-										const char* FileName,
-										int LineNumber);
-};
-
-}
+};	// namespace Gordian

@@ -141,6 +141,12 @@
     <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\ConfigLibrary.cpp">
       <Filter>Source Files\Gordian\GlobalLibraries</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Debug\Private\LogCategory.cpp">
+      <Filter>Source Files\Gordian\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Debug\Private\Logging.cpp">
+      <Filter>Source Files\Gordian\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GordianEngine\BitSet\Public\BitSet.h">
@@ -234,6 +240,15 @@
       <Filter>Header Files\Gordian\Debug</Filter>
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogVerbosity.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\LogCategory.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\AssertMacros.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\Logging.h">
       <Filter>Header Files\Gordian\Debug</Filter>
     </ClInclude>
   </ItemGroup>

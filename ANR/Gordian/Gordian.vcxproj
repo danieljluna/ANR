@@ -132,6 +132,8 @@
     <ClCompile Include="Source\GordianEngine\Core\Private\EngineLoop.cpp" />
     <ClCompile Include="Source\GordianEngine\Core\Private\Object.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\Asserts.cpp" />
+    <ClCompile Include="Source\GordianEngine\Debug\Private\LogCategory.cpp" />
+    <ClCompile Include="Source\GordianEngine\Debug\Private\Logging.cpp" />
     <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\ConfigLibrary.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputManager.cpp" />
@@ -154,7 +156,10 @@
     <ClInclude Include="Source\GordianEngine\Core\Public\Gordian.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\Object.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\Renderable.h" />
+    <ClInclude Include="Source\GordianEngine\Debug\Public\AssertMacros.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\Asserts.h" />
+    <ClInclude Include="Source\GordianEngine\Debug\Public\LogCategory.h" />
+    <ClInclude Include="Source\GordianEngine\Debug\Public\Logging.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogMacros.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogVerbosity.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h" />

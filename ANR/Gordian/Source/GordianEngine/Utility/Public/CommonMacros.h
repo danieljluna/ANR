@@ -5,31 +5,62 @@
 #include <mutex>
 #include <thread>
 
-// ----------------------------------------------------------------
-// Checks that value is of type during compile time
-// ----------------------------------------------------------------
-#define __GE_COMPILE_TIME_TYPECHECK(value, type) do { __typeof(value) *__tmp; __tmp = (type *)nullptr; } while(0)
+#include <SFML/Config.hpp>
+
+namespace Gordian
+{
 
 // ----------------------------------------------------------------
-// Simple no-op that compiles to nothing
+// Checks that value is of type during compile time.
+//	Is not wrapped in do while, only use inside another macro.
 // ----------------------------------------------------------------
-#define __GE_NO_OP(x) do { (void)sizeof(x); } while(0)
+#define _GE_COMPILE_TIME_TYPECHECK(value, type) __typeof(value) *__tmp; __tmp = (type *)nullptr;
 
 // ----------------------------------------------------------------
-// Method used to force a debug break into the code
+// Simple no-op that compiles to nothing.
+//	Is not wrapped in do while, only use inside another macro.
 // ----------------------------------------------------------------
-#define __GE_DEBUG_BREAK() do { __debugbreak(); } while(0)
+#define _GE_NO_OP(x) (void)sizeof(x)
 
 // ----------------------------------------------------------------
-// Method used to force the program to shut down
+// Simple no-op that compiles to nothing.
 // ----------------------------------------------------------------
-#define __GE_DEBUG_HALT() do { terminate(); } while(0)
+#define GE_NO_OP(x) do { _GE_NO_OP(x); } while(0)
 
 // ----------------------------------------------------------------
-// Allows a code block to only be run once
+// Method used to force a debug break into the code.
+//	Is not wrapped in do while, only use inside another macro.
 // ----------------------------------------------------------------
-#define __GE_RUN_ONCE(code) do						\
-	{												\
+#define _GE_DEBUG_BREAK() __debugbreak()
+
+// ----------------------------------------------------------------
+// Method used to force the program to shut down.
+//	Is not wrapped in do while, only use inside another macro.
+// ----------------------------------------------------------------
+#define _GE_DEBUG_HALT() terminate()
+
+// ----------------------------------------------------------------
+// Allows a code block to only be run once.
+//	Is not wrapped in do while, only use inside another macro.
+// ----------------------------------------------------------------
+#define _GE_RUN_ONCE(code)							\
 		static std::once_flag bHasRun;				\
 		std::call_once(bHasRun, []() { code; });	\
-	} while(0)
+
+// ----------------------------------------------------------------
+// Converts the input string to unicode or ANSI as appropriate.
+// ----------------------------------------------------------------
+#ifndef TEXT
+
+	#define TEXT(string) _TEXT(string)
+
+	#ifdef UNICODE
+		#define __TEXT(string) L##string
+	#else	// ifndef UNICODE
+		#define _TEXT(string) string
+	#endif	// UNICODE
+
+#endif	// ifndef TEXT
+// ----------------------------------------------------------------
+
+};	// namespace Gordian
