@@ -109,7 +109,7 @@ public:
 
 protected:
 
-	enum EInitializationState
+	enum class EInitializationState : sf::Uint8
 	{
 		Uninitialized = 0,
 		MidInitialization,

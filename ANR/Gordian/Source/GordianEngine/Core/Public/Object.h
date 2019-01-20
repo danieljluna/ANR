@@ -20,7 +20,7 @@ class OType;
 class OType_Struct;
 class OWorld;
 
-enum class EObjectFlags : uint16_t
+enum class EObjectFlags : sf::Uint8
 {
     NoFlags = 0,
 	ClassDefaultObject,

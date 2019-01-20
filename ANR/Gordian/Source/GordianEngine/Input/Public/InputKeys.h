@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <SFML/Config.hpp>
 #include <SFML/Window/Event.hpp>
 
 namespace Gordian
@@ -10,7 +11,7 @@ namespace Gordian
 
 namespace InputKeys
 {
-	enum class EInputKeyTypes
+	enum class EInputKeyTypes : sf::Uint16
 	{
 		Keyboard,
 		Mouse,
@@ -22,7 +23,7 @@ namespace InputKeys
 	using EMouseButtons = sf::Mouse::Button;
 	// Typical Joystick Buttons
 	// todo: split into XBOX and generic
-	enum class EGamepadButtons
+	enum class EGamepadButtons : sf::Uint16
 	{
 		DPad_Up,
 		DPad_Right,

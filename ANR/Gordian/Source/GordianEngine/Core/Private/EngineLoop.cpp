@@ -9,6 +9,8 @@
 #include "GordianEngine/World/Public/World.h"
 #include "GordianEngine/Debug/Public/Asserts.h"
 
+#include "inih/INIReader.h"
+
 using namespace Gordian;
 
 FEngineLoop::FEngineLoop()

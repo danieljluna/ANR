@@ -76,6 +76,15 @@
     <Filter Include="Source Files\Gordian\Debug">
       <UniqueIdentifier>{fc6c580d-e162-41a3-a257-d1998f31dfe1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\inih">
+      <UniqueIdentifier>{19413a50-ec4a-4509-a0ba-914cdb8b7874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\inih">
+      <UniqueIdentifier>{32a5119c-bcbd-4ae9-b8a9-4506b459851a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\Utility">
+      <UniqueIdentifier>{dbd7c3ac-30c7-431e-8ae2-c3053e8d98f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GordianEngine\World\Private\World.cpp">
@@ -122,6 +131,15 @@
     </ClCompile>
     <ClCompile Include="Source\GordianEngine\Debug\Private\Asserts.cpp">
       <Filter>Source Files\Gordian\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\inih\INIReader.cpp">
+      <Filter>Source Files\inih</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\inih\ini.c">
+      <Filter>Source Files\inih</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\ConfigLibrary.cpp">
+      <Filter>Source Files\Gordian\GlobalLibraries</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,13 +218,34 @@
     <ClInclude Include="Source\GordianEngine\Debug\Public\Asserts.h">
       <Filter>Header Files\Gordian\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="Source\inih\INIReader.h">
+      <Filter>Header Files\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\ConfigLibrary.h">
+      <Filter>Header Files\Gordian\GlobalLibraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\inih\ini.h">
+      <Filter>Header Files\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Utility\Public\CommonMacros.h">
+      <Filter>Header Files\Gordian\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\LogMacros.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\LogVerbosity.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\GordianEngine\Input\Private\InputManager.inl">
       <Filter>Source Files\Gordian\Input</Filter>
     </None>
-    <None Include="Config\InputConfig.ini">
+    <None Include="Config\DefaultEngine.ini">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.inl">
+      <Filter>Source Files\Gordian\GlobalLibraries</Filter>
     </None>
   </ItemGroup>
 </Project>

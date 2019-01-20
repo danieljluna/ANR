@@ -20,9 +20,6 @@ namespace Gordian
 
 using DigitalDelegate = MulticastDelegate0<void>;
 
-// Defines a Keyboard binding
-
-
 // Translates raw SFML input events to Commands that are then broadcasted via delegates
 class FInputManager
 {

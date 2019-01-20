@@ -2,29 +2,28 @@
 
 #pragma once
 
-#include <mutex>
-#include <thread>
+#include <SFML/Config.hpp>
+
+#include "GordianEngine/Utility/Public/CommonMacros.h"
 
 namespace Gordian
 {
 
-#define __DEBUG_BREAK() __debugbreak()
-#define __DEBUG_HALT() terminate()
-
-#define __DEBUG_ASSERT_SWITCH()			\
-	{									\
-		case Assert::Pause:				\
-			__DEBUG_BREAK();			\
-			break;						\
-		case Assert::PauseThenAbort:	\
-			__DEBUG_BREAK();			\
-			__DEBUG_HALT();				\
-			break;						\
-		case Assert::Abort:				\
-			__DEBUG_HALT();				\
-			break;						\
-		default:						\
-			break;						\
+// Body of switch on EAssertBehavior that handles any breaks / halts
+#define __DEBUG_ASSERT_SWITCH()							\
+	{													\
+		case FAssert::EAssertBehavior::Pause:			\
+			__GE_DEBUG_BREAK();							\
+			break;										\
+		case FAssert::EAssertBehavior::PauseThenAbort:	\
+			__GE_DEBUG_BREAK();							\
+			__GE_DEBUG_HALT();							\
+			break;										\
+		case FAssert::EAssertBehavior::Abort:			\
+			__GE_DEBUG_HALT();							\
+			break;										\
+		default:										\
+			break;										\
 	}
 
 // ----------------------------------------------------------------
@@ -36,36 +35,35 @@ namespace Gordian
 // ----------------------------------------------------------------
 #ifdef GE_SHIPPING
 
-	#define ensure(a) do { (void)sizeof(a); } while(0)
-	#define ensureAlways(a) do { (void)sizeof(a); } while(0)
-    #define ensureMsgf(a, b) do { (void)sizeof(a); } while(0)
+	#define ensure(a) __GE_NO_OP(a)
+	#define ensureAlways(a) __GE_NO_OP(a)
+    #define ensureMsgf(a, b) __GE_NO_OP(a)
 
-#else	// GE_SHIPPING
+#else	// !GE_SHIPPING
 
     #define ensure(Condition) do															\
 		{																					\
-			static std::once_flag bHasRun;													\
-			std::call_once(bHasRun, []()													\
+			if (!(Condition))																\
 			{																				\
-				switch (Assert::OnEnsureFail(#Condition, __FILE__, __LINE__))				\
-					__DEBUG_ASSERT_SWITCH()													\
-			});																				\
+				__GE_RUN_ONCE(switch (FAssert::OnEnsureFail(#Condition, __FILE__, __LINE__)) __DEBUG_ASSERT_SWITCH());	\
+			}																				\
         } while (0)
 
 	#define ensureAlways(Condition) do														\
 		{																					\
-			switch (Assert::OnEnsureFail(#Condition, __FILE__, __LINE__))					\
-				__DEBUG_ASSERT_SWITCH()														\
+			if (!(Condition))																\
+			{																				\
+				switch (FAssert::OnEnsureFail(#Condition, __FILE__, __LINE__))				\
+					__DEBUG_ASSERT_SWITCH()													\
+			}																				\
         } while (0)
 
 	#define ensureMsgf(Condition, LogText) do												\
         {																					\
-			static std::once_flag bHasRun;													\
-			std::call_once(bHasRun, []()													\
+			if (!(Condition))																\
 			{																				\
-				switch (Assert::OnEnsureFail(#LogText, __FILE__, __LINE__))					\
-					__DEBUG_ASSERT_SWITCH()													\
-			});																				\
+				__GE_RUN_ONCE(switch (FAssert::OnEnsureFail(#LogText, __FILE__, __LINE__)) __DEBUG_ASSERT_SWITCH());	\
+			}																				\
         } while (0)
 
 #endif // GE_SHIPPING
@@ -79,7 +77,7 @@ namespace Gordian
 // ----------------------------------------------------------------
 #define checkNoEntry() do 																\
 	{																					\
-		switch (Assert::OnAssertFail("", __FILE__, __LINE__))							\
+		switch (FAssert::OnAssertFail("", __FILE__, __LINE__))							\
 			__DEBUG_ASSERT_SWITCH()														\
     } while (0)
 
@@ -87,7 +85,7 @@ namespace Gordian
 	{																						\
         if (!(Condition))																	\
 		{																					\
-			switch (Assert::OnAssertFail(#Condition, __FILE__, __LINE__))					\
+			switch (FAssert::OnAssertFail(#Condition, __FILE__, __LINE__))					\
 				__DEBUG_ASSERT_SWITCH()														\
 		}																					\
     } while (0)
@@ -96,7 +94,7 @@ namespace Gordian
     {																						\
         if (!(Condition))																	\
 		{																					\
-			switch (Assert::OnAssertFail(#LogText, __FILE__, __LINE__))						\
+			switch (FAssert::OnAssertFail(#LogText, __FILE__, __LINE__))					\
 				__DEBUG_ASSERT_SWITCH()														\
 		}																					\
     } while (0)
@@ -105,10 +103,10 @@ namespace Gordian
 //
 // Assert helpers.
 //
-class Assert
+class FAssert
 {
 public:
-	enum AssertBehavior
+	enum class EAssertBehavior : sf::Uint8
 	{
 		Ignore,
 		Pause,
@@ -116,11 +114,11 @@ public:
 		Abort,
 	};
 
-	static AssertBehavior OnEnsureFail(const char* LogText,
+	static EAssertBehavior OnEnsureFail(const char* LogText,
 										const char* FileName,
 										int LineNumber);
 
-	static AssertBehavior OnAssertFail(const char* LogText,
+	static EAssertBehavior OnAssertFail(const char* LogText,
 										const char* FileName,
 										int LineNumber);
 };

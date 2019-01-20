@@ -14,28 +14,10 @@ namespace Gordian
 {
 
 template<typename TargetClass, typename std::enable_if<FDefaultTypeResolver::IsReflected<TargetClass>::value, int>::type = 0>
-TargetClass* Cast(OObject* Source)
-{
-	check(Source->GetType() != nullptr);
-	if (Source->GetType()->IsChildClassOf(TargetClass::GetStaticType()))
-	{
-		return static_cast<TargetClass*>(Source);
-	}
-
-	return nullptr;
-}
+TargetClass* Cast(OObject* Source);
 
 template<typename TargetClass, typename std::enable_if<FDefaultTypeResolver::IsReflected<TargetClass>::value, int>::type = 0>
-const TargetClass* Cast(const OObject* Source)
-{
-	check(Source->GetType() != nullptr);
-	if (Source->GetType()->IsChildClassOf(TargetClass::GetStaticType()))
-	{
-		return static_cast<const TargetClass*>(Source);
-	}
-
-	return nullptr;
-}
+const TargetClass* Cast(const OObject* Source);
 
 
 class FGlobalObjectLibrary 
@@ -44,23 +26,12 @@ public:
 
 	// WIP, intended to initialize objects
 	template<typename T, typename std::enable_if<
-										std::is_base_of<OObject, T>::value, int>::type = 0>
-	static T* CreateObject(OObject* OwningObject, 
-						   const OType_Struct* ObjectType, 
-						   const std::string& ObjectName = "")
-	{
-		// todo: create object based on ObjectType not T
-
-		// todo: this should eventually use pooled objects where possible
-		OObject* NewObject = new T(ObjectName != "" ? ObjectName : ObjectType->GetName()
-								  , OwningObject);
-
-		check(NewObject != nullptr);
-		NewObject->_PrivateType = ObjectType;
-		NewObject->Initialize();
-
-		return static_cast<T*>(NewObject);
-	}
+		std::is_base_of<OObject, T>::value, int>::type = 0>
+	static T* CreateObject(OObject* OwningObject,
+						   const OType_Struct* ObjectType,
+						   const std::string& ObjectName = "");
 };
 
 };
+
+#include "GordianEngine/GlobalLibraries/Private/GlobalObjectLibrary.inl"

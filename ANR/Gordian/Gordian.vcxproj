@@ -132,6 +132,7 @@
     <ClCompile Include="Source\GordianEngine\Core\Private\EngineLoop.cpp" />
     <ClCompile Include="Source\GordianEngine\Core\Private\Object.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\Asserts.cpp" />
+    <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\ConfigLibrary.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputManager.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputBindingTypes.cpp" />
@@ -140,6 +141,8 @@
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Primitives.cpp" />
     <ClCompile Include="Source\GordianEngine\World\Private\Level.cpp" />
     <ClCompile Include="Source\GordianEngine\World\Private\World.cpp" />
+    <ClCompile Include="Source\inih\ini.c" />
+    <ClCompile Include="Source\inih\INIReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GordianEngine\ActorComponents\Public\SimpleSpriteComponent.h" />
@@ -152,9 +155,12 @@
     <ClInclude Include="Source\GordianEngine\Core\Public\Object.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\Renderable.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\Asserts.h" />
+    <ClInclude Include="Source\GordianEngine\Debug\Public\LogMacros.h" />
+    <ClInclude Include="Source\GordianEngine\Debug\Public\LogVerbosity.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />
+    <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\ConfigLibrary.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\GlobalObjectLibrary.h" />
     <ClInclude Include="Source\GordianEngine\Input\Public\InputKeys.h" />
     <ClInclude Include="Source\GordianEngine\Input\Public\InputManager.h" />
@@ -165,11 +171,15 @@
     <ClInclude Include="Source\GordianEngine\Reflection\Public\ReflectionMacros.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\TypeResolver.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type_Struct.h" />
+    <ClInclude Include="Source\GordianEngine\Utility\Public\CommonMacros.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\Level.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\World.h" />
+    <ClInclude Include="Source\inih\ini.h" />
+    <ClInclude Include="Source\inih\INIReader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\InputConfig.ini" />
+    <None Include="Config\DefaultEngine.ini" />
+    <None Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.inl" />
     <None Include="Source\GordianEngine\Input\Private\InputManager.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

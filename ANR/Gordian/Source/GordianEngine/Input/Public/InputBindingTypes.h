@@ -12,7 +12,7 @@ namespace Gordian
 
 
 // List of all possible combo keys
-enum class EComboKey
+enum class EComboKey : sf::Uint8
 {
 	Alt,
 	Control,
@@ -23,7 +23,7 @@ enum class EComboKey
 
 
 // All the different ways to bind to a digital input
-enum class EDigitalEventType
+enum class EDigitalEventType : sf::Uint8
 {
 	Pressed,
 	Released,

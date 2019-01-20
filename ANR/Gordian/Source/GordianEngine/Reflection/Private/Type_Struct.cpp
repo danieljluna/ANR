@@ -25,13 +25,13 @@ OType_Struct::OType_Struct()
 void OType_Struct::Initialize(void(*Initialize)(OType_Struct*))
 {
 	check(Initialize != nullptr);
-	if (_InitializationState == OType_Struct::Uninitialized)
+	if (_InitializationState == EInitializationState::Uninitialized)
 	{
-		_InitializationState = OType_Struct::MidInitialization;
+		_InitializationState = EInitializationState::MidInitialization;
 
 		Initialize(this);
 
-		_InitializationState = OType_Struct::FullyInitialized;
+		_InitializationState = EInitializationState::FullyInitialized;
 	}
 }
 
