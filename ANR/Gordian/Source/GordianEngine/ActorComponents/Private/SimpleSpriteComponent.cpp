@@ -1,4 +1,4 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 #include "GordianEngine/ActorComponents/Public/SimpleSpriteComponent.h"
 #include "GordianEngine/Core/Public/Gordian.h"

@@ -1,4 +1,4 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 #pragma once
 
@@ -13,6 +13,7 @@ namespace Gordian
 enum ELogVerbosity : sf::Uint8
 {
 	// Printed to console and log files. Appears in red. Terminates the program.
+	// Cannot be suppressed.
 	Fatal		= 0,
 	// Printed to console and log files. Appears in red.
 	Error,

@@ -1,4 +1,4 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 #pragma once
 
@@ -32,13 +32,17 @@ public:
 	// Reads the max compile-time verbosity
 	const ELogVerbosity& GetCompileTimeVerbosity() const;
 
+	// Returns whether or not a log of this category and the given verbosity 
+	//	should be suppressed.
+	bool IsSuppressed(const ELogVerbosity& LogVerbosity) const;
+
 	// Sets the max runtime verbosity
 	void SetRuntimeVerboisty(const ELogVerbosity& InMaxRuntimeVerbosity);
 
 	// Resets the max runtime verbosity to its default
 	void ResetRuntimeVerboisty();
 
-private:
+protected:
 
 	// The print-friendly name of the category
 	const char* Name;
@@ -64,6 +68,14 @@ class FLogCategory : public FLogCategoryBase
 	static_assert(InCompileTimeVerbosity < ELogVerbosity::Count, "Bad Log Verbosity");
 
 public:
+
+	// Store off compile time verbosity as public enum for compiler readability
+	enum
+	{
+		CompileTimeVerbosity = InCompileTimeVerbosity,
+	};
+
+
 	FLogCategory(const char* InName)
 		: FLogCategoryBase(InName, InDefaultRuntimeVerbosity, InCompileTimeVerbosity)
 	{
@@ -72,4 +84,4 @@ public:
 };
 
 
-};
+};	// namespace Gordian

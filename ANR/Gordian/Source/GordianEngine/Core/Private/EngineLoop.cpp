@@ -1,13 +1,15 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 #include "GordianEngine/Core/Public/EngineLoop.h"
 
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 
-#include "GordianEngine/Input/Public/InputManager.h"
-#include "GordianEngine/World/Public/World.h"
 #include "GordianEngine/Debug/Public/Asserts.h"
+#include "GordianEngine/Input/Public/InputManager.h"
+#include "GordianEngine/Platform/Public/Platform.h"
+#include "GordianEngine/Platform/Public/ConsoleFormatting.h"
+#include "GordianEngine/World/Public/World.h"
 
 #include "inih/INIReader.h"
 
@@ -32,7 +34,19 @@ FEngineLoop::~FEngineLoop()
 
 sf::Int32 FEngineLoop::Init()
 {
-    sf::Int32 ErrorCode = 0;
+	sf::Int32 ErrorCode = 0;
+
+	bool bCouldInitConsole = FConsoleFormatting::InitializeFormatting();
+	if (!bCouldInitConsole)
+	{
+#ifdef WINDOWS
+		ErrorCode = GetLastError();
+#else
+		ErrorCode = -1;
+#endif
+		return ErrorCode != 0 ? ErrorCode : -1;
+	}
+
     ErrorCode = InitializeGameWindow();
     if (ErrorCode != 0)
     {
@@ -85,6 +99,7 @@ void FEngineLoop::Tick()
 void FEngineLoop::ParseInput()
 {
 	check(GameWindow != nullptr && InputManager != nullptr);
+	ensure(false);
 
     sf::Event Event;
     while (GameWindow->pollEvent(Event))

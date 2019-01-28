@@ -1,3 +1,5 @@
+// Gordian by Daniel Luna (2019)
+
 #include "GordianEngine/Core/Public/EngineLoop.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>

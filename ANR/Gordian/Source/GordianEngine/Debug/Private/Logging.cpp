@@ -1,5 +1,6 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 #include "../Public/Logging.h"
 
-using namespace Gordian;
+
+DEFINE_LOG_CATEGORY_EXTERN(LogTemp)

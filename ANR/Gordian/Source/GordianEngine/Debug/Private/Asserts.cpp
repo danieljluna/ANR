@@ -1,8 +1,8 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 #include "../Public/Asserts.h"
 
-#include <iostream>
+#include "../Public/LogOutputManager.h"
 
 using namespace Gordian;
 
@@ -10,7 +10,7 @@ using namespace Gordian;
 													   const char* FileName,
 													   int LineNumber)
 {
-	std::cerr << "Ensure Condition Failed: " << LogText << " [File: " << FileName << "] [Line: " << LineNumber << "]" << std::endl;
+	GLogOutputManager.PrintEnsure(LogText, FileName, LineNumber);
 
 #ifdef GE_DEBUG
 	return EAssertBehavior::Pause;
@@ -23,7 +23,7 @@ using namespace Gordian;
 													   const char* FileName,
 													   int LineNumber)
 {
-	std::cerr << "Assert Condition Failed: " << LogText << " [File: " << FileName << "] [Line: " << LineNumber << "]" << std::endl;
+	GLogOutputManager.PrintCheck(LogText, FileName, LineNumber);
 
 	return EAssertBehavior::PauseThenAbort;
 }

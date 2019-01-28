@@ -85,6 +85,15 @@
     <Filter Include="Header Files\Gordian\Utility">
       <UniqueIdentifier>{dbd7c3ac-30c7-431e-8ae2-c3053e8d98f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Gordian\Utility">
+      <UniqueIdentifier>{f91130d3-1516-4775-96ca-be8c89f07fd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\Platform">
+      <UniqueIdentifier>{b15b7f53-11bb-414f-a961-00d5d5a843f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gordian\Platform">
+      <UniqueIdentifier>{120acbd5-f3b8-4b99-a27d-7eaf29fc4a57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GordianEngine\World\Private\World.cpp">
@@ -146,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="Source\GordianEngine\Debug\Private\Logging.cpp">
       <Filter>Source Files\Gordian\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Debug\Private\LogOutputManager.cpp">
+      <Filter>Source Files\Gordian\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Platform\Private\ConsoleFormatting.cpp">
+      <Filter>Source Files\Gordian\Platform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +265,15 @@
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Debug\Public\Logging.h">
       <Filter>Header Files\Gordian\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\LogOutputManager.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Platform\Public\Platform.h">
+      <Filter>Header Files\Gordian\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Platform\Public\ConsoleFormatting.h">
+      <Filter>Header Files\Gordian\Platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

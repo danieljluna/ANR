@@ -1,4 +1,4 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 
 template<typename TargetClass, typename std::enable_if<Gordian::FDefaultTypeResolver::IsReflected<TargetClass>::value, int>::type>

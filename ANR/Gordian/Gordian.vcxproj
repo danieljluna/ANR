@@ -83,7 +83,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
     <PreLinkEvent />
@@ -93,6 +93,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -103,7 +104,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -118,6 +119,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -134,10 +136,12 @@
     <ClCompile Include="Source\GordianEngine\Debug\Private\Asserts.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\LogCategory.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\Logging.cpp" />
+    <ClCompile Include="Source\GordianEngine\Debug\Private\LogOutputManager.cpp" />
     <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\ConfigLibrary.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputManager.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputBindingTypes.cpp" />
+    <ClCompile Include="Source\GordianEngine\Platform\Private\ConsoleFormatting.cpp" />
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type.cpp" />
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Struct.cpp" />
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Primitives.cpp" />
@@ -161,6 +165,7 @@
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogCategory.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\Logging.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogMacros.h" />
+    <ClInclude Include="Source\GordianEngine\Debug\Public\LogOutputManager.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogVerbosity.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
@@ -170,6 +175,8 @@
     <ClInclude Include="Source\GordianEngine\Input\Public\InputKeys.h" />
     <ClInclude Include="Source\GordianEngine\Input\Public\InputManager.h" />
     <ClInclude Include="Source\GordianEngine\Input\Public\InputBindingTypes.h" />
+    <ClInclude Include="Source\GordianEngine\Platform\Public\ConsoleFormatting.h" />
+    <ClInclude Include="Source\GordianEngine\Platform\Public\Platform.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Reflection.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\StructMember.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type.h" />

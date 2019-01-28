@@ -1,4 +1,4 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 #pragma once
 
@@ -60,9 +60,9 @@ public:
 // ----------------------------------------------------------------
 #ifdef GE_SHIPPING
 
-	#define ensure(a) GE_NO_OP(a)
-	#define ensureAlways(a) GE_NO_OP(a)
-    #define ensureMsgf(a, b) GE_NO_OP(a)
+	#define ensure(Condition)				(!!(Condition))
+	#define ensureAlways()					(!!(Condition))
+    #define ensureMsgf(Condition, Message)	(!!(Condition))
 
 #else	// !GE_SHIPPING
 

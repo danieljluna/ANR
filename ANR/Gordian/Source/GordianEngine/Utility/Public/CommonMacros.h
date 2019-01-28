@@ -1,4 +1,4 @@
-// Gordian by Daniel Luna
+// Gordian by Daniel Luna (2019)
 
 #pragma once
 
@@ -6,6 +6,8 @@
 #include <thread>
 
 #include <SFML/Config.hpp>
+
+#include "GordianEngine/Platform/Public/Platform.h"
 
 namespace Gordian
 {
@@ -17,13 +19,19 @@ namespace Gordian
 #define _GE_COMPILE_TIME_TYPECHECK(value, type) __typeof(value) *__tmp; __tmp = (type *)nullptr;
 
 // ----------------------------------------------------------------
-// Simple no-op that compiles to nothing.
+// Simple no-op statement that compiles to nothing.
 //	Is not wrapped in do while, only use inside another macro.
 // ----------------------------------------------------------------
 #define _GE_NO_OP(x) (void)sizeof(x)
 
 // ----------------------------------------------------------------
-// Simple no-op that compiles to nothing.
+// Simple no-op. Useful when you need a non-statement no-op.
+//	Is not wrapped in do while, only use inside another macro.
+// ----------------------------------------------------------------
+#define _GE_EMPTY_BLOCK {}
+
+// ----------------------------------------------------------------
+// Simple no-op statement that compiles to nothing.
 // ----------------------------------------------------------------
 #define GE_NO_OP(x) do { _GE_NO_OP(x); } while(0)
 
@@ -45,7 +53,7 @@ namespace Gordian
 // ----------------------------------------------------------------
 #define _GE_RUN_ONCE(code)							\
 		static std::once_flag bHasRun;				\
-		std::call_once(bHasRun, []() { code; });	\
+		std::call_once(bHasRun, []() { code; });
 
 // ----------------------------------------------------------------
 // Converts the input string to unicode or ANSI as appropriate.
