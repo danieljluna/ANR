@@ -99,7 +99,6 @@ void FEngineLoop::Tick()
 void FEngineLoop::ParseInput()
 {
 	check(GameWindow != nullptr && InputManager != nullptr);
-	ensure(false);
 
     sf::Event Event;
     while (GameWindow->pollEvent(Event))
