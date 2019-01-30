@@ -71,4 +71,40 @@ namespace Gordian
 #endif	// ifndef TEXT
 // ----------------------------------------------------------------
 
+// ----------------------------------------------------------------
+// Fetches the current function signature as a string
+// ----------------------------------------------------------------
+#ifndef __FUNCTIONSIG__
+
+	#ifdef WINDOWS
+		#define __FUNCTIONSIG__ __FUNCSIG__
+	#else
+		#define __FUNCTIONSIG__ __PRETTY_FUNCTION__
+	#endif	// WINDOWS
+
+#endif	// ifndef __FUNCTIONSIG__
+// ----------------------------------------------------------------
+
+
+// ----------------------------------------------------------------
+// Fetches the current function signature as a string
+// ----------------------------------------------------------------
+#ifndef __STRINGIFY
+
+#define __STRINGIFY(x) #x
+
+#endif	// ifndef __STRINGIFY
+// ----------------------------------------------------------------
+
+// ----------------------------------------------------------------
+// This double wrapping of the # symbol allows thinks like __LINE__ 
+//	to be turned into strings
+// ----------------------------------------------------------------
+#ifndef __TOSTRING
+
+#define __TOSTRING(x) __STRINGIFY(x)
+
+#endif	// ifndef __TOSTRING
+// ----------------------------------------------------------------
+
 };	// namespace Gordian

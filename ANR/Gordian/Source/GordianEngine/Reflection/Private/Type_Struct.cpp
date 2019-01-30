@@ -56,8 +56,6 @@ bool OType_Struct::IsChildClassOf(const OType_Struct* PossibleParent) const
 
 void OType_Struct::Dump_Internal(const void* Data, int IndentationLevel) const
 {
-	const OObject* DataAsObject = static_cast<const OObject*>(Data);
-
 	std::string Indent(IndentationLevel, ' ');
 	std::clog << Indent << GetName();
 

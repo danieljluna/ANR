@@ -43,8 +43,8 @@ class FConsoleFormatting
 public:
 
 	// Call this before attempting to use any of the other functionality
-	// Returns true if we were able to successfully initialize
-	static bool InitializeFormatting();
+	// Returns 0 if we were able to successfully initialize
+	static int InitializeFormatting();
 
 	static const char* GetColorString(EConsoleColor NewTextColor);
 

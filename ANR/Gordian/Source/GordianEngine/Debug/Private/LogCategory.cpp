@@ -36,7 +36,7 @@ bool FLogCategoryBase::IsSuppressed(const ELogVerbosity& LogVerbosity) const
 	// IsSuppressed should not be called against compile-time verbosity
 	ensure(LogVerbosity <= CompileTimeVerbosity);
 
-	return LogVerbosity <= RuntimeVerbosity;
+	return LogVerbosity > RuntimeVerbosity;
 }
 
 void FLogCategoryBase::SetRuntimeVerboisty(const ELogVerbosity& InMaxRuntimeVerbosity)

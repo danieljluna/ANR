@@ -37,7 +37,7 @@ namespace Gordian
 		// If our category has compile time verbosity below the passed velocity, we can decide 
 		//	at compile-time that this is suppressed.
 		template<ELogVerbosity Verbosity, typename Category>
-		typename std::enable_if<(Category::CompileTimeVerbosity <= Verbosity), bool>::type
+		typename std::enable_if<(Category::CompileTimeVerbosity > Verbosity), bool>::type
 			IsLogActive(const Category& LogCategory)
 		{
 			return !LogCategory.IsSuppressed(Verbosity);
@@ -46,7 +46,7 @@ namespace Gordian
 		// If our category has compile time verbosity above the passed velocity, we can decide 
 		//	at compile-time that this is suppressed.
 		template<ELogVerbosity Verbosity, typename Category>
-		typename std::enable_if<!(Category::CompileTimeVerbosity <= Verbosity), bool>::type
+		typename std::enable_if<(Category::CompileTimeVerbosity <= Verbosity), bool>::type
 			IsLogActive(const Category& LogCategory)
 		{
 			return false;
@@ -57,15 +57,21 @@ namespace Gordian
 	// Hides the templated helper in a macro for simplicity.
 	#define GE_IS_LOG_ACTIVE(Category, Verbosity)	(Gordian::PrivateLogHelpers::IsLogActive<ELogVerbosity::Verbosity>(Category))
 
+#define __GE_LOG_LOCATION__(File, Function, LineNumber) File "(" LineNumber "): " Function
+
 	// Outputs Text to the default log handler in Category at Verbosity.
-	#define GE_LOG(Category, Verbosity, Text)															\
-	do {																								\
-		static_assert(IS_CHAR_ARRAY(Text), "Expects Text to be a char array!");							\
-		static_assert(Verbosity > 0 && Verbosity < ELogVerbosity::Count, "Expects legal verbosity!");	\
-		if (GE_IS_LOG_ACTIVE(Category, Verbosity))														\
-		{																								\
-			GLogOutputManager.PrintLog(Text, Category.GetCategoryName(), ELogVerbosity::Verbosity, __FILE__, __LINE__);	\
-		}																								\
+	#define GE_LOG(Category, Verbosity, LogFormat, ...)															\
+	do {																										\
+		static_assert(IS_CHAR_ARRAY(LogFormat), "Expects Text to be a char array!");							\
+		static_assert(Verbosity >= 0 && Verbosity < ELogVerbosity::Count, "Expects legal verbosity!");			\
+		if (GE_IS_LOG_ACTIVE(Category, Verbosity))																\
+		{																										\
+			GLogOutputManager.PrintLog(Category.GetCategoryName(),												\
+									   ELogVerbosity::Verbosity,												\
+									   __GE_LOG_LOCATION__(__FILE__, __FUNCTIONSIG__, __TOSTRING(__LINE__)),	\
+									   LogFormat,																\
+									   ##__VA_ARGS__);															\
+		}																										\
 	} while (0);
 
 #endif

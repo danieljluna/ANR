@@ -16,11 +16,11 @@ bool FConsoleFormatting::bHasInitializedFormatting = false;
 // https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences
 
 
-/*static*/ bool FConsoleFormatting::InitializeFormatting()
+/*static*/ int FConsoleFormatting::InitializeFormatting()
 {
 	if (bHasInitializedFormatting)
 	{
-		return true;
+		return 0;
 	}
 
 #ifdef WINDOWS
@@ -28,30 +28,36 @@ bool FConsoleFormatting::bHasInitializedFormatting = false;
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	if (hOut == INVALID_HANDLE_VALUE)
 	{
-		GE_LOG(LogTemp, Warning, "Failed to get console handle!");
-		return false;
+#ifdef GE_DEBUG
+		GE_LOG(LogTemp, Display, "Failed to get a handle to the console!");
+		return GetLastError();
+#else	// !GE_DEBUG
+		GE_LOG(LogTemp, Display, "No console found while attempting to format.");
+		return 0;
+#endif	// GE_DEBUG
 	}
 
 	DWORD dwMode = 0;
 	if (!GetConsoleMode(hOut, &dwMode))
 	{
 		GE_LOG(LogTemp, Warning, "Failed to get console mode!");
-		return false;
+		return GetLastError();
 	}
 
 	dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
 	if (!SetConsoleMode(hOut, dwMode))
 	{
 		GE_LOG(LogTemp, Warning, "Failed to set Console Mode!");
-		return false;
+		return GetLastError();
 	}
 
 	bHasInitializedFormatting = true;
+	GE_LOG(LogTemp, Log, "Successfully iniated ConsoleFormatting");
 #else
 	// We don't know our OS, so assume we can't get this to work! (although linux generally supports this)
 #endif
 
-	return bHasInitializedFormatting;
+	return 0;
 }
 
 /*static*/ const char* FConsoleFormatting::GetColorString(EConsoleColor NewTextColor)

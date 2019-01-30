@@ -88,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>GE_DEBUG 1;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;GE_DEBUG;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>F:\Programming\GitHub\ANR\ANR\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -98,7 +98,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>GE_DEBUG 1;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;GE_DEBUG;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>F:\Programming\GitHub\ANR\ANR\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -111,7 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>F:\Programming\GitHub\ANR\ANR\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>GE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;GE_RELEASE;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -126,7 +126,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1;GE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WINDOWS;GE_RELEASE;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>F:\Programming\GitHub\ANR\ANR\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

@@ -36,15 +36,10 @@ sf::Int32 FEngineLoop::Init()
 {
 	sf::Int32 ErrorCode = 0;
 
-	bool bCouldInitConsole = FConsoleFormatting::InitializeFormatting();
-	if (!bCouldInitConsole)
+	ErrorCode = FConsoleFormatting::InitializeFormatting();
+	if (ErrorCode != 0)
 	{
-#ifdef WINDOWS
-		ErrorCode = GetLastError();
-#else
-		ErrorCode = -1;
-#endif
-		return ErrorCode != 0 ? ErrorCode : -1;
+		return ErrorCode;
 	}
 
     ErrorCode = InitializeGameWindow();

@@ -4,6 +4,9 @@
 
 #include "SFML/System/NonCopyable.hpp"
 
+#include <cstdio>
+#include <cstdarg>
+
 #include "LogVerbosity.h"
 
 namespace Gordian
@@ -26,15 +29,18 @@ public:
 					const char* FileName,
 					int LineNumber) const;
 
-	void PrintLog(const char* LogText,
-				  const char* Category,
+	void PrintLog(const char* Category,
 				  ELogVerbosity Verbosity,
-				  const char* FileName,
-				  int LineNumber) const;
+				  const char* LogLocation,
+				  const char* LogFormat,
+				  ...) const;
 
 private:
 
+	void Logf(const char* Format, va_list Args) const;
+
 	const char* DefaultConsoleColor;
+	FILE* LogOutputFile;
 };
 
 // We use a global variable for macro simplicity.

@@ -1,0 +1,2 @@
+LogTemp - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(55): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
