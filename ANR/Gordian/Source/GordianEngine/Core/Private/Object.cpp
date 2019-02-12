@@ -42,7 +42,7 @@ bool OObject::SetFlagIfNotSet(EObjectFlags Flag)
 		return false;
 	}
 
-	ObjectFlags.set(Flag);
+	ObjectFlags.set(Flag, true);
 
 	return true;
 }

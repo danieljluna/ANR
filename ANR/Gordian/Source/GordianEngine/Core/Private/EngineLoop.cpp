@@ -6,6 +6,7 @@
 #include "SFML/Graphics/RenderWindow.hpp"
 
 #include "GordianEngine/Debug/Public/Asserts.h"
+#include "GordianEngine/Debug/Public/Logging.h"
 #include "GordianEngine/Input/Public/InputManager.h"
 #include "GordianEngine/Platform/Public/Platform.h"
 #include "GordianEngine/Platform/Public/ConsoleFormatting.h"
@@ -34,11 +35,15 @@ FEngineLoop::~FEngineLoop()
 
 sf::Int32 FEngineLoop::Init()
 {
+	GE_LOG(LogCore, Log, "Initializing Core Loop...");
+
 	sf::Int32 ErrorCode = 0;
 
+	// Ensure console formatting has been initialized
 	ErrorCode = FConsoleFormatting::InitializeFormatting();
 	if (ErrorCode != 0)
 	{
+		GE_LOG(LogCore, Error, "Failed to initialize console formatting, code: %d", ErrorCode);
 		return ErrorCode;
 	}
 
@@ -52,6 +57,8 @@ sf::Int32 FEngineLoop::Init()
 	GameWorld = new OWorld("GameWorld", nullptr);
     bIsRequestingExit = false;
     TickDurationClock.restart();
+
+	GE_LOG(LogCore, Log, "Core Loop Initialized Successfully.");
     return ErrorCode;
 }
 
@@ -61,6 +68,7 @@ sf::Int32 FEngineLoop::InitializeGameWindow()
     GameWindow = new sf::RenderWindow(sf::VideoMode(800, 600), "Title");
     if (!GameWindow->isOpen())
     {
+		GE_LOG(LogCore, Error, "Failed to open a render window!");
         return 1;
     }
 
@@ -135,6 +143,8 @@ void FEngineLoop::Render(const sf::Time& BlendTime)
 
 void FEngineLoop::Exit()
 {
+	GE_LOG(LogCore, Log, "Exiting Core Loop...");
+
 	check(bIsRequestingExit);
 
 	if (GameWindow != nullptr)
@@ -155,6 +165,8 @@ void FEngineLoop::Exit()
 		delete InputManager;
 		InputManager = nullptr;
 	}
+
+	GE_LOG(LogCore, Log, "Exited Core Loop.");
 }
 
 bool FEngineLoop::IsRequestingExit() const
@@ -164,5 +176,6 @@ bool FEngineLoop::IsRequestingExit() const
 
 void FEngineLoop::RequestExit()
 {
+	GE_LOG(LogCore, Log, "A request was made to exit the core loop.");
     bIsRequestingExit = true;
 }

@@ -57,7 +57,7 @@ namespace Gordian
 	// Hides the templated helper in a macro for simplicity.
 	#define GE_IS_LOG_ACTIVE(Category, Verbosity)	(Gordian::PrivateLogHelpers::IsLogActive<ELogVerbosity::Verbosity>(Category))
 
-#define __GE_LOG_LOCATION__(File, Function, LineNumber) File "(" LineNumber "): " Function
+	#define __GE_LOG_LOCATION__(File, Function, LineNumber) File "(" LineNumber "): " Function
 
 	// Outputs Text to the default log handler in Category at Verbosity.
 	#define GE_LOG(Category, Verbosity, LogFormat, ...)															\

@@ -25,6 +25,7 @@ const OWorld* OWorld::GetWorld() const
 void OWorld::BeginPlay()
 {
 	check(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
+	check(IsObjectFlagSet(EObjectFlags::HasInitiatedBeginPlay));
 
 
 	//-Temp-Initialization-Logic----------------------------------------

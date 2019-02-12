@@ -32,6 +32,6 @@ public:
 						   const std::string& ObjectName = "");
 };
 
-};
+}; // namespace Gordian
 
 #include "GordianEngine/GlobalLibraries/Private/GlobalObjectLibrary.inl"

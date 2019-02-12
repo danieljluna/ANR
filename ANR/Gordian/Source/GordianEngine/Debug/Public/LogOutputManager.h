@@ -37,9 +37,22 @@ public:
 
 private:
 
-	void Logf(const char* Format, va_list Args) const;
+	// Prints log to all appropriate streams.
+	void Logf(const char* LogFormat, ...) const;
 
-	const char* DefaultConsoleColor;
+	// Prints log to all appropriate streams.
+	void vLogf(const char* LogFormat, va_list Args) const;
+
+	// Prints log to all appropriate streams.
+	void FullLogf(const char* LogLocation, const char* LogFormat, ...) const;
+
+	// Prints log to all appropriate streams, but the log location does not get
+	// output to the console.
+	void vFullLogf(const char* LogLocation, const char* LogFormat, va_list Args) const;
+
+	// Fetches the current time as a string
+	void FetchLogTimestamp(char* OutString) const;
+
 	FILE* LogOutputFile;
 };
 

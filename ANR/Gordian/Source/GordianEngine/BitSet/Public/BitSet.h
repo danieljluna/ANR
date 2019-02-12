@@ -179,7 +179,7 @@ public:
     /// Set EnumAsFlag bit to Value.
     TBitSet& set(const T& EnumAsFlag, bool Value = true)
     {
-        BitSet_.set(static_cast<UnderlyingType_>(EnumAsFlag));
+        BitSet_.set(static_cast<UnderlyingType_>(EnumAsFlag), Value);
         return *this;
     }
 

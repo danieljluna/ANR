@@ -94,6 +94,9 @@
     <Filter Include="Source Files\Gordian\Platform">
       <UniqueIdentifier>{120acbd5-f3b8-4b99-a27d-7eaf29fc4a57}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Gordian\Containers">
+      <UniqueIdentifier>{228cb21a-93a7-4b46-bd23-b441a76192ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GordianEngine\World\Private\World.cpp">
@@ -275,6 +278,9 @@
     <ClInclude Include="Source\GordianEngine\Platform\Public\ConsoleFormatting.h">
       <Filter>Header Files\Gordian\Platform</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Containers\Public\TOptional.h">
+      <Filter>Header Files\Gordian\Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\GordianEngine\Input\Private\InputManager.inl">
@@ -285,6 +291,9 @@
     </None>
     <None Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.inl">
       <Filter>Source Files\Gordian\GlobalLibraries</Filter>
+    </None>
+    <None Include="Source\GordianEngine\Containers\Private\TOptional.inl">
+      <Filter>Source Files\Gordian\Containers</Filter>
     </None>
   </ItemGroup>
 </Project>
