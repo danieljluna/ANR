@@ -64,8 +64,11 @@ sf::Int32 FEngineLoop::Init()
 
 sf::Int32 FEngineLoop::InitializeGameWindow()
 {
-    // todo: create inis for this
-    GameWindow = new sf::RenderWindow(sf::VideoMode(800, 600), "Title");
+    // todo: replace this ini proof of concept with more manageable code
+	INIReader reader("../Gordian/Config/DefaultEngine.ini");
+	check(reader.ParseError() == 0);
+
+	GameWindow = new sf::RenderWindow(sf::VideoMode(reader.GetInteger("Graphics", "WindowWidth", 800), reader.GetInteger("Graphics", "WindowHeight", 600)), "Title");
     if (!GameWindow->isOpen())
     {
 		GE_LOG(LogCore, Error, "Failed to open a render window!");

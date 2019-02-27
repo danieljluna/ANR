@@ -8,7 +8,7 @@
 #include "SFML/Config.hpp"
 #include "SFML/System/Time.hpp"
 
-#include "GordianEngine/BitSet/Public/BitSet.h"
+#include "GordianEngine/Containers/Public/BitSet.h"
 #include "GordianEngine/Reflection/Public/ReflectionMacros.h"
 #include "GordianEngine/Reflection/Public/TypeResolver.h"
 

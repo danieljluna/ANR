@@ -25,9 +25,6 @@
     <Filter Include="Header Files\Gordian\Core">
       <UniqueIdentifier>{40e3deee-7692-4d63-853e-e07d34737eea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Gordian\BitSet">
-      <UniqueIdentifier>{0eb68f44-9e58-47a1-9f83-8a8a0539cd0e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Gordian\World">
       <UniqueIdentifier>{4598c924-cf35-466d-b8aa-e2ba7d1099fd}</UniqueIdentifier>
     </Filter>
@@ -96,6 +93,9 @@
     </Filter>
     <Filter Include="Source Files\Gordian\Containers">
       <UniqueIdentifier>{228cb21a-93a7-4b46-bd23-b441a76192ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gordian\FileIO">
+      <UniqueIdentifier>{056817fa-4a7d-42ad-911d-210664934bb9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +167,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\GordianEngine\BitSet\Public\BitSet.h">
-      <Filter>Header Files\Gordian\BitSet</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GordianEngine\World\Public\World.h">
       <Filter>Header Files\Gordian\World</Filter>
     </ClInclude>
@@ -280,6 +277,12 @@
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Containers\Public\TOptional.h">
       <Filter>Header Files\Gordian\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Containers\Public\BitSet.h">
+      <Filter>Header Files\Gordian\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\ActorComponents\Public\InputComponent.h">
+      <Filter>Header Files\Gordian\ActorComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

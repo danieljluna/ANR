@@ -14,7 +14,7 @@ namespace Gordian
 class AActor;
 
 
-// Defines
+// Proof of concept for a renderable component that draws a sfml sprite
 class OSimpleSpriteComponent : public OActorComponent
 							 , public IRenderable
 {

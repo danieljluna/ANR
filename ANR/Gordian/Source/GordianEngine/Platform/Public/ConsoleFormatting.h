@@ -6,7 +6,6 @@
 
 #include <SFML/System/NonCopyable.hpp>
 
-#include "GordianEngine/Bitset/Public/BitSet.h"
 #include "GordianEngine/Containers/Public/TOptional.h"
 
 namespace Gordian

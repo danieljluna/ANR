@@ -153,10 +153,11 @@
     <ClCompile Include="Source\inih\INIReader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\GordianEngine\ActorComponents\Public\InputComponent.h" />
     <ClInclude Include="Source\GordianEngine\ActorComponents\Public\SimpleSpriteComponent.h" />
     <ClInclude Include="Source\GordianEngine\Actor\Public\Actor.h" />
     <ClInclude Include="Source\GordianEngine\Actor\Public\ActorComponent.h" />
-    <ClInclude Include="Source\GordianEngine\BitSet\Public\BitSet.h" />
+    <ClInclude Include="Source\GordianEngine\Containers\Public\BitSet.h" />
     <ClInclude Include="Source\GordianEngine\Containers\Public\SimpleSet.h" />
     <ClInclude Include="Source\GordianEngine\Containers\Public\TOptional.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\EngineLoop.h" />

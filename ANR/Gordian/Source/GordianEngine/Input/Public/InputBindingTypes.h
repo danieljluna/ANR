@@ -4,7 +4,7 @@
 
 #include <SFML/System/Vector2.hpp>
 
-#include "GordianEngine/BitSet/Public/BitSet.h"
+#include "GordianEngine/Containers/Public/BitSet.h"
 #include "GordianEngine/Input/Public/InputKeys.h"
 
 namespace Gordian
