@@ -6,6 +6,7 @@
 #include "SFML/Graphics/RenderWindow.hpp"
 
 #include "GordianEngine/Debug/Public/Asserts.h"
+#include "GordianEngine/Debug/Public/CommandPrompt.h"
 #include "GordianEngine/Debug/Public/Logging.h"
 #include "GordianEngine/Input/Public/InputManager.h"
 #include "GordianEngine/Platform/Public/Platform.h"
@@ -68,7 +69,9 @@ sf::Int32 FEngineLoop::InitializeGameWindow()
 	INIReader reader("../Gordian/Config/DefaultEngine.ini");
 	check(reader.ParseError() == 0);
 
-	GameWindow = new sf::RenderWindow(sf::VideoMode(reader.GetInteger("Graphics", "WindowWidth", 800), reader.GetInteger("Graphics", "WindowHeight", 600)), "Title");
+	GameWindow = new sf::RenderWindow(sf::VideoMode(reader.GetInteger("Graphics", "WindowWidth", 800), reader.GetInteger("Graphics", "WindowHeight", 600)),
+									  "Title", 
+									  sf::Style::Titlebar | sf::Style::Close);
     if (!GameWindow->isOpen())
     {
 		GE_LOG(LogCore, Error, "Failed to open a render window!");
@@ -109,14 +112,19 @@ void FEngineLoop::ParseInput()
     sf::Event Event;
     while (GameWindow->pollEvent(Event))
     {
-        if (Event.type == sf::Event::Closed)
-        {
-            RequestExit();
-        }
-		else
+		if (Event.type == sf::Event::Closed)
 		{
-			InputManager->HandleWindowEvent(Event);
+			RequestExit();
+			continue;
 		}
+
+		if (FCommandPrompt::Get().ParseRawInput(Event))
+		{
+			// Command prompt has hogged this input, continue...
+			continue;
+		}
+		
+		InputManager->HandleWindowEvent(Event);
     }
 }
 
@@ -140,6 +148,8 @@ void FEngineLoop::Render(const sf::Time& BlendTime)
 	{
 		GameWorld->Render(BlendTime, *GameWindow, sf::RenderStates::Default);
 	}
+
+	GameWindow->draw(FCommandPrompt::Get());
 
     GameWindow->display();
 }
@@ -181,4 +191,10 @@ void FEngineLoop::RequestExit()
 {
 	GE_LOG(LogCore, Log, "A request was made to exit the core loop.");
     bIsRequestingExit = true;
+}
+
+const sf::Vector2u& FEngineLoop::GetWindowSize() const
+{
+	check(GameWindow != nullptr);
+	return GameWindow->getSize();
 }

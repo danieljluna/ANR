@@ -165,6 +165,9 @@
     <ClCompile Include="Source\GordianEngine\Platform\Private\ConsoleFormatting.cpp">
       <Filter>Source Files\Gordian\Platform</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Debug\Private\CommandPrompt.cpp">
+      <Filter>Source Files\Gordian\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GordianEngine\World\Public\World.h">
@@ -283,6 +286,9 @@
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\ActorComponents\Public\InputComponent.h">
       <Filter>Header Files\Gordian\ActorComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\CommandPrompt.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

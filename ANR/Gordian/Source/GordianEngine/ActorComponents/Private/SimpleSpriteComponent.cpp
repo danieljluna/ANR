@@ -27,7 +27,7 @@ void OSimpleSpriteComponent::Initialize(AActor* ActorInitializingFrom)
 	_SpriteToRender.setTexture(_TextureToRender);
 	sf::IntRect DefaultCardRect(0, 0, 300, 419);
 	_SpriteToRender.setTextureRect(DefaultCardRect);
-	FInputManager::Singleton->BindToDigitalCommand("TestCommand", EDigitalEventType::Pressed, this, &OSimpleSpriteComponent::TestFunction);
+	FInputManager::Get()->BindToDigitalCommand("TestCommand", EDigitalEventType::Pressed, this, &OSimpleSpriteComponent::TestFunction);
 }
 
 void OSimpleSpriteComponent::Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const

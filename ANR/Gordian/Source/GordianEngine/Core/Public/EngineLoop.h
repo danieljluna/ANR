@@ -41,6 +41,8 @@ public:
     /// Call to terminate the loop
     void RequestExit();
 
+	const sf::Vector2u& GetWindowSize() const;
+
 protected:
 
     /// Initializes the game window.

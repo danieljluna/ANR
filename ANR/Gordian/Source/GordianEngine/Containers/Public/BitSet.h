@@ -213,18 +213,5 @@ private:
     std::bitset<static_cast<UnderlyingType_>(T::MAX_VALUE)> BitSet_;
 };
 
-/// These operators will combine any two matching enums to create
-/// the appropriate BitSet.
-template<typename T>
-std::enable_if_t<std::is_enum<T>::value, TBitSet<T>>
-operator|(const T& lhs, const T& rhs)
-{
-    TBitSet<T> CombinedBitSet;
-    CombinedBitSet |= lhs;
-    CombinedBitSet |= rhs;
-
-    return CombinedBitSet;
-}
-
 
 };

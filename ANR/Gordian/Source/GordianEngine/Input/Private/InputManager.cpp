@@ -24,6 +24,12 @@ FInputManager::FInputManager()
 	}
 }
 
+/*static*/ FInputManager* FInputManager::Get()
+{
+	check(Singleton != nullptr);
+	return Singleton;
+}
+
 void FInputManager::HandleWindowEvent(sf::Event& EventData)
 {
 	if (!_bHasGeneratedDelegateMap)

@@ -26,11 +26,12 @@ class FInputManager
 public:
 	FInputManager();
 
-	static FInputManager* Singleton;
+	// Temp static fn for finding an input handler.
+	static FInputManager* Get();
 
 	void HandleWindowEvent(sf::Event& EventData);
 
-	// Bind to a digital command using a non-const member function
+	// Bind to a digital command using a const member function
 	template<class X, class Y>
 	inline bool BindToDigitalCommand(const FCommand& CommandToBind,
 									 const EDigitalEventType& EventType,
@@ -44,14 +45,14 @@ public:
 									 Y* ObjectToBindTo,
 									 void (X::*FunctionToBind)());
 
-	// Bind to a digital command using a non-const member function
+	// Bind to a digital command using a non-member function
 	inline bool BindToDigitalCommand(const FCommand& CommandToBind,
 									 const EDigitalEventType& EventType,
 									 void (*Function_To_Bind)());
 
 private:
 
-	void ReloadFromConfig();
+	static FInputManager* Singleton;
 
 	// Given a generic key, returns commands to trigger.
 	// Loaded from an ini file

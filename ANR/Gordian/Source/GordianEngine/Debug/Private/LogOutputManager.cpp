@@ -24,6 +24,7 @@ namespace
 {
 	static const int k_MaxLogCharacterLength = 1024;
 	static const int k_MaxLogTimestampLength = 29;
+	static const char* k_LogFilepath = "Log.txt";
 }
 
 FLogOutputManager Gordian::GLogOutputManager;
@@ -31,7 +32,7 @@ FLogOutputManager Gordian::GLogOutputManager;
 FLogOutputManager::FLogOutputManager()
 {
 	errno_t ErrorCode;
-	ErrorCode = fopen_s(&LogOutputFile, "Log.txt", "a");
+	ErrorCode = fopen_s(&LogOutputFile, k_LogFilepath, "a");
 	if (ErrorCode != 0)
 	{
 		GE_LOG(LogFileIO, Fatal, "LogOutput file could not be set up! Error code: %d!", ErrorCode);
