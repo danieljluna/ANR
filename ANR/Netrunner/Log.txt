@@ -1318,3 +1318,241 @@ f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\enginelo
 [2019.03.17 03:30:42 -0700] LogCore - Exiting Core Loop...
 f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(182): void __thiscall Gordian::FEngineLoop::Exit(void)
 [2019.03.17 03:30:42 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.14 19:42:31 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 19:42:31 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 19:42:31 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\debug\private\commandprompt.cpp(37): __thiscall Gordian::FCommandPrompt::FCommandPrompt(void)
+[2019.04.14 19:42:31 -0700] LogFileIO - PreviousCommands file could not be found or does not exist. (Code: 2)
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.04.14 19:49:08 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.04.14 19:49:08 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.04.14 19:49:08 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.04.14 19:49:08 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.14 19:52:20 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 19:52:20 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 19:52:21 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\debug\private\commandprompt.cpp(37): __thiscall Gordian::FCommandPrompt::FCommandPrompt(void)
+[2019.04.14 19:52:21 -0700] LogFileIO - PreviousCommands file could not be found or does not exist. (Code: 2)
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.14 19:54:35 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 19:54:35 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 19:54:36 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\debug\private\commandprompt.cpp(37): __thiscall Gordian::FCommandPrompt::FCommandPrompt(void)
+[2019.04.14 19:54:36 -0700] LogFileIO - PreviousCommands file could not be found or does not exist. (Code: 2)
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.14 19:55:11 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 19:55:11 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 19:55:12 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.14 23:48:10 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 23:48:10 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.14 23:48:10 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.04.14 23:48:19 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.04.14 23:48:19 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.04.14 23:48:19 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.04.14 23:48:19 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.15 00:20:48 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.15 00:20:48 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.15 00:20:49 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.15 00:23:43 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.15 00:23:43 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.15 00:23:44 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.04.15 00:24:14 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.04.15 00:24:14 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.04.15 00:24:14 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.04.15 00:24:14 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.15 21:19:56 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.15 21:19:56 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.15 21:19:57 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.04.15 21:20:04 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.15 21:20:04 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.04.15 21:20:04 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.04.15 21:20:51 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.04.15 21:20:51 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.04.15 21:20:51 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.04.15 21:20:51 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.05.28 00:05:03 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:05:03 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:05:04 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.05.28 00:05:48 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.05.28 00:05:48 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.05.28 00:05:48 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.05.28 00:05:48 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.05.28 00:05:51 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:05:51 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:05:52 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.05.28 00:06:13 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.05.28 00:06:13 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.05.28 00:06:13 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.05.28 00:06:13 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.05.28 00:14:18 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:14:18 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:14:19 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.05.28 00:14:47 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:14:47 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:14:48 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.05.28 00:15:02 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:15:02 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:15:02 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.05.28 00:15:13 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:15:13 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:15:14 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.05.28 00:15:40 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:15:40 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.05.28 00:15:41 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 01:51:28 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 01:51:28 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 01:51:29 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 01:51:53 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 01:51:53 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.06.24 01:51:53 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.06.24 01:51:53 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 02:10:55 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:10:55 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:10:56 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 02:12:57 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:12:57 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:12:58 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 02:13:20 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:13:20 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:13:21 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 02:13:29 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 02:13:29 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 02:13:29 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.06.24 02:13:29 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.06.24 02:13:29 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 02:14:33 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:14:33 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:14:34 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 02:15:23 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:15:23 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:15:23 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 02:24:46 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:24:46 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:24:47 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 02:25:41 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:25:41 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:25:41 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 02:26:45 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 02:26:45 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.06.24 02:26:45 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.06.24 02:26:45 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2019.06.24 02:26:48 -0700] LogFileIO - Successfully iniated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:26:48 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
+[2019.06.24 02:26:48 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 02:28:19 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(193): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2019.06.24 02:28:19 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(160): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.06.24 02:28:19 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
+[2019.06.24 02:28:19 -0700] LogCore - Exited Core Loop.

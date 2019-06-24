@@ -9,11 +9,15 @@
 #include "SFML/System/String.hpp"
 #include "SFML/Window/Event.hpp"
 
+#include "GordianEngine/Containers/Public/PrefixTree.h"
+
 namespace Gordian
 {
 
 
-// Allows the user to input debug commands via string 
+// Allows the user to input debug commands via string.
+// This is intentionally not using the UI functionality to keep its functionality independent 
+//	from as many Gordian systems as possible.
 class FCommandPrompt : public sf::NonCopyable
 					 , public sf::Drawable
 {
@@ -63,6 +67,8 @@ private:
 	sf::Text CurrentInputText;
 	// The background rectangle for the entire console
 	sf::RectangleShape BackgroundShape;
+
+	TPrefixTree<int> TestTrie;
 
 	// Will eventually be used to read / cache previous commands so 
 	FILE* PreviousCommandsFile;

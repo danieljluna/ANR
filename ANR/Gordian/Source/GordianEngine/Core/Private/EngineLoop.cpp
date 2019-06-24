@@ -69,7 +69,8 @@ sf::Int32 FEngineLoop::InitializeGameWindow()
 	INIReader reader("../Gordian/Config/DefaultEngine.ini");
 	check(reader.ParseError() == 0);
 
-	GameWindow = new sf::RenderWindow(sf::VideoMode(reader.GetInteger("Graphics", "WindowWidth", 800), reader.GetInteger("Graphics", "WindowHeight", 600)),
+	GameWindow = new sf::RenderWindow(sf::VideoMode(reader.GetInteger("Graphics", "WindowWidth", 800), 
+													reader.GetInteger("Graphics", "WindowHeight", 600)),
 									  "Title", 
 									  sf::Style::Titlebar | sf::Style::Close);
     if (!GameWindow->isOpen())

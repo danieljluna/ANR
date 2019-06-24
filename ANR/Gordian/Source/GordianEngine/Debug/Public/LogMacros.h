@@ -91,5 +91,12 @@ namespace Gordian
 //	Should be placed in a .cpp file with DECLARE_LOG_CATEGORY_EXTERN in the matching .h
 #define DEFINE_LOG_CATEGORY_EXTERN(Category) FLogCategory##Category Category;
 
+// Declares a static log category intended to only be used in the file it was declared.
+#define DECLARE_LOG_CATEGORY_STATIC(Category,  DefaultRuntimeVerbosity, CompileTimeVerbosity)			\
+	static class FLogCategory##Category : public Gordian::FLogCategory<Gordian::ELogVerbosity::DefaultRuntimeVerbosity, Gordian::ELogVerbosity::CompileTimeVerbosity>	\
+	{																									\
+	public:																								\
+		FLogCategory##Category() : FLogCategory(TEXT(#Category)) {}										\
+	} Category;
 
 };

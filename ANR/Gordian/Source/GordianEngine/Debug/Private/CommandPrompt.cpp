@@ -29,8 +29,9 @@ namespace
 
 FCommandPrompt::FCommandPrompt()
 {
+	TestTrie.Reserve(15);
 	CurrentInputString = "";
-	errno_t ErrorCode;
+	errno_t ErrorCode = 0;
 	ErrorCode = fopen_s(&PreviousCommandsFile, k_PreviousCommandsFilepath, "r");
 	if (ErrorCode != 0)
 	{
@@ -134,6 +135,8 @@ void FCommandPrompt::Close()
 
 void FCommandPrompt::DigestCommand()
 {
+	TestTrie.Insert(CurrentInputString, CurrentInputString.getSize());
+
 	SetCurrentInputString("");
 }
 
@@ -190,10 +193,12 @@ void FCommandPrompt::draw(sf::RenderTarget& target, sf::RenderStates states) con
 
 	// Draw text input
 	const sf::FloatRect& TextBounds = CurrentInputText.getGlobalBounds();
-	if (TextBounds.width > RenderTargetWidth)
+	// If text is wider than the target width
+	if (TextBounds.left + TextBounds.width > RenderTargetWidth - 2 * BorderSpacing)
 	{
+		// Transform text so the last input is always on screen.
 		sf::RenderStates InputTextRenderStates = states;
-		InputTextRenderStates.transform.translate(RenderTargetWidth - TextBounds.width, 0);
+		InputTextRenderStates.transform.translate(RenderTargetWidth - 2 * BorderSpacing - TextBounds.width - TextBounds.left, 0);
 		target.draw(CurrentInputText, InputTextRenderStates);
 	}
 	else

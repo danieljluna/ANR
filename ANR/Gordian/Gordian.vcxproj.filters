@@ -290,6 +290,9 @@
     <ClInclude Include="Source\GordianEngine\Debug\Public\CommandPrompt.h">
       <Filter>Header Files\Gordian\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Containers\Public\PrefixTree.h">
+      <Filter>Header Files\Gordian\Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\GordianEngine\Input\Private\InputManager.inl">
@@ -302,6 +305,9 @@
       <Filter>Source Files\Gordian\GlobalLibraries</Filter>
     </None>
     <None Include="Source\GordianEngine\Containers\Private\TOptional.inl">
+      <Filter>Source Files\Gordian\Containers</Filter>
+    </None>
+    <None Include="Source\GordianEngine\Containers\Private\PrefixTree.inl">
       <Filter>Source Files\Gordian\Containers</Filter>
     </None>
   </ItemGroup>

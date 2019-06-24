@@ -159,6 +159,7 @@
     <ClInclude Include="Source\GordianEngine\Actor\Public\Actor.h" />
     <ClInclude Include="Source\GordianEngine\Actor\Public\ActorComponent.h" />
     <ClInclude Include="Source\GordianEngine\Containers\Public\BitSet.h" />
+    <ClInclude Include="Source\GordianEngine\Containers\Public\PrefixTree.h" />
     <ClInclude Include="Source\GordianEngine\Containers\Public\SimpleSet.h" />
     <ClInclude Include="Source\GordianEngine\Containers\Public\TOptional.h" />
     <ClInclude Include="Source\GordianEngine\Core\Public\EngineLoop.h" />
@@ -197,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\DefaultEngine.ini" />
+    <None Include="Source\GordianEngine\Containers\Private\PrefixTree.inl" />
     <None Include="Source\GordianEngine\Containers\Private\TOptional.inl" />
     <None Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.inl" />
     <None Include="Source\GordianEngine\Input\Private\InputManager.inl" />
