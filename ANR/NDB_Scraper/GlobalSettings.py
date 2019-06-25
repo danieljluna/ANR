@@ -27,7 +27,7 @@ def BuildFolderPaths():
 	if not os.path.exists(ImageFolder):
 		os.makedirs(ImageFolder)
 	if not os.path.exists(OutputFolder):
-		os.makedirs(DatabaseFolder)
+		os.makedirs(OutputFolder)
 
 		
 def GetSQLColumnWithConstraints(ColumnNameAndType):
