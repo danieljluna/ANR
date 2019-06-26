@@ -1634,9 +1634,3 @@ c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\p
 [2019.06.25 20:23:52 -0700] LogCore - Exiting Core Loop...
 c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(183): void __thiscall Gordian::FEngineLoop::Exit(void)
 [2019.06.25 20:23:52 -0700] LogCore - Exited Core Loop.
-f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
-[2019.06.25 22:00:49 -0700] LogFileIO - Successfully iniated ConsoleFormatting
-f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(39): int __thiscall Gordian::FEngineLoop::Init(void)
-[2019.06.25 22:00:49 -0700] LogCore - Initializing Core Loop...
-f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(62): int __thiscall Gordian::FEngineLoop::Init(void)
-[2019.06.25 22:00:50 -0700] LogCore - Core Loop Initialized Successfully.

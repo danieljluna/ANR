@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <SFML_Dir>F:\Programming\SFML\SFML-2.5.0</SFML_Dir>
+    <SFML_Dir>C:\Programming\SFML-2.5.1</SFML_Dir>
   </PropertyGroup>
   <PropertyGroup />
   <ItemDefinitionGroup>

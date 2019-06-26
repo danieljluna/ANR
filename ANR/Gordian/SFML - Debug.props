@@ -11,7 +11,7 @@
       <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>F:\Programming\SFML\SFML-2.5.0\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SFML_Dir)\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>winmm.lib;opengl32.lib;gdi32.lib;freetype.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-main-d.lib;sfml-system-s-d.lib;sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-audio-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
