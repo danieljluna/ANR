@@ -160,6 +160,8 @@ def ScrapeImages():
 						break
 					except requests.ConnectTimeout as e:
 						print(e)
+					except BaseException as e:
+						print(e)
 					else:
 						break
 				else:
