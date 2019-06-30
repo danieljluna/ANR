@@ -224,9 +224,6 @@
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h">
       <Filter>Header Files\Gordian\Delegates</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GordianEngine\Containers\Public\SimpleSet.h">
-      <Filter>Header Files\Gordian\Containers</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h">
       <Filter>Header Files\Gordian\Delegates</Filter>
     </ClInclude>
@@ -281,17 +278,26 @@
     <ClInclude Include="Source\GordianEngine\Containers\Public\TOptional.h">
       <Filter>Header Files\Gordian\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GordianEngine\Containers\Public\BitSet.h">
-      <Filter>Header Files\Gordian\Containers</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GordianEngine\ActorComponents\Public\InputComponent.h">
       <Filter>Header Files\Gordian\ActorComponents</Filter>
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Debug\Public\CommandPrompt.h">
       <Filter>Header Files\Gordian\Debug</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GordianEngine\Containers\Public\PrefixTree.h">
+    <ClInclude Include="Source\GordianEngine\Debug\Public\TConsoleVariable.h">
+      <Filter>Header Files\Gordian\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Containers\Public\TSimpleSet.h">
       <Filter>Header Files\Gordian\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Containers\Public\TPrefixTree.h">
+      <Filter>Header Files\Gordian\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Containers\Public\TBitSet.h">
+      <Filter>Header Files\Gordian\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\TSubtypeOf.h">
+      <Filter>Header Files\Gordian\Reflection</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -307,7 +313,7 @@
     <None Include="Source\GordianEngine\Containers\Private\TOptional.inl">
       <Filter>Source Files\Gordian\Containers</Filter>
     </None>
-    <None Include="Source\GordianEngine\Containers\Private\PrefixTree.inl">
+    <None Include="Source\GordianEngine\Containers\Private\TPrefixTree.inl">
       <Filter>Source Files\Gordian\Containers</Filter>
     </None>
   </ItemGroup>

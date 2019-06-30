@@ -32,10 +32,7 @@ public:
 
 	virtual void Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStates States) const override;
 
-	// Just a garbage test function for input testing.
-	void TestFunction();
-
-private:
+protected:
 
 	sf::Sprite _SpriteToRender;
 

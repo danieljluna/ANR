@@ -9,7 +9,7 @@
 #include "SFML/System/String.hpp"
 #include "SFML/Window/Event.hpp"
 
-#include "GordianEngine/Containers/Public/PrefixTree.h"
+#include "GordianEngine/Containers/Public/TPrefixTree.h"
 
 namespace Gordian
 {

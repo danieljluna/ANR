@@ -20,9 +20,18 @@ class OLevel : public OObject
 
 	OLevel(const std::string& InName);
 
+	bool IsValid() const { return _ErrorCode == 0; }
+
+	bool LoadLevel(const std::string& InFilePath);
+
 private:
 
-	std::vector<AActor*> _ActorList;
+	errno_t _ErrorCode;
+
+	// This should eventually be some kind of struct with initialization overrides
+	std::vector<OType_Struct*> _Specifications;
+
+
 };
 
 

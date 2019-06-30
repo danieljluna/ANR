@@ -7,10 +7,13 @@
 #include "SFML/Graphics/View.hpp"
 #include "SFML/System/Time.hpp"
 
+#include <vector>
+
 #include "GordianEngine/Actor/Public/Actor.h"
-#include "GordianEngine/GlobalLibraries/Public/GlobalObjectLibrary.h"
 #include "GordianEngine/Core/Public/Object.h"
 #include "GordianEngine/Core/Public/Renderable.h"
+#include "GordianEngine/GlobalLibraries/Public/GlobalObjectLibrary.h"
+#include "GordianEngine/Reflection/Public/TSubtypeOf.h"
 
 namespace Gordian
 {
@@ -38,6 +41,10 @@ public:
 	// Loads a level into this world, returning true if loading was successful.
 	bool LoadLevel(const OLevel* LevelToLoad);
 
+	// Temp Garbage -----------------------------------
+
+	TSubtypeOf<AActor*> TestActorSpecification;
+	
 	// ------------------------------------------------
 
 

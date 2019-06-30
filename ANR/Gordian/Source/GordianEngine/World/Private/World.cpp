@@ -4,9 +4,6 @@
 #include "GordianEngine/Core/Public/Gordian.h"
 
 #include "GordianEngine/Actor/Public/Actor.h"
-#include "GordianEngine/ActorComponents/Public/SimpleSpriteComponent.h"
-
-#include "GordianEngine/Debug/Public/Asserts.h"
 
 using namespace Gordian;
 
@@ -14,6 +11,7 @@ OWorld::OWorld(const std::string& InName, OObject* InOwningObject)
 	: Parent(InName, InOwningObject)
 	, _Actors{}
 	, _CurrentlyLoadedLevel(nullptr)
+	, TestActorSpecification(nullptr)
 {
 }
 
@@ -27,16 +25,13 @@ void OWorld::BeginPlay()
 	check(SetFlagIfNotSet(EObjectFlags::HasInitiatedBeginPlay));
 	check(IsObjectFlagSet(EObjectFlags::HasInitiatedBeginPlay));
 
+	// todo: Add initialization actors
 
-	//-Temp-Initialization-Logic----------------------------------------
-
-	AActor* TestActor = SpawnActor<AActor>(AActor::GetStaticType(), "TestActor_0");
-	OSimpleSpriteComponent* SimpleSpriteComponent = FGlobalObjectLibrary::CreateObject<OSimpleSpriteComponent>(TestActor, OSimpleSpriteComponent::GetStaticType(), "SimpleSprite");
-	check(TestActor != nullptr && SimpleSpriteComponent != nullptr);
-	TestActor->AddComponent(SimpleSpriteComponent);
-
-	//-End-Temp-Initialization-Logic------------------------------------
-
+	// I need to find a way to make this dynamic by reading from an ini file
+	if (TestActorSpecification != nullptr)
+	{
+		SpawnActor<AActor>(TestActorSpecification, "TestActor");
+	}
 
 	for (AActor* Actor : _Actors)
 	{

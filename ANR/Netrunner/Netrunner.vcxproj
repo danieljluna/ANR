@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>WINDOWS;GE_DEBUG;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Source;$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -99,7 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>WINDOWS;GE_DEBUG;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Source;$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -110,7 +110,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Source;$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WINDOWS;GE_RELEASE;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>WINDOWS;GE_RELEASE;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Source;$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -136,9 +136,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\SQLite\sqlite3.h" />
+    <ClInclude Include="Source\Core\Public\ANR.h" />
+    <ClInclude Include="Source\Test\TestCardActor.h" />
+    <ClInclude Include="Source\Test\TestCardSpriteComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\SQLite\sqlite3.c" />
+    <ClCompile Include="Source\Test\TestCardActor.cpp" />
+    <ClCompile Include="Source\Test\TestCardSpriteComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\NDB_Scraper\Intermediate\Scrapes\cards.ndb" />

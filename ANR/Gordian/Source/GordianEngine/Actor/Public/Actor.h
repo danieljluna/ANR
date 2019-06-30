@@ -22,9 +22,11 @@ public:
 	AActor(const std::string& InName, OObject* InOwningObject);
 	virtual ~AActor() override;
 
-	// Initializes the Actor, including its components
+	// Initializes the Actor, including its components. 
+	// This happens immediately after creation, and before this actor begins play.
 	virtual void Initialize() override;
 	// Starts up this actor.
+	// This is not called until this actor
 	virtual void BeginPlay();
 	// Tick this actor.
 	virtual void Tick(const sf::Time& DeltaTime) {};

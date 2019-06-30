@@ -89,7 +89,7 @@ public:
 	// Broadcasts to all bound functions
 	inline void Broadcast()
 	{
-		using ReverseIteratorType = std::set<DelegateType>::reverse_iterator;
+		using ReverseIteratorType = typename std::set<DelegateType>::reverse_iterator;
 		for (ReverseIteratorType it = _DelegateSet.rbegin(); it != _DelegateSet.rend();)
 		{
 			const DelegateType& DelegateAtIndex = *it;

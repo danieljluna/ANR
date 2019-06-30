@@ -22,15 +22,48 @@
     <Filter Include="Resource Files\NDB Scrapes">
       <UniqueIdentifier>{ac54e794-eee9-4ef6-be95-d3a7c1c284e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ANR">
+      <UniqueIdentifier>{d48332fb-1d31-41d6-aca2-bf09ffe92ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ANR">
+      <UniqueIdentifier>{4263a2c4-e7fc-4a6d-a100-09854665eb5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ANR\Temp">
+      <UniqueIdentifier>{a87fa660-fd50-4bd6-afe0-22e6e5ed30e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ANR\Temp">
+      <UniqueIdentifier>{717c9329-966b-47b5-ac6b-3ef19c5a3949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ANR\Core">
+      <UniqueIdentifier>{33042fd9-02b8-45ee-9584-b7edc1f32b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ANR\Core">
+      <UniqueIdentifier>{60cf313b-91cf-41c3-a8bd-fee0c78fbb05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SQLite\sqlite3.h">
       <Filter>Header Files\SQLite</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Core\Public\ANR.h">
+      <Filter>Header Files\ANR\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Test\TestCardSpriteComponent.h">
+      <Filter>Header Files\ANR\Temp</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Test\TestCardActor.h">
+      <Filter>Header Files\ANR\Temp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\SQLite\sqlite3.c">
       <Filter>Source Files\SQLite</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Test\TestCardSpriteComponent.cpp">
+      <Filter>Source Files\ANR\Temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Test\TestCardActor.cpp">
+      <Filter>Source Files\ANR\Temp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

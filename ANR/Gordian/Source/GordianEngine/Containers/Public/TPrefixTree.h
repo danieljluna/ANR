@@ -140,4 +140,4 @@ private:
 
 };	// namespace Gordian
 
-#include "../Private/PrefixTree.inl"
+#include "../Private/TPrefixTree.inl"

@@ -34,8 +34,8 @@ T* Gordian::FGlobalObjectLibrary::CreateObject(Gordian::OObject* OwningObject,
 	// todo: create object based on ObjectType not T
 
 	// todo: this should eventually use pooled objects where possible
-	Gordian::OObject* NewObject = new T(ObjectName != "" ? ObjectName : ObjectType->GetName()
-								, OwningObject);
+	Gordian::OObject* NewObject = new T(ObjectName != "" ? ObjectName : ObjectType->GetName(),
+										OwningObject);
 
 	check(NewObject != nullptr);
 	NewObject->_PrivateType = ObjectType;
