@@ -3,6 +3,8 @@
 #include "GordianEngine/Debug/Public/Asserts.h"
 #include "GordianEngine/Debug/Public/LogMacros.h"
 
+#include <algorithm>
+
 DECLARE_LOG_CATEGORY_STATIC(LogPrefixTree, Log, Verbose)
 
 namespace Gordian
@@ -58,7 +60,7 @@ bool Gordian::TPrefixTreeNode<T>::HasMatchingKey(const KeyType& TestKey) const
 template<typename T>
 bool Gordian::TPrefixTreeNode<T>::HasMatchingDivergingKey(const KeyType& TestDivergingSubKey) const
 {
-	if (TestDivergingSubKey.length() <= DivergingSubKey.length())
+	if (TestDivergingSubKey.length() < DivergingSubKey.length())
 	{
 		return false;
 	}
@@ -72,6 +74,30 @@ bool Gordian::TPrefixTreeNode<T>::HasMatchingDivergingKey(const KeyType& TestDiv
 	}
 
 	return true;
+}
+
+template<typename T>
+const Gordian::TPrefixTreeNode<T>* Gordian::TPrefixTreeNode<T>::Find(const KeyType& InDivergingSubKey) const
+{
+	if (InDivergingSubKey.length() == 0)
+	{
+		return this;
+	}
+
+	const std::map<CharType, TPrefixTreeNode<T>*>::const_iterator ExistingChildNode = ChildrenNodes.find(InDivergingSubKey[0]);
+	if (ExistingChildNode != ChildrenNodes.cend())
+	{
+		check(ExistingChildNode->second != nullptr);
+		TPrefixTreeNode<T>& RelatedChildNode = *ExistingChildNode->second;
+
+		if (RelatedChildNode.HasMatchingDivergingKey(InDivergingSubKey))
+		{
+			const KeyType& NewDivergingSubKey = InDivergingSubKey.substr(RelatedChildNode.DivergingSubKey.length());
+			return RelatedChildNode.Find(InDivergingSubKey);
+		}
+	}
+
+	return nullptr;
 }
 
 template<typename T>
@@ -312,9 +338,59 @@ inline bool Gordian::TPrefixTree<T>::Reserve(size_t InReserveSize)
 template<typename T>
 inline bool Gordian::TPrefixTree<T>::Insert(const KeyType& Key, const T& Value)
 {
-	check(_ReservedNodeSpace != nullptr);
+	check(_ReservedNodeSpace != nullptr && _ReservedNodeSpace[0].bIsActive);
 
 	return _ReservedNodeSpace[0].AddWord(Key, Value, _NextUnusedNode);
+}
+
+template<typename T>
+bool Gordian::TPrefixTree<T>::Contains(const KeyType& Key) const
+{
+	if (_ReservedNodeSpace == nullptr || !_ReservedNodeSpace[0].bIsActive)
+	{
+		GE_LOG(LogPrefixTree, Warning, "Tried to check if an uninitialized prefix tree contained key (%s)", Key.c_str());
+		return false;
+	}
+
+	auto NodeMatchingKey = _ReservedNodeSpace[0].CachedDescendantWords.find(Key);
+
+	return NodeMatchingKey != _ReservedNodeSpace[0].CachedDescendantWords.cend();
+}
+
+template<typename T>
+const T* Gordian::TPrefixTree<T>::Find(const KeyType& Key) const
+{
+	check(_ReservedNodeSpace != nullptr && _ReservedNodeSpace[0].bIsActive);
+
+	if (Contains(Key))
+	{
+		const TPrefixTreeNode<T>* _FoundNode = _ReservedNodeSpace[0].Find(Key);
+		if (_FoundNode != nullptr)
+		{
+			check(_FoundNode->bIsActive);
+			if (_FoundNode->GetKey() == Key && _FoundNode->IsFullWord())
+			{
+				return &_FoundNode->WordValue.Get();
+			}
+		}
+		else
+		{
+			GE_LOG(LogPrefixTree, 
+				   Error, 
+				   "Root node belives it has a descendant of key '%s' but the matching node could not be found!", 
+				   Key.c_str());
+		}
+	}
+
+	return nullptr;
+}
+
+template<typename T>
+const T& Gordian::TPrefixTree<T>::At(const KeyType& Key) const
+{
+	const T* FindResult = Find(Key);
+	check(FindResult != nullptr);
+	return *T;
 }
 
 

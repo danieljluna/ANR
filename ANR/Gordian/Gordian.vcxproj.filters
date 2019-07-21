@@ -168,6 +168,9 @@
     <ClCompile Include="Source\GordianEngine\Debug\Private\CommandPrompt.cpp">
       <Filter>Source Files\Gordian\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.cpp">
+      <Filter>Source Files\Gordian\GlobalLibraries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GordianEngine\World\Public\World.h">

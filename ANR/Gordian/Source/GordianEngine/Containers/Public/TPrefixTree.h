@@ -55,6 +55,9 @@ private:
 	//	DivergingSubKey.
 	bool HasMatchingDivergingKey(const KeyType& TestDivergingSubKey) const;
 
+	// Recursive search to find the first node with a DivergingSubKey >= InDivergingSubKey
+	const TPrefixTreeNode<MappedT>* Find(const KeyType& InDivergingSubKey) const;
+
 	// Adds a child word with the given key using the passed data struct.
 	// Returns whether or not the child was successfully added.
 	bool AddWord(const KeyType& InWordDivergingSubKey,
@@ -125,6 +128,17 @@ public:
 	// Returns true if the insert was successful.
 	bool Insert(const KeyType& Key, 
 				const MappedT& Value);
+
+	// Returns true if the Prefix Tree contains a key-value pair at the specified key
+	bool Contains(const KeyType& Key) const;
+
+	// Returns the mapped value for the given key.
+	// Returns nullptr if there was no mapped value at the specified key.
+	const MappedT* Find(const KeyType& Key) const;
+
+	// Returns the mapped value for the given key.
+	// Asserts if there was no mapped value at the specified key.
+	const MappedT& At(const KeyType& Key) const;
 
 private:
 
