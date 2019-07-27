@@ -88,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>WINDOWS;GE_DEBUG;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NETRUNNER;WINDOWS;GE_DEBUG;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)\Source;$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -98,7 +98,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>WINDOWS;GE_DEBUG;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NETRUNNER;WINDOWS;GE_DEBUG;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)\Source;$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -111,7 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)\Source;$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WINDOWS;GE_RELEASE;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NETRUNNER;WINDOWS;GE_RELEASE;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -126,7 +126,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <PreprocessorDefinitions>WINDOWS;GE_RELEASE;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NETRUNNER;WINDOWS;GE_RELEASE;DINI_ALLOW_MULTILINE=0;DINI_HANDLER_LINENO=1</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)\Source;$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

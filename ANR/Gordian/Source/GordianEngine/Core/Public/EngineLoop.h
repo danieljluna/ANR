@@ -30,7 +30,7 @@ public:
 
     /// Initializes the main loop.
     /// @return An error code where 0 is success and > 0 is a failure.
-    sf::Int32 Init();
+    sf::Int32 Init(int argc, char** argv);
     /// Advances the main loop once.
     void Tick();
     /// Exits the main loop, clearing any state.
@@ -41,13 +41,17 @@ public:
     /// Call to terminate the loop
     void RequestExit();
 
+	bool LoadProject(const char* InProjectPath);
+
 	const sf::Vector2u& GetWindowSize() const;
 
 protected:
 
+	sf::Int32 ParseCommandArgs(int argc, char** argv);
+
     /// Initializes the game window.
 	///	@return Returns an non-zero error codes if relevant.
-    sf::Int32 InitializeGameWindow();
+    sf::Int32 InitializeGameWindow(const char* WindowTitle);
 
     /// Parse Input received by the local window
     void ParseInput();

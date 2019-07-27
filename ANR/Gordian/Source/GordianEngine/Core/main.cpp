@@ -7,9 +7,9 @@
 
 Gordian::FEngineLoop GEngineLoop;
 
-unsigned int EngineInit()
+unsigned int EngineInit(int argc, char **argv)
 {
-    unsigned int ErrorCode = GEngineLoop.Init();
+    unsigned int ErrorCode = GEngineLoop.Init(argc, argv);
     return ErrorCode;
 }
 
@@ -26,7 +26,7 @@ void EngineExit()
 }
 
 
-int main()
+int main(int argc, char **argv)
 {
     // Enforce EngineExit is called
     struct EngineLoopCleanupGuard
@@ -37,7 +37,7 @@ int main()
         }
     } CleanupGuard;
 
-    unsigned int ErrorCode = EngineInit();
+    unsigned int ErrorCode = EngineInit(argc, argv);
 
     if (ErrorCode != 0)
     {

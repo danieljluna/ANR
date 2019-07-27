@@ -1,3 +1,5 @@
+# Scrapes NetrunnerDB info from the web for use in the game
+
 import ImageScraper
 import RequestScraper
 import GlobalSettings
