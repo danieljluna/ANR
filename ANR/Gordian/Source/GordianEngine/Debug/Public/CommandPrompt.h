@@ -68,6 +68,12 @@ private:
 	// The background rectangle for the entire console
 	sf::RectangleShape BackgroundShape;
 
+	// A union of all possible things that could be mapped to console input
+	struct FConsoleStringMapping
+	{
+		
+	};
+
 	TPrefixTree<int> TestTrie;
 
 	// Will eventually be used to read / cache previous commands so 

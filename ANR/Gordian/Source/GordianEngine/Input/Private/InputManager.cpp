@@ -101,11 +101,11 @@ void FInputManager::GenerateCommandDelegates()
 
 	for (const FDigitalBinding& DigitalBinding : DigitalBindingSet)
 	{
-		std::map<FCommand, FDigitalBroadcaster>::const_iterator ExistingCommandIt;
+		std::map<FCommand, std::shared_ptr<FDigitalBroadcaster>>::const_iterator ExistingCommandIt;
 		ExistingCommandIt = _DigitalCommandDelegates.find(DigitalBinding.CommandToTrigger);
 		if (ExistingCommandIt == _DigitalCommandDelegates.cend())
 		{
-			_DigitalCommandDelegates.emplace(DigitalBinding.CommandToTrigger, FDigitalBroadcaster());
+			_DigitalCommandDelegates.emplace(DigitalBinding.CommandToTrigger, std::make_shared<FDigitalBroadcaster>(0));
 		}
 	}
 
@@ -228,17 +228,18 @@ EDigitalEventType FInputManager::GetDigitalEventType(const sf::Event& EventData)
 
 void FInputManager::TriggerDigitalCommand(const FCommand& CommandToTrigger, EDigitalEventType EventType)
 {
-	using CommandMapItType = std::map<FCommand, FDigitalBroadcaster>::iterator;
+	using CommandMapItType = std::map<FCommand, std::shared_ptr<FDigitalBroadcaster>>::iterator;
 	CommandMapItType CommandDelegatePair = _DigitalCommandDelegates.find(CommandToTrigger);
 	if (CommandDelegatePair != _DigitalCommandDelegates.end())
 	{
+		check(CommandDelegatePair->second != nullptr);
 		switch (EventType)
 		{
 			case EDigitalEventType::Pressed:
-				CommandDelegatePair->second.OnPressed.Broadcast();
+				CommandDelegatePair->second->OnPressed();
 				break;
 			case EDigitalEventType::Released:
-				CommandDelegatePair->second.OnReleased.Broadcast();
+				CommandDelegatePair->second->OnReleased();
 				break;
 			default:
 				checkNoEntry();

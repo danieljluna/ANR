@@ -76,7 +76,18 @@
     <Import Project="GenerateStaticLibrary.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -176,6 +187,8 @@
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogOutputManager.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogVerbosity.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\TConsoleVariable.h" />
+    <ClInclude Include="Source\GordianEngine\Delegates\Delegate.h" />
+    <ClInclude Include="Source\GordianEngine\Delegates\DelegateBase.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />
