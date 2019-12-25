@@ -12,6 +12,32 @@ namespace Gordian
 
 
 //////////////////////////////////////////////////////////////
+// Type Info for void
+//////////////////////////////////////////////////////////////
+
+class OType_Void : public OType
+{
+public:
+	OType_Void() : OType("void", 0) {}
+
+protected:
+	virtual void Dump_Internal(const void* Data, int) const override
+	{
+		std::clog << "void";
+	}
+
+};
+
+
+template<>
+OType* GetPrimitiveDescriptor<void>()
+{
+	static OType_Void TypeDescription;
+	return &TypeDescription;
+}
+
+
+//////////////////////////////////////////////////////////////
 // Type Info for bools
 //////////////////////////////////////////////////////////////
 

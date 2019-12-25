@@ -221,12 +221,6 @@
     <ClInclude Include="Source\GordianEngine\Reflection\Public\StructMember.h">
       <Filter>Header Files\Gordian\Reflection</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h">
-      <Filter>Header Files\Gordian\Delegates</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h">
-      <Filter>Header Files\Gordian\Delegates</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h">
       <Filter>Header Files\Gordian\Delegates</Filter>
     </ClInclude>
@@ -307,6 +301,12 @@
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Delegates\DelegateBase.h">
       <Filter>Header Files\Gordian\Delegates</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\StructFunction.h">
+      <Filter>Header Files\Gordian\Reflection</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Utility\Public\TypeTraits.h">
+      <Filter>Header Files\Gordian\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

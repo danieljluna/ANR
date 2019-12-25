@@ -51,5 +51,4 @@ void OTestCardSpriteComponent::TestFunction()
 	}
 }
 
-RCLASS_MEMBER_BEGIN(OTestCardSpriteComponent)
-RCLASS_MEMBER_END()
+RCLASS_INITIALIZE_EMPTY(OTestCardSpriteComponent)

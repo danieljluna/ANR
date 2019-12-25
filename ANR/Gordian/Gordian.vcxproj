@@ -189,8 +189,6 @@
     <ClInclude Include="Source\GordianEngine\Debug\Public\TConsoleVariable.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\Delegate.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\DelegateBase.h" />
-    <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h" />
-    <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\ConfigLibrary.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\GlobalObjectLibrary.h" />
@@ -200,6 +198,7 @@
     <ClInclude Include="Source\GordianEngine\Platform\Public\ConsoleFormatting.h" />
     <ClInclude Include="Source\GordianEngine\Platform\Public\Platform.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Reflection.h" />
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\StructFunction.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\StructMember.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\TSubtypeOf.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type.h" />
@@ -207,6 +206,7 @@
     <ClInclude Include="Source\GordianEngine\Reflection\Public\TypeResolver.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type_Struct.h" />
     <ClInclude Include="Source\GordianEngine\Utility\Public\CommonMacros.h" />
+    <ClInclude Include="Source\GordianEngine\Utility\Public\TypeTraits.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\Level.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\World.h" />
     <ClInclude Include="Source\inih\ini.h" />

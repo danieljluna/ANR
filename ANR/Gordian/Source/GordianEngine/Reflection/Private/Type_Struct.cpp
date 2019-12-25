@@ -82,6 +82,7 @@ void OType_Struct::Dump_Internal(const void* Data, int IndentationLevel) const
 	std::clog << Indent << "}"<< std::endl;
 }
 
-RCLASS_MEMBER_BEGIN(OType_Struct)
+RCLASS_INITIALIZE(OType_Struct)
+RCLASS_BEGIN_MEMBER_LIST()
 RCLASS_MEMBER_ADD(ParentClass)
-RCLASS_MEMBER_END()
+RCLASS_END_INIT()

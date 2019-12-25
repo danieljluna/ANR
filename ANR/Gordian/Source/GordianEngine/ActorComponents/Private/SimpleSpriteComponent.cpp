@@ -29,5 +29,4 @@ void OSimpleSpriteComponent::Render(sf::Time BlendTime, sf::RenderTarget& Target
 	Target.draw(_SpriteToRender, States);
 }
 
-RCLASS_MEMBER_BEGIN(OSimpleSpriteComponent)
-RCLASS_MEMBER_END()
+RCLASS_INITIALIZE_EMPTY(OSimpleSpriteComponent)

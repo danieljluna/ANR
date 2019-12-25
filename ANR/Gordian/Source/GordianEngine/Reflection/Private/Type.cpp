@@ -39,5 +39,4 @@ void OType::Dump(const void* Data) const
 	std::clog.flags(PreviousFormat);
 }
 
-RCLASS_MEMBER_BEGIN(OType)
-RCLASS_MEMBER_END()
+RCLASS_INITIALIZE_EMPTY(OType)
