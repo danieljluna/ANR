@@ -151,6 +151,8 @@
     <ClCompile Include="Source\GordianEngine\Debug\Private\LogCategory.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\Logging.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\LogOutputManager.cpp" />
+    <ClCompile Include="Source\GordianEngine\FileIO\Private\IniManager.cpp" />
+    <ClCompile Include="Source\GordianEngine\FileIO\Private\StackableIniReader.cpp" />
     <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\ConfigLibrary.cpp" />
     <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp" />
@@ -190,6 +192,8 @@
     <ClInclude Include="Source\GordianEngine\Delegates\Delegate.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\DelegateBase.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />
+    <ClInclude Include="Source\GordianEngine\FileIO\Public\IniManager.h" />
+    <ClInclude Include="Source\GordianEngine\FileIO\Public\StackableIniReader.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\ConfigLibrary.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\GlobalObjectLibrary.h" />
     <ClInclude Include="Source\GordianEngine\Input\Public\InputKeys.h" />
@@ -213,7 +217,7 @@
     <ClInclude Include="Source\inih\INIReader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\DefaultEngine.ini" />
+    <None Include="Config\Engine.ini" />
     <None Include="Source\GordianEngine\Containers\Private\TPrefixTree.inl" />
     <None Include="Source\GordianEngine\Containers\Private\TOptional.inl" />
     <None Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.inl" />

@@ -9,6 +9,8 @@
 
 #include "GordianEngine/World/Public/World.h"
 
+#include "inih/INIReader.h"
+
 namespace sf
 {
 	class RenderWindow;
@@ -29,12 +31,15 @@ public:
 	~FEngineLoop();
 
     /// Initializes the main loop.
+	/// @param[in] argc Command line argument count
+	/// @param[in] argv Command line argument array
     /// @return An error code where 0 is success and > 0 is a failure.
     sf::Int32 Init(int argc, char** argv);
     /// Advances the main loop once.
     void Tick();
     /// Exits the main loop, clearing any state.
-    void Exit();
+	/// @param[in] bForceImmediate If true, exit is forced immediately
+    void Exit(bool bForceImmediate);
 
     /// If true the loop is currently attempting to terminate
     bool IsRequestingExit() const;

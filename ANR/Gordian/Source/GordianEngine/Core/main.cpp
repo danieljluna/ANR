@@ -20,9 +20,7 @@ void EngineTick()
 
 void EngineExit()
 {
-    GEngineLoop.RequestExit();
-
-    GEngineLoop.Exit();
+    GEngineLoop.Exit(true);
 }
 
 

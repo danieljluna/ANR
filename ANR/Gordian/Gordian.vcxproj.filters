@@ -97,6 +97,9 @@
     <Filter Include="Header Files\Gordian\FileIO">
       <UniqueIdentifier>{056817fa-4a7d-42ad-911d-210664934bb9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Gordian\FileIO">
+      <UniqueIdentifier>{ccab13d7-370d-4800-b786-3e694c363d45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GordianEngine\World\Private\World.cpp">
@@ -170,6 +173,12 @@
     </ClCompile>
     <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.cpp">
       <Filter>Source Files\Gordian\GlobalLibraries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\FileIO\Private\StackableIniReader.cpp">
+      <Filter>Source Files\Gordian\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GordianEngine\FileIO\Private\IniManager.cpp">
+      <Filter>Source Files\Gordian\FileIO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -308,13 +317,16 @@
     <ClInclude Include="Source\GordianEngine\Utility\Public\TypeTraits.h">
       <Filter>Header Files\Gordian\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GordianEngine\FileIO\Public\IniManager.h">
+      <Filter>Header Files\Gordian\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\FileIO\Public\StackableIniReader.h">
+      <Filter>Header Files\Gordian\FileIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\GordianEngine\Input\Private\InputManager.inl">
       <Filter>Source Files\Gordian\Input</Filter>
-    </None>
-    <None Include="Config\DefaultEngine.ini">
-      <Filter>Resource Files</Filter>
     </None>
     <None Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.inl">
       <Filter>Source Files\Gordian\GlobalLibraries</Filter>
@@ -324,6 +336,9 @@
     </None>
     <None Include="Source\GordianEngine\Containers\Private\TPrefixTree.inl">
       <Filter>Source Files\Gordian\Containers</Filter>
+    </None>
+    <None Include="Config\Engine.ini">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
 </Project>

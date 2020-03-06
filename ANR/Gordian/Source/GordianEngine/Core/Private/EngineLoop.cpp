@@ -8,6 +8,8 @@
 #include "GordianEngine/Debug/Public/Asserts.h"
 #include "GordianEngine/Debug/Public/CommandPrompt.h"
 #include "GordianEngine/Debug/Public/Logging.h"
+#include "GordianEngine/FileIO/Public/IniManager.h"
+#include "GordianEngine/FileIO/Public/StackableIniReader.h"
 #include "GordianEngine/Input/Public/InputManager.h"
 #include "GordianEngine/Platform/Public/Platform.h"
 #include "GordianEngine/Platform/Public/ConsoleFormatting.h"
@@ -89,12 +91,10 @@ sf::Int32 FEngineLoop::ParseCommandArgs(int argc, char** argv)
 
 sf::Int32 FEngineLoop::InitializeGameWindow(const char* WindowTitle)
 {
-    // todo: replace this ini proof of concept with more manageable code
-	INIReader reader("../Gordian/Config/DefaultEngine.ini");
-	check(reader.ParseError() == 0);
+	const INIReader& IniReader = IniManager::Get().GetIniCategory("Engine");
 
-	GameWindow = new sf::RenderWindow(sf::VideoMode(reader.GetInteger("Graphics", "WindowWidth", 800), 
-													reader.GetInteger("Graphics", "WindowHeight", 600)),
+	GameWindow = new sf::RenderWindow(sf::VideoMode(IniReader.GetInteger("Graphics", "WindowWidth", 800),
+													IniReader.GetInteger("Graphics", "WindowHeight", 600)),
 									  WindowTitle,
 									  sf::Style::Titlebar | sf::Style::Close);
 
@@ -104,8 +104,8 @@ sf::Int32 FEngineLoop::InitializeGameWindow(const char* WindowTitle)
         return 1;
     }
 
-    GameWindow->setVerticalSyncEnabled(true);
-    GameWindow->setMouseCursorGrabbed(false);
+    GameWindow->setVerticalSyncEnabled(IniReader.GetBoolean("Graphics", "VerticalSync", true));
+    GameWindow->setMouseCursorGrabbed(IniReader.GetBoolean("Graphics", "LockCursorInWindow", false));
 	GameWindow->setView(GameWindow->getDefaultView());
     return 0;
 }
@@ -180,9 +180,15 @@ void FEngineLoop::Render(const sf::Time& BlendTime)
     GameWindow->display();
 }
 
-void FEngineLoop::Exit()
+void FEngineLoop::Exit(bool bForceImmediate)
 {
 	GE_LOG(LogCore, Log, "Exiting Core Loop...");
+
+	if (!bIsRequestingExit && bForceImmediate)
+	{
+		// If we need to request exit, now is the time
+		RequestExit();
+	}
 
 	check(bIsRequestingExit);
 
