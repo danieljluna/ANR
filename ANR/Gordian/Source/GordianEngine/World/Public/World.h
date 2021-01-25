@@ -55,6 +55,9 @@ public:
 	T* SpawnActor(const OType_Struct* ActorType,
 				  const std::string& ActorName = "")
 	{
+		check(ActorType != nullptr);
+		ActorType->EnsureInitialization();
+
 		// todo: this should eventually use pooled objects where possible
 		T* NewActor = FGlobalObjectLibrary::CreateObject<T>(this, ActorType, ActorName);
 

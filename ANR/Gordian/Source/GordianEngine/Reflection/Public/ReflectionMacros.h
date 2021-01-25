@@ -9,7 +9,7 @@
 // Class used to store type descriptor info for structs
 #define __RSTRUCT_TYPE Gordian::OType_Struct
 // Accessor to static non-const type
-#define __RSTRUCT_FN_ACCESSOR _PrivateGetStaticClass
+#define __RSTRUCT_MEMBER_STATIC _StaticType
 // Member function that initializes type descriptor info
 #define __RSTRUCT_FN_INIT _InitializeTypeDescriptor
 
@@ -21,13 +21,13 @@
 private:																				\
 	using Parent = BASE_STRUCT;															\
 	friend struct Gordian::FDefaultTypeResolver;										\
-	static __RSTRUCT_TYPE* __RSTRUCT_FN_ACCESSOR();										\
+	static __RSTRUCT_TYPE __RSTRUCT_MEMBER_STATIC;										\
 	static void __RSTRUCT_FN_INIT(__RSTRUCT_TYPE*);										\
 																						\
 public:																					\
 	static inline const __RSTRUCT_TYPE* GetStaticType()									\
 	{																					\
-		return __RSTRUCT_FN_ACCESSOR();													\
+		return &__RSTRUCT_MEMBER_STATIC;												\
 	}																					\
 
 
@@ -36,12 +36,8 @@ public:																					\
 
 //	Starts a Reflection Chunk. Should be followed by *_END()
 #define RSTRUCT_MEMBER_BEGIN(STRUCT)										\
-	__RSTRUCT_TYPE* STRUCT::__RSTRUCT_FN_ACCESSOR()							\
-	{																		\
-		static __RCLASS_TYPE StaticType;									\
-		StaticType.Initialize(__RSTRUCT_FN_INIT);							\
-		return &StaticType;													\
-	}																		\
+	__RSTRUCT_TYPE __RSTRUCT_MEMBER_STATIC{STRUCT::__RSTRUCT_FN_INIT};		\
+																			\
 	void STRUCT::__RSTRUCT_FN_INIT(__RSTRUCT_TYPE* TypeDesc)				\
 	{																		\
 		using T = STRUCT;													\
@@ -73,7 +69,7 @@ public:																					\
 // Class used to store type descriptor info for RCLASSes
 #define __RCLASS_TYPE __RSTRUCT_TYPE
 // Accessor to static non-const type
-#define __RCLASS_FN_ACCESSOR __RSTRUCT_FN_ACCESSOR
+#define __RCLASS_MEMBER_STATIC __RSTRUCT_MEMBER_STATIC
 // Member function that initializes type descriptor info
 #define __RCLASS_FN_INIT __RSTRUCT_FN_INIT
 
@@ -85,13 +81,13 @@ public:																					\
 private:																				\
 	using Parent = BASE_CLASS;															\
 	friend struct Gordian::FDefaultTypeResolver;										\
-	static __RCLASS_TYPE* __RCLASS_FN_ACCESSOR();										\
+	static __RCLASS_TYPE __RCLASS_MEMBER_STATIC;										\
 	static void __RCLASS_FN_INIT(__RCLASS_TYPE*);										\
 																						\
 public:																					\
 	static inline const __RCLASS_TYPE* GetStaticType()									\
 	{																					\
-		return __RCLASS_FN_ACCESSOR();													\
+		return &__RCLASS_MEMBER_STATIC;													\
 	}																					\
 
 
@@ -99,20 +95,16 @@ public:																					\
 //	They should be placed in a compiled source file
 
 //	Starts a Reflection Chunk. Should be followed by *_END()
-#define RCLASS_MEMBER_BEGIN(CLASS)											\
-	__RCLASS_TYPE* CLASS::__RCLASS_FN_ACCESSOR()							\
-	{																		\
-		static __RCLASS_TYPE StaticType;									\
-		StaticType.Initialize(__RCLASS_FN_INIT);							\
-		return &StaticType;													\
-	}																		\
-	void CLASS::__RCLASS_FN_INIT(__RCLASS_TYPE* TypeDesc)					\
-	{																		\
-		using T = CLASS;													\
-		TypeDesc->SetName(#CLASS);											\
-		TypeDesc->SetSize(sizeof(T));										\
-		TypeDesc->SetParentClass<T::Parent>((T::Parent*) nullptr);			\
-		TypeDesc->DeclareMembers({											\
+#define RCLASS_MEMBER_BEGIN(CLASS)												\
+	__RCLASS_TYPE CLASS::__RCLASS_MEMBER_STATIC{CLASS::__RCLASS_FN_INIT};		\
+																				\
+	void CLASS::__RCLASS_FN_INIT(__RCLASS_TYPE* TypeDesc)						\
+	{																			\
+		using T = CLASS;														\
+		TypeDesc->SetName(#CLASS);												\
+		TypeDesc->SetSize(sizeof(T));											\
+		TypeDesc->SetParentClass<T::Parent>((T::Parent*) nullptr);				\
+		TypeDesc->DeclareMembers({												\
 
 
 // Used to define a member value in a struct. 

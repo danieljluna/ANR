@@ -13,6 +13,7 @@ OWorld::OWorld(const std::string& InName, OObject* InOwningObject)
 	, _CurrentlyLoadedLevel(nullptr)
 	, TestActorSpecification(nullptr)
 {
+	GetStaticType()->EnsureInitialization();
 }
 
 const OWorld* OWorld::GetWorld() const
@@ -32,6 +33,8 @@ void OWorld::BeginPlay()
 	{
 		SpawnActor<AActor>(TestActorSpecification, "TestActor");
 	}
+
+	SpawnActor<AActor>(AActor::GetStaticType(), "TestActor");
 
 	for (AActor* Actor : _Actors)
 	{

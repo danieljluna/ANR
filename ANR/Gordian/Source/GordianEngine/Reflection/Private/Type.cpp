@@ -13,9 +13,9 @@ namespace
 
 OType::OType(const std::string& Name, size_t Size) 
 	: OObject(Name, nullptr)
+	, bIsStructType(false)
 	, Size{ Size }
 {
-	bIsStructType = false;
 }
 
 OType::~OType()

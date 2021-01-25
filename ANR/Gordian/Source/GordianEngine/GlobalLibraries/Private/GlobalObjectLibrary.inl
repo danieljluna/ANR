@@ -32,6 +32,8 @@ T* Gordian::FGlobalObjectLibrary::CreateObject(Gordian::OObject* OwningObject,
 												const std::string& ObjectName)
 {
 	// todo: create object based on ObjectType not T
+	check(ObjectType != nullptr);
+	ObjectType->EnsureInitialization();
 
 	// todo: this should eventually use pooled objects where possible
 	Gordian::OObject* NewObject = new T(ObjectName != "" ? ObjectName : ObjectType->GetName(),
