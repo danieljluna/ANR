@@ -74,7 +74,8 @@ void AActor::Render(sf::Time BlendTime, sf::RenderTarget& Target, sf::RenderStat
 }
 
 
-RCLASS_MEMBER_BEGIN(AActor)
+RCLASS_INITIALIZE(AActor)
+RCLASS_BEGIN_MEMBER_LIST()
 RCLASS_MEMBER_ADD(_bIsTicking)
 RCLASS_MEMBER_ADD(_ActorComponents)
-RCLASS_MEMBER_END()
+RCLASS_END_INIT()

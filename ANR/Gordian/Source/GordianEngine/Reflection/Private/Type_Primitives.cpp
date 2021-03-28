@@ -12,6 +12,32 @@ namespace Gordian
 
 
 //////////////////////////////////////////////////////////////
+// Type Info for void
+//////////////////////////////////////////////////////////////
+
+class OType_Void : public OType
+{
+public:
+	OType_Void() : OType("void", 0) {}
+
+protected:
+	virtual void Dump_Internal(const void* Data, size_t MaxDumpDepth, int, bool) const override
+	{
+		std::clog << "void";
+	}
+
+};
+
+
+template<>
+OType* GetPrimitiveDescriptor<void>()
+{
+	static OType_Void TypeDescription;
+	return &TypeDescription;
+}
+
+
+//////////////////////////////////////////////////////////////
 // Type Info for bools
 //////////////////////////////////////////////////////////////
 
@@ -21,7 +47,7 @@ public:
 	OType_Bool() : OType("bool", sizeof(bool)) {}
 
 protected:
-	virtual void Dump_Internal(const void* Data, int) const override
+	virtual void Dump_Internal(const void* Data, size_t MaxDumpDepth, int, bool) const override
 	{
 		std::clog << std::boolalpha << "bool {" << *(static_cast<const bool*>(Data)) << "}";
 	}
@@ -47,7 +73,7 @@ public:
 	OType_Int() : OType{"int", sizeof(int)} {}
 
 protected:
-	virtual void Dump_Internal(const void* Data, int) const override
+	virtual void Dump_Internal(const void* Data, size_t MaxDumpDepth, int, bool) const override
 	{
 		std::clog << std::dec << std::noshowbase << "int {" << *(static_cast<const int*>(Data)) << "}";
 	}
@@ -71,7 +97,7 @@ public:
 	OType_StdString() : OType{ "string", sizeof(std::string) } {}
 
 protected:
-	virtual void Dump_Internal(const void* Data, int) const override
+	virtual void Dump_Internal(const void* Data, size_t MaxDumpDepth, int, bool) const override
 	{
 		std::clog << "string {\"" << *(static_cast<const std::string*>(Data)) << "\"}";
 	}

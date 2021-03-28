@@ -33,6 +33,7 @@ bool OLevel::LoadLevel(const std::string& InFilePath)
 	return true;
 }
 
-RCLASS_MEMBER_BEGIN(OLevel)
+RCLASS_INITIALIZE(OLevel)
+RCLASS_BEGIN_MEMBER_LIST()
 RCLASS_MEMBER_ADD(_Specifications)
-RCLASS_MEMBER_END()
+RCLASS_END_INIT()

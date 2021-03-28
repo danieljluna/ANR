@@ -75,14 +75,20 @@ bool OType_Struct::IsChildClassOf(const OType_Struct* PossibleParent) const
 	return false;
 }
 
-void OType_Struct::Dump_Internal(const void* Data, int IndentationLevel) const
+void OType_Struct::Dump_Internal(const void* Data, 
+								 size_t MaxDumpDepth, 
+								 int IndentationLevel, 
+								 bool bShouldPrintName) const
 {
 	std::string Indent(IndentationLevel, ' ');
-	std::clog << Indent << GetName();
 
-	if (ParentClass != nullptr)
+	if (bShouldPrintName)
 	{
-		std::clog << " : " << ParentClass->GetName();
+		std::clog << Indent << GetName();
+		if (ParentClass != nullptr)
+		{
+			std::clog << " : " << ParentClass->GetName();
+		}
 	}
 
 	std::clog << " {" << std::hex << "0x" << Data << "}";
@@ -96,13 +102,14 @@ void OType_Struct::Dump_Internal(const void* Data, int IndentationLevel) const
 	{
 		std::clog << MemberIndent << MemberInfo.Name << " = ";
 		void* MemberData = (char*)(Data) + MemberInfo.Offset;
-		MemberInfo.Type->Dump_Internal(MemberData, IndentationLevel + k_IndentationWidth);
+		MemberInfo.Type->Dump_Internal(MemberData, MaxDumpDepth, IndentationLevel + k_IndentationWidth, true);
 		std::clog << std::endl;
 	}
 
-	std::clog << Indent << "}"<< std::endl;
+	std::clog << Indent << "}";
 }
 
-RCLASS_MEMBER_BEGIN(OType_Struct)
+RCLASS_INITIALIZE(OType_Struct)
+RCLASS_BEGIN_MEMBER_LIST()
 RCLASS_MEMBER_ADD(ParentClass)
-RCLASS_MEMBER_END()
+RCLASS_END_INIT()

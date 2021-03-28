@@ -2,6 +2,8 @@
 
 #include "../Public/CommandPrompt.h"
 
+#include <filesystem>
+
 #include "SFML/Graphics/RenderTarget.hpp"
 
 #include "GordianEngine/Debug/Public/Asserts.h"
@@ -15,7 +17,7 @@ namespace
 {
 	// Console settings
 	static const char* k_PreviousCommandsFilepath = "Saved/PreviousCommands.txt";
-	static const char* k_CommandPromptFontFilepath = "Resources/Default/CommandPrompt.ttf";
+	static const char* k_CommandPromptFontFilepath = "/Netrunner/Resources/Default/CommandPrompt.ttf";
 	static const unsigned int k_CommandPromptFontSize = 16;
 	static const sf::Uint16 k_ConsoleBackgroundAlpha = 127;
 
@@ -39,7 +41,9 @@ FCommandPrompt::FCommandPrompt()
 		PreviousCommandsFile = nullptr;
 	}
 
-	if (!PromptFont.loadFromFile(k_CommandPromptFontFilepath))
+	std::experimental::filesystem::path CurrentPath = std::experimental::filesystem::current_path().parent_path();
+	std::string FullFontPath =  CurrentPath.generic_string().append(k_CommandPromptFontFilepath);
+	if (!PromptFont.loadFromFile(FullFontPath))
 	{
 		GE_LOG(LogFileIO, Fatal, "CommandPrompt could not find it's font %s to load!", k_CommandPromptFontFilepath)
 	}

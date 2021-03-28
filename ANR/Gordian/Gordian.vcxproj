@@ -76,10 +76,21 @@
     <Import Project="GenerateStaticLibrary.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)\Gordian\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -90,7 +101,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GE_DEBUG;WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -99,7 +110,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -115,7 +126,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -141,6 +152,7 @@
     <ClCompile Include="Source\GordianEngine\Debug\Private\Logging.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\LogOutputManager.cpp" />
     <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\ConfigLibrary.cpp" />
+    <ClCompile Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputKeys.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputManager.cpp" />
     <ClCompile Include="Source\GordianEngine\Input\Private\InputBindingTypes.cpp" />
@@ -175,8 +187,8 @@
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogOutputManager.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogVerbosity.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\TConsoleVariable.h" />
-    <ClInclude Include="Source\GordianEngine\Delegates\FastDelegate.h" />
-    <ClInclude Include="Source\GordianEngine\Delegates\FastDelegateBind.h" />
+    <ClInclude Include="Source\GordianEngine\Delegates\Delegate.h" />
+    <ClInclude Include="Source\GordianEngine\Delegates\DelegateBase.h" />
     <ClInclude Include="Source\GordianEngine\Delegates\MulticastDelegate.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\ConfigLibrary.h" />
     <ClInclude Include="Source\GordianEngine\GlobalLibraries\Public\GlobalObjectLibrary.h" />
@@ -186,6 +198,7 @@
     <ClInclude Include="Source\GordianEngine\Platform\Public\ConsoleFormatting.h" />
     <ClInclude Include="Source\GordianEngine\Platform\Public\Platform.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Reflection.h" />
+    <ClInclude Include="Source\GordianEngine\Reflection\Public\StructFunction.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\StructMember.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\TSubtypeOf.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type.h" />
@@ -193,6 +206,7 @@
     <ClInclude Include="Source\GordianEngine\Reflection\Public\TypeResolver.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type_Struct.h" />
     <ClInclude Include="Source\GordianEngine\Utility\Public\CommonMacros.h" />
+    <ClInclude Include="Source\GordianEngine\Utility\Public\TypeTraits.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\Level.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\World.h" />
     <ClInclude Include="Source\inih\ini.h" />

@@ -8,8 +8,10 @@
 
 // Class used to store type descriptor info for structs
 #define __RSTRUCT_TYPE Gordian::OType_Struct
-// Accessor to static non-const type
+// Static type member name
 #define __RSTRUCT_MEMBER_STATIC _StaticType
+// Static member accessor
+#define __RSTRUCT_FN_ACCESSOR GetStaticType
 // Member function that initializes type descriptor info
 #define __RSTRUCT_FN_INIT _InitializeTypeDescriptor
 
@@ -25,7 +27,7 @@ private:																				\
 	static void __RSTRUCT_FN_INIT(__RSTRUCT_TYPE*);										\
 																						\
 public:																					\
-	static inline const __RSTRUCT_TYPE* GetStaticType()									\
+	static inline const __RSTRUCT_TYPE* __RSTRUCT_FN_ACCESSOR()							\
 	{																					\
 		return &__RSTRUCT_MEMBER_STATIC;												\
 	}																					\
@@ -68,8 +70,10 @@ public:																					\
 
 // Class used to store type descriptor info for RCLASSes
 #define __RCLASS_TYPE __RSTRUCT_TYPE
-// Accessor to static non-const type
+// Static member name
 #define __RCLASS_MEMBER_STATIC __RSTRUCT_MEMBER_STATIC
+// Static member accessor
+#define __RCLASS_FN_ACCESSOR __RSTRUCT_FN_ACCESSOR
 // Member function that initializes type descriptor info
 #define __RCLASS_FN_INIT __RSTRUCT_FN_INIT
 
@@ -85,7 +89,7 @@ private:																				\
 	static void __RCLASS_FN_INIT(__RCLASS_TYPE*);										\
 																						\
 public:																					\
-	static inline const __RCLASS_TYPE* GetStaticType()									\
+	static inline const __RCLASS_TYPE* __RCLASS_FN_ACCESSOR()							\
 	{																					\
 		return &__RCLASS_MEMBER_STATIC;													\
 	}																					\
@@ -94,27 +98,47 @@ public:																					\
 // Reflection chunks define the reflection values. 
 //	They should be placed in a compiled source file
 
-//	Starts a Reflection Chunk. Should be followed by *_END()
-#define RCLASS_MEMBER_BEGIN(CLASS)												\
-	__RCLASS_TYPE CLASS::__RCLASS_MEMBER_STATIC{CLASS::__RCLASS_FN_INIT};		\
-																				\
-	void CLASS::__RCLASS_FN_INIT(__RCLASS_TYPE* TypeDesc)						\
-	{																			\
-		using T = CLASS;														\
-		TypeDesc->SetName(#CLASS);												\
-		TypeDesc->SetSize(sizeof(T));											\
-		TypeDesc->SetParentClass<T::Parent>((T::Parent*) nullptr);				\
-		TypeDesc->DeclareMembers({												\
+//	Starts a Reflection Member Chunk.
+#define RCLASS_INITIALIZE(CLASS)											\
+	__RCLASS_TYPE CLASS::__RCLASS_MEMBER_STATIC(CLASS::__RCLASS_FN_INIT);	\
+	void CLASS::__RCLASS_FN_INIT(__RCLASS_TYPE* TypeDesc)					\
+	{																		\
+		using T = CLASS;													\
+		TypeDesc->SetName(#CLASS);											\
+		TypeDesc->SetSize(sizeof(T));										\
+		TypeDesc->SetParentClass<T::Parent>((T::Parent*) nullptr);			\
+
+//	Used to define a reflection chunk that contains no new members or functions
+#define RCLASS_INITIALIZE_EMPTY(CLASS)										\
+	RCLASS_INITIALIZE(CLASS)												\
+	}
+
+// Starts a member list. Finish with RCLASS_END_LIST
+#define RCLASS_BEGIN_MEMBER_LIST()											\
+		TypeDesc->DeclareMembers({											\
 
 
 // Used to define a member value in a struct. 
-//	Use multiple times as the meat of a Reflection Chunk.
-#define RCLASS_MEMBER_ADD(MEMBER)									\
+//	Use multiple times inside a MEMBER_LIST.
+#define RCLASS_MEMBER_ADD(MEMBER)											\
 		{#MEMBER, offsetof(T, MEMBER), Gordian::FTypeResolver<decltype(T::MEMBER)>::Get()},		\
 
+// Starts a function list. Finish with RCLASS_END_LIST
+#define RCLASS_BEGIN_FUNCTION_LIST()										\
+		TypeDesc->DeclareFunctions({										\
 
-// Ends a Reflection Chunk
-#define RCLASS_MEMBER_END()		\
+// Used to define a function in a struct. 
+//	Use multiple times inside a FUNCTION_LIST.
+// ONLY SUPPORTS NO PARAMS
+#define RCLASS_FUNCTION_ADD(FUNCTION)										\
+		{#FUNCTION, &T::FUNCTION, Gordian::FFunctionResolver<decltype(T::FUNCTION())>::Get(), {}, EFunctionType::Static},					\
+
+
+// Ends a Reflection List without ending the entire chunk
+#define RCLASS_END_LIST()		\
+		});
+
+// Ends Reflection init, ending the existing list
+#define RCLASS_END_INIT()		\
 		});						\
 	}
-

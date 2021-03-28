@@ -5,6 +5,8 @@
 #include <cassert>
 #include <list>
 #include <map>
+#include <memory>
+#include <set>
 #include <string>
 
 #include <SFML/Window/Event.hpp>
@@ -18,7 +20,7 @@ namespace Gordian
 {
 
 
-using DigitalDelegate = MulticastDelegate0<void>;
+using DigitalDelegate = multicast_delegate<void(void)>;
 
 // Translates raw SFML input events to Commands that are then broadcasted via delegates
 class FInputManager
@@ -32,23 +34,21 @@ public:
 	void HandleWindowEvent(sf::Event& EventData);
 
 	// Bind to a digital command using a const member function
-	template<class X, class Y>
+	template <class T, void(T::*TMethod)() const>
 	inline bool BindToDigitalCommand(const FCommand& CommandToBind,
 									 const EDigitalEventType& EventType,
-									 const Y* ObjectToBindTo,
-									 void (X::*FunctionToBind)() const);
+									 const T* ObjectToBindTo);
 
 	// Bind to a digital command using a non-const member function
-	template<class X, class Y>
+	template <class T, void(T::*TMethod)()>
 	inline bool BindToDigitalCommand(const FCommand& CommandToBind,
 									 const EDigitalEventType& EventType,
-									 Y* ObjectToBindTo,
-									 void (X::*FunctionToBind)());
+									 T* ObjectToBindTo);
 
 	// Bind to a digital command using a non-member function
+	template <void(*TMethod)()>
 	inline bool BindToDigitalCommand(const FCommand& CommandToBind,
-									 const EDigitalEventType& EventType,
-									 void (*Function_To_Bind)());
+									 const EDigitalEventType& EventType);
 
 private:
 
@@ -75,12 +75,16 @@ private:
 
 	struct FDigitalBroadcaster
 	{
+		// Defined so an empty initializer list can be used to emplace this into maps
+		FDigitalBroadcaster(int) {}
+
 		DigitalDelegate OnPressed;
 		DigitalDelegate OnReleased;
 	};
 
 	// Maps commands to the delegates they fire.
-	std::map<FCommand, FDigitalBroadcaster> _DigitalCommandDelegates;
+	std::map<FCommand, std::shared_ptr<FDigitalBroadcaster>> _DigitalCommandDelegates;
+	std::map<FCommand, std::shared_ptr<int>> _A;
 
 	bool _bHasGeneratedDelegateMap;
 };

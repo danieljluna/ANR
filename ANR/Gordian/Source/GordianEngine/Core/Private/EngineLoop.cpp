@@ -34,11 +34,18 @@ FEngineLoop::~FEngineLoop()
 	check(GameWindow == nullptr && InputManager == nullptr && GameWorld == nullptr);
 }
 
-sf::Int32 FEngineLoop::Init()
+sf::Int32 FEngineLoop::Init(int argc, char** argv)
 {
 	GE_LOG(LogCore, Log, "Initializing Core Loop...");
 
 	sf::Int32 ErrorCode = 0;
+
+	ErrorCode = ParseCommandArgs(argc, argv);
+	if (ErrorCode != 0)
+	{
+		GE_LOG(LogCore, Error, "Failed to parse command line arguments!");
+		return ErrorCode;
+	}
 
 	// Ensure console formatting has been initialized
 	ErrorCode = FConsoleFormatting::InitializeFormatting();
@@ -48,14 +55,19 @@ sf::Int32 FEngineLoop::Init()
 		return ErrorCode;
 	}
 
-    ErrorCode = InitializeGameWindow();
+	char FilenameFromPath[50];
+	_splitpath_s(argv[0], NULL, 0, NULL, 0, FilenameFromPath, 50, NULL, 0);
+
+    ErrorCode = InitializeGameWindow(FilenameFromPath);
     if (ErrorCode != 0)
     {
         return ErrorCode;
     }
 
+	// Initialize classes
+
 	InputManager = new FInputManager();
-	GameWorld = new OWorld("GameWorld", nullptr);
+	GameWorld = FGlobalObjectLibrary::CreateObject<OWorld>(nullptr, OWorld::GetStaticType(), "GameWorld");
     bIsRequestingExit = false;
     TickDurationClock.restart();
 
@@ -63,7 +75,19 @@ sf::Int32 FEngineLoop::Init()
     return ErrorCode;
 }
 
-sf::Int32 FEngineLoop::InitializeGameWindow()
+sf::Int32 FEngineLoop::ParseCommandArgs(int argc, char** argv)
+{
+	check(argc > 0);
+	for (int i = 1; i < argc; ++i)
+	{
+		// This should become data driven
+		return LoadProject(argv[i]);
+	}
+
+	return 0;
+}
+
+sf::Int32 FEngineLoop::InitializeGameWindow(const char* WindowTitle)
 {
     // todo: replace this ini proof of concept with more manageable code
 	INIReader reader("../Gordian/Config/DefaultEngine.ini");
@@ -71,8 +95,9 @@ sf::Int32 FEngineLoop::InitializeGameWindow()
 
 	GameWindow = new sf::RenderWindow(sf::VideoMode(reader.GetInteger("Graphics", "WindowWidth", 800), 
 													reader.GetInteger("Graphics", "WindowHeight", 600)),
-									  "Title", 
+									  WindowTitle,
 									  sf::Style::Titlebar | sf::Style::Close);
+
     if (!GameWindow->isOpen())
     {
 		GE_LOG(LogCore, Error, "Failed to open a render window!");
@@ -192,6 +217,12 @@ void FEngineLoop::RequestExit()
 {
 	GE_LOG(LogCore, Log, "A request was made to exit the core loop.");
     bIsRequestingExit = true;
+}
+
+bool FEngineLoop::LoadProject(const char* InProjectPath)
+{
+	// todo: initialize loading project classes / defaults
+	return false;
 }
 
 const sf::Vector2u& FEngineLoop::GetWindowSize() const

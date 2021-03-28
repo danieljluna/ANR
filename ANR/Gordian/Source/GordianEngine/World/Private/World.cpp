@@ -41,7 +41,7 @@ void OWorld::BeginPlay()
 		Actor->BeginPlay();
 	}
 
-	OWorld::GetStaticType()->Dump(this);
+	OWorld::GetStaticType()->Dump(this, 3);
 	check(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
 }
 
@@ -87,6 +87,10 @@ bool OWorld::RegisterActorWithWorld(AActor* ActorToRegister)
 	return true;
 }
 
-RCLASS_MEMBER_BEGIN(OWorld)
+RCLASS_INITIALIZE(OWorld)
+RCLASS_BEGIN_MEMBER_LIST()
 RCLASS_MEMBER_ADD(_Actors)
-RCLASS_MEMBER_END()
+RCLASS_END_INIT()
+//RCLASS_BEGIN_FUNCTION_LIST()
+//RCLASS_FUNCTION_ADD(Test)
+//RCLASS_END_INIT()

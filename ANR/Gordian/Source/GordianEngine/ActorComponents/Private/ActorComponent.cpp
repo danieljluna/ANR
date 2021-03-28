@@ -43,5 +43,4 @@ AActor* OActorComponent::GetOwningActor() const
 	return nullptr;
 }
 
-RCLASS_MEMBER_BEGIN(OActorComponent)
-RCLASS_MEMBER_END()
+RCLASS_INITIALIZE_EMPTY(OActorComponent)

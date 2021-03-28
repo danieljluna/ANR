@@ -11,6 +11,7 @@ using namespace Gordian;
 OObject::OObject(const std::string& InName, OObject* InOwningObject)
 	: _Name(InName)
 	, _OwningObject(InOwningObject)
+	, _PrivateType(nullptr)
 {
 	ObjectFlags.reset();
 }
@@ -68,8 +69,9 @@ bool OObject::IsSubclassOf(const OType_Struct* ClassToCheckAgainst) const
 	return _PrivateType->IsChildClassOf(ClassToCheckAgainst);
 }
 
-RCLASS_MEMBER_BEGIN(OObject)
+RCLASS_INITIALIZE(OObject)
+RCLASS_BEGIN_MEMBER_LIST()
 RCLASS_MEMBER_ADD(_OwningObject)
 RCLASS_MEMBER_ADD(_Name)
-RCLASS_MEMBER_END()
+RCLASS_END_INIT()
 

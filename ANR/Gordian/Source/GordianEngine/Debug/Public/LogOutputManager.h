@@ -50,7 +50,10 @@ private:
 	// output to the console.
 	void vFullLogf(const char* LogLocation, const char* LogFormat, va_list Args) const;
 
-	// Fetches the current time as a string
+	// Fetches the current time as a file name for the log
+	void GenerateLogFilename(char* OutString) const;
+
+	// Fetches the current time as a string for log lines
 	void FetchLogTimestamp(char* OutString) const;
 
 	FILE* LogOutputFile;

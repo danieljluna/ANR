@@ -25,9 +25,9 @@ struct FDefaultTypeResolver
 	template<typename T>
 	struct IsReflected
 	{
-		enum 
-		{ 
-			value = (sizeof(func<T>(nullptr)) == sizeof(char)) 
+		enum
+		{
+			value = (sizeof(func<T>(nullptr)) == sizeof(char))
 		};
 	};
 

@@ -262,7 +262,7 @@ FScopedConsoleFormat::~FScopedConsoleFormat()
 	check(bHasInitializedFormatting);
 
 	//const char* EnsureColor = "\x1b[31m";
-	char* ColorFormatString;
+	//char* ColorFormatString;
 }
 
 /*static*/ int FConsoleFormatting::GetFormatString(char (&OutBuffer)[16], 

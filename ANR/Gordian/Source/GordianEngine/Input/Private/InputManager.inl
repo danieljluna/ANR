@@ -1,21 +1,22 @@
 
-template<class X, class Y>
+template <class T, void(T::*TMethod)() const>
 bool Gordian::FInputManager::BindToDigitalCommand(const FCommand& CommandToBind,
 												  const EDigitalEventType& EventType,
-												  const Y* ObjectToBindTo,
-												  void(X::*Function_To_Bind)() const)
+												  const T* ObjectToBindTo)
 {
 	const std::map<FCommand, FDigitalBroadcaster>::iterator MatchingCommandPair = _DigitalCommandDelegates.find(CommandToBind);
 	if (MatchingCommandPair != _DigitalCommandDelegates.cend())
 	{
+		delegate<void()> ConstDelegate = delegate<void()>::create<T, TMethod>(ObjectToBindTo);
+
 		switch (EventType)
 		{
 			case EDigitalEventType::Pressed:
-				MatchingCommandPair->second.OnPressed.Bind(ObjectToBindTo, Function_To_Bind);
+				MatchingCommandPair->second.OnPressed += ConstDelegate;
 				return true;
 				break;
 			case EDigitalEventType::Released:
-				MatchingCommandPair->second.OnReleased.Bind(ObjectToBindTo, Function_To_Bind);
+				MatchingCommandPair->second.OnReleased += ConstDelegate;
 				return true;
 				break;
 			default:
@@ -27,23 +28,24 @@ bool Gordian::FInputManager::BindToDigitalCommand(const FCommand& CommandToBind,
 	return false;
 }
 
-template<class X, class Y>
+template <class T, void(T::*TMethod)()>
 bool Gordian::FInputManager::BindToDigitalCommand(const FCommand& CommandToBind,
 												  const EDigitalEventType& EventType,
-												  Y* ObjectToBindTo,
-												  void(X::*Function_To_Bind)())
+												  T* ObjectToBindTo)
 {
-	const std::map<FCommand, FDigitalBroadcaster>::iterator MatchingCommandPair = _DigitalCommandDelegates.find(CommandToBind);
+	const std::map<FCommand, std::shared_ptr<FDigitalBroadcaster>>::iterator MatchingCommandPair = _DigitalCommandDelegates.find(CommandToBind);
 	if (MatchingCommandPair != _DigitalCommandDelegates.cend())
 	{
+		delegate<void()> Delegate = delegate<void()>::create<T, TMethod>(ObjectToBindTo);
+		check(MatchingCommandPair->second != nullptr);
 		switch (EventType)
 		{
 			case EDigitalEventType::Pressed:
-				MatchingCommandPair->second.OnPressed.Bind(ObjectToBindTo, Function_To_Bind);
+				MatchingCommandPair->second->OnPressed += Delegate;
 				return true;
 				break;
 			case EDigitalEventType::Released:
-				MatchingCommandPair->second.OnReleased.Bind(ObjectToBindTo, Function_To_Bind);
+				MatchingCommandPair->second->OnReleased += Delegate;
 				return true;
 				break;
 			default:
@@ -55,21 +57,23 @@ bool Gordian::FInputManager::BindToDigitalCommand(const FCommand& CommandToBind,
 	return false;
 }
 
+template <void(*TMethod)()>
 bool Gordian::FInputManager::BindToDigitalCommand(const FCommand& CommandToBind,
-												  const EDigitalEventType& EventType,
-												  void(*Function_To_Bind)())
+												  const EDigitalEventType& EventType)
 {
 	const std::map<FCommand, FDigitalBroadcaster>::iterator MatchingCommandPair = _DigitalCommandDelegates.find(CommandToBind);
 	if (MatchingCommandPair != _DigitalCommandDelegates.cend())
 	{
+		delegate<void()> StaticDelegate = delegate<void()>::create<TMethod>();
+
 		switch (EventType)
 		{
 			case EDigitalEventType::Pressed:
-				MatchingCommandPair->second.OnPressed.Bind(Function_To_Bind);
+				MatchingCommandPair->second.OnPressed += StaticDelegate;
 				return true;
 				break;
 			case EDigitalEventType::Released:
-				MatchingCommandPair->second.OnReleased.Bind(Function_To_Bind);
+				MatchingCommandPair->second.OnReleased += StaticDelegate;
 				return true;
 				break;
 			default:

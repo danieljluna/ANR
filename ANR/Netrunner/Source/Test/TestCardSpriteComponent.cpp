@@ -25,7 +25,7 @@ void OTestCardSpriteComponent::Initialize(AActor* ActorInitializingFrom)
 	_SpriteToRender.setTexture(_TextureToRender);
 	sf::IntRect DefaultCardRect(0, 0, 300, 419);
 	_SpriteToRender.setTextureRect(DefaultCardRect);
-	FInputManager::Get()->BindToDigitalCommand("TestCommand", EDigitalEventType::Pressed, this, &OTestCardSpriteComponent::TestFunction);
+	FInputManager::Get()->BindToDigitalCommand<OTestCardSpriteComponent, &OTestCardSpriteComponent::TestFunction>("TestCommand", EDigitalEventType::Pressed, this);
 }
 
 void OTestCardSpriteComponent::TestFunction()
@@ -51,5 +51,4 @@ void OTestCardSpriteComponent::TestFunction()
 	}
 }
 
-RCLASS_MEMBER_BEGIN(OTestCardSpriteComponent)
-RCLASS_MEMBER_END()
+RCLASS_INITIALIZE_EMPTY(OTestCardSpriteComponent)

@@ -1,216 +1,121 @@
-// Gordian by Daniel Luna (2019)
+/*
+
+	Copyright (C) 2017 by Sergey A Kryukov: derived work
+	http://www.SAKryukov.org
+	http://www.codeproject.com/Members/SAKryukov
+
+	Based on original work by Sergey Ryazanov:
+	"The Impossibly Fast C++ Delegates", 18 Jul 2005
+	https://www.codeproject.com/articles/11015/the-impossibly-fast-c-delegates
+
+	MIT license:
+	http://en.wikipedia.org/wiki/MIT_License
+
+	Original publication: https://www.codeproject.com/Articles/1170503/The-Impossibly-Fast-Cplusplus-Delegates-Fixed
+
+	Minor changes made by Daniel Luna for Gordian
+
+*/
 
 #pragma once
+#include "Delegate.h"
+#include <list>
+#include <functional>
 
-#include "FastDelegate.h"
+namespace Gordian {
 
-#include <set>
+	template<typename RET, typename ...PARAMS>
+	class multicast_delegate<RET(PARAMS...)> final : private delegate_base<RET(PARAMS...)> {
+	public:
 
-namespace Gordian
-{
+		multicast_delegate() = default;
+		~multicast_delegate() {
+			for (auto& element : invocationList) delete element;
+			invocationList.clear();
+		} //~multicast_delegate
 
+		bool isNull() const { return invocationList.size() < 1; }
+		bool operator ==(void* ptr) const {
+			return (ptr == nullptr) && this->isNull();
+		} //operator ==
+		bool operator !=(void* ptr) const {
+			return (ptr != nullptr) || (!this->isNull());
+		} //operator !=
 
-// A Broadcaster allows multiple functions from all walks of life with matching parameter types 
-//	to bind to this object and then get called whenever the Broadcaster fires.
+		size_t size() const { return invocationList.size(); }
 
-// Zero-Parameter Broadcaster.
-template<class RetType = fastdelegate::detail::DefaultVoid>
-class MulticastDelegate0
-{
-private:
+		multicast_delegate& operator =(const multicast_delegate&) = delete;
+		multicast_delegate(const multicast_delegate&) = delete;
 
-	typedef typename fastdelegate::detail::DefaultVoidToVoid<RetType>::type DesiredRetType;
-	using DelegateType = fastdelegate::FastDelegate0<RetType>;
-
-public:
-
-	// Binds a non-const member function to this delegate for the given object
-	// Be sure to unbind when the object is destroyed!
-	template<class X, class Y>
-	inline void Bind(Y *object_to_bind, DesiredRetType(X::* function_to_bind)())
-	{
-		_DelegateSet.emplace(object_to_bind, function_to_bind);
-	}
-
-	// Binds a const member function to this delegate for the given object
-	// Be sure to unbind when the object is destroyed!
-	template < class X, class Y >
-	inline void Bind(const Y *object_to_bind, DesiredRetType(X::* function_to_bind)() const)
-	{
-		_DelegateSet.emplace(object_to_bind, function_to_bind);
-	}
-
-	// Binds a static function to this delegate
-	inline void Bind(DesiredRetType(*function_to_bind)())
-	{
-		_DelegateSet.emplace(function_to_bind);
-	}
-
-	// Removes the given object's binding of a non-const member function to this delegate (if it exists)
-	template<class X, class Y>
-	inline void Unbind(Y *object_to_unbind, DesiredRetType(X::* function_to_unbind)())
-	{
-		_DelegateSet.erase(DelegateType(object_to_unbind, function_to_unbind));
-	}
-
-	// Removes the given object's binding of a const member function to this delegate (if it exists)
-	template < class X, class Y >
-	inline void Unbind(const Y *object_to_unbind, DesiredRetType(X::* function_to_unbind)() const)
-	{
-		_DelegateSet.erase(DelegateType(object_to_unbind, function_to_unbind));
-	}
-
-	// Removes the binding of the given static function to this delegate (if it exists)
-	inline void Unbind(DesiredRetType(*function_to_unbind)())
-	{
-		_DelegateSet.erase(DelegateType(function_to_unbind));
-	}
-
-	// Checks if the given object has bound the given non-const member function to this delegate
-	template<class X, class Y>
-	inline bool IsBound(Y *object_to_check, DesiredRetType(X::* function_to_check)()) const
-	{
-		return _DelegateSet.contains(DelegateType(object_to_check, function_to_check));
-	}
-
-	// Checks if the given object has bound the given const-member function to this delegate
-	template < class X, class Y >
-	inline bool IsBound(const Y *object_to_check, DesiredRetType(X::* function_to_check)() const) const
-	{
-		return _DelegateSet.contains(DelegateType(object_to_check, function_to_check));
-	}
-
-	// Checks if a static function is bound
-	inline bool IsBound(DesiredRetType(*function_to_check)()) const
-	{
-		return _DelegateSet.contains(DelegateType(function_to_check));
-	}
-
-	// Broadcasts to all bound functions
-	inline void Broadcast()
-	{
-		using ReverseIteratorType = typename std::set<DelegateType>::reverse_iterator;
-		for (ReverseIteratorType it = _DelegateSet.rbegin(); it != _DelegateSet.rend();)
+		multicast_delegate(multicast_delegate&& Other)
 		{
-			const DelegateType& DelegateAtIndex = *it;
-			if (DelegateAtIndex.empty())
-			{
-				_DelegateSet.erase(std::next(it).base());
-			}
-			else
-			{
-				// For now we just ignore return values
-				DelegateAtIndex();
-				++it;
-			}
+			invocationList = Other.invocationList;
+			Other.invocationList.empty();
 		}
-	}
 
-private:
+		bool operator ==(const multicast_delegate& another) const {
+			if (invocationList.size() != another.invocationList.size()) return false;
+			auto anotherIt = another.invocationList.begin();
+			for (auto it = invocationList.begin(); it != invocationList.end(); ++it)
+				if (**it != **anotherIt) return false;
+			return true;
+		} //==
+		bool operator !=(const multicast_delegate& another) const { return !(*this == another); }
 
-	std::set<DelegateType> _DelegateSet;
-};
+		bool operator ==(const delegate<RET(PARAMS...)>& another) const {
+			if (isNull() && another.isNull()) return true;
+			if (another.isNull() || (size() != 1)) return false;
+			return (another.invocation == **invocationList.begin());
+		} //==
+		bool operator !=(const delegate<RET(PARAMS...)>& another) const { return !(*this == another); }
 
+		multicast_delegate& operator +=(const multicast_delegate& another) {
+			for (auto& item : another.invocationList) // clone, not copy; flattens hierarchy:
+				this->invocationList.push_back(new typename delegate_base<RET(PARAMS...)>::InvocationElement(item->object, item->stub));
+			return *this;
+		} //operator +=
 
-// One-Parameter Broadcaster
-template<class Param1, class RetType = fastdelegate::detail::DefaultVoid>
-class MulticastDelegate1
-{
-private:
+		template <typename LAMBDA> // template instantiation is not neededm, will be deduced/inferred:
+		multicast_delegate& operator +=(const LAMBDA & lambda) {
+			delegate<RET(PARAMS...)> d = delegate<RET(PARAMS...)>::template create<LAMBDA>(lambda);
+			return *this += d;
+		} //operator +=
 
-	typedef typename fastdelegate::detail::DefaultVoidToVoid<RetType>::type DesiredRetType;
-	using DelegateType = fastdelegate::FastDelegate1<Param1, RetType>;
+		multicast_delegate& operator +=(const delegate<RET(PARAMS...)>& another) {
+			if (another.isNull()) return *this;
+			this->invocationList.push_back(new typename delegate_base<RET(PARAMS...)>::InvocationElement(another.invocation.object, another.invocation.stub));
+			return *this;
+		} //operator +=
 
-public:
+		// will work even if RET is void, return values are ignored:
+		// (for handling return values, see operator(..., handler))
+		void operator()(PARAMS... arg) const {
+			for (auto& item : invocationList)
+				(*(item->stub))(item->object, arg...);
+		} //operator()
 
-	// Binds a non-const member function to this delegate for the given object
-	// Be sure to unbind when the object is destroyed!
-	template<class X, class Y>
-	inline void Bind(Y *object_to_bind, DesiredRetType(X::* function_to_bind)())
-	{
-		_DelegateSet.emplace(object_to_bind, function_to_bind);
-	}
+		template<typename HANDLER>
+		void operator()(PARAMS... arg, HANDLER handler) const {
+			size_t index = 0;
+			for (auto& item : invocationList) {
+				RET value = (*(item->stub))(item->object, arg...);
+				handler(index, &value);
+				++index;
+			} //loop
+		} //operator()
 
-	// Binds a const member function to this delegate for the given object
-	// Be sure to unbind when the object is destroyed!
-	template < class X, class Y >
-	inline void Bind(const Y *object_to_bind, DesiredRetType(X::* function_to_bind)() const)
-	{
-		_DelegateSet.emplace(object_to_bind, function_to_bind);
-	}
+		void operator()(PARAMS... arg, delegate<void(size_t, RET*)> handler) const {
+			operator()<decltype(handler)>(arg..., handler);
+		} //operator()
+		void operator()(PARAMS... arg, std::function<void(size_t, RET*)> handler) const {
+			operator()<decltype(handler)>(arg..., handler);
+		} //operator()
 
-	// Binds a static function to this delegate
-	inline void Bind(DesiredRetType(*function_to_bind)())
-	{
-		_DelegateSet.emplace(function_to_bind);
-	}
+	private:
 
-	// Removes the given object's binding of a non-const member function to this delegate (if it exists)
-	template<class X, class Y>
-	inline void Unbind(Y *object_to_unbind, DesiredRetType(X::* function_to_unbind)())
-	{
-		_DelegateSet.erase(DelegateType(object_to_unbind, function_to_unbind));
-	}
+		std::list<typename delegate_base<RET(PARAMS...)>::InvocationElement *> invocationList;
 
-	// Removes the given object's binding of a const member function to this delegate (if it exists)
-	template < class X, class Y >
-	inline void Unbind(const Y *object_to_unbind, DesiredRetType(X::* function_to_unbind)() const)
-	{
-		_DelegateSet.erase(DelegateType(object_to_unbind, function_to_unbind));
-	}
+	}; //class multicast_delegate
 
-	// Removes the binding of the given static function to this delegate (if it exists)
-	inline void Unbind(DesiredRetType(*function_to_unbind)())
-	{
-		_DelegateSet.erase(DelegateType(function_to_unbind));
-	}
+} /* namespace SA */
 
-	// Checks if the given object has bound the given non-const member function to this delegate
-	template<class X, class Y>
-	inline bool IsBound(Y *object_to_check, DesiredRetType(X::* function_to_check)()) const
-	{
-		return _DelegateSet.contains(DelegateType(object_to_check, function_to_check));
-	}
-
-	// Checks if the given object has bound the given const-member function to this delegate
-	template < class X, class Y >
-	inline bool IsBound(const Y *object_to_check, DesiredRetType(X::* function_to_check)() const) const
-	{
-		return _DelegateSet.contains(DelegateType(object_to_check, function_to_check));
-	}
-
-	// Checks if a static function is bound
-	inline bool IsBound(DesiredRetType(*function_to_check)()) const
-	{
-		return _DelegateSet.contains(DelegateType(function_to_check));
-	}
-
-	// Broadcasts to all bound functions
-	inline void Broadcast(Param1 Param1_Value) const
-	{
-		for (auto it = _DelegateSet.rbegin(); it != _DelegateSet.rend();)
-		{
-			DelegateType& DelegateAtIndex = *it;
-			if (DelegateAtIndex.empty())
-			{
-				const auto DelegateToRemove = it;
-				++it;
-				_DelegateSet.erase(DelegateToRemove);
-			}
-			else
-			{
-				// For now we just ignore return values
-				DelegateAtIndex(Param1_Value);
-				++it;
-			}
-		}
-	}
-
-private:
-
-	std::set<DelegateType> _DelegateSet;
-};
-
-
-
-};

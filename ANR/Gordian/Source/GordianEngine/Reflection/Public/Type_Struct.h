@@ -109,7 +109,7 @@ public:
 
 	// Returns true if this class is a child of PossibleParent or if they 
 	//	are the same class.
-	bool IsChildClassOf(const OType_Struct* PossibleParent) const;
+	virtual bool IsChildClassOf(const OType_Struct* PossibleParent) const override;
 
 	// Gets the parent type. Prefer to AttemptToGetParentType where possible.
 	inline const OType_Struct* GetParentType() const
@@ -135,7 +135,10 @@ protected:
 		return _InitializationState;
 	}
 
-	virtual void Dump_Internal(const void* Data, int IndentationLevel) const override;
+	virtual void Dump_Internal(const void* Data, 
+							   size_t MaxDumpDepth, 
+							   int IndentationLevel, 
+							   bool bShouldPrintName) const override;
 
 	std::vector<FStructMember> Members;
 	const OType_Struct* ParentClass;
