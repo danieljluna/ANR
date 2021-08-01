@@ -11,6 +11,7 @@ using namespace Gordian;
 OObject::OObject(const std::string& InName, OObject* InOwningObject)
 	: _Name(InName)
 	, _OwningObject(InOwningObject)
+	, _PrivateType(nullptr)
 {
 	ObjectFlags.reset();
 }

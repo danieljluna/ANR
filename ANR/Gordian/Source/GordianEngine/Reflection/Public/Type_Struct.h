@@ -24,19 +24,29 @@ public:
 	static FStructMember NullMember;
 
 	OType_Struct();
+	OType_Struct(void(*Initialize)(OType_Struct*));
 
-	void Initialize(void(*Initialize)(OType_Struct*));
+	// Ensures this has been initialized
+	// Uses const cast to avoid const issues
+	void EnsureInitialization() const;
 
 	// If T is a reflected class, 
 	template<typename Parent>
 	typename std::enable_if<!std::is_same<Parent, void>::value>::type SetParentClass(const Parent*)
 	{
 		const OType* ParentType = FTypeResolver<Parent>::Get();
-		check(ParentType->IsStruct());
-		
 		ParentClass = static_cast<const OType_Struct*>(ParentType);
-		if (ParentClass != nullptr)
+		if (ParentClass == this)
 		{
+			ParentClass = nullptr;
+			ClassDepth = 0;
+		}
+		else
+		{
+			ParentClass->EnsureInitialization();
+
+			check(ParentType->IsStruct());
+
 			if (ParentClass->IsChildClassOf(this))
 			{
 				// todo: Print some error msg about circular parent classes
@@ -99,7 +109,7 @@ public:
 
 	// Returns true if this class is a child of PossibleParent or if they 
 	//	are the same class.
-	bool IsChildClassOf(const OType_Struct* PossibleParent) const;
+	virtual bool IsChildClassOf(const OType_Struct* PossibleParent) const override;
 
 	// Gets the parent type. Prefer to AttemptToGetParentType where possible.
 	inline const OType_Struct* GetParentType() const
@@ -120,9 +130,15 @@ protected:
 	//	While Uninitialized, any read action is undefined.
 	//	While MidInitialization, it is not guaranteed that all members have been registered.
 	//  While FullyInitialized, all actions are safe.
-	EInitializationState GetInitializationState() const;
+	inline const EInitializationState& GetInitializationState() const
+	{
+		return _InitializationState;
+	}
 
-	virtual void Dump_Internal(const void* Data, int IndentationLevel) const override;
+	virtual void Dump_Internal(const void* Data, 
+							   size_t MaxDumpDepth, 
+							   int IndentationLevel, 
+							   bool bShouldPrintName) const override;
 
 	std::vector<FStructMember> Members;
 	const OType_Struct* ParentClass;
@@ -134,6 +150,11 @@ private:
 	// Marks whether or not this type has been initialized.
 	// Reading this object while uninitialized will result in undefined behavior
 	EInitializationState _InitializationState;
+
+	void(*_InitializeFunc)(OType_Struct*);
+
+	// Private Initialization Method
+	void _InternalInitialize();
 };
 
 

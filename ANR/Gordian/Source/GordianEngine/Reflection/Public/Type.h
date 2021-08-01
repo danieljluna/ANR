@@ -44,12 +44,20 @@ public:
 		return bIsStructType;
 	}
 
+	virtual bool IsChildClassOf(const OType_Struct* PossibleParent) const
+	{
+		return false;
+	}
+
 	// Given a pointer to an object of this type, output all reflected data
-	void Dump(const void* Data) const;
+	void Dump(const void* Data, size_t MaxDumpDepth) const;
 
 protected:
 
-	virtual void Dump_Internal(const void* Data, int IndentationLevel) const = 0;
+	virtual void Dump_Internal(const void* Data, 
+							   size_t MaxDumpDepth, 
+							   int IndentationLevel, 
+							   bool bShouldPrintName) const = 0;
 
 	bool bIsStructType;
 	size_t Size;
@@ -96,37 +104,38 @@ public:
 
 protected:
 
-	virtual void Dump_Internal(const void* Data, int IndentationLevel) const override
+	virtual void Dump_Internal(const void* Data, 
+							   size_t MaxDumpDepth, 
+							   int IndentationLevel, 
+							   bool bShouldPrintName) const override
 	{
 		size_t VectorSize = GetSize(Data);
 		std::clog << GetFullName() << " {size: " << std::dec << VectorSize << "}";
 
 		if (VectorSize <= 0)
 		{
-			std::clog << " {}";
+			return;
 		}
-		else
+
+		std::string Indent(IndentationLevel, ' ');
+		std::clog << std::endl << Indent << "{" << std::endl;
+
+		std::string ItemIndent(IndentationLevel + k_IndentationWidth, ' ');
+		for (size_t i = 0; i < VectorSize; ++i)
 		{
-			std::string Indent(IndentationLevel, ' ');
-			std::clog << std::endl << Indent << "{" << std::endl;
+			std::clog << ItemIndent << "[" << i << "]: ";
+			const void* ItemLocation = GetItem(Data, i);
+			ItemType->Dump_Internal(ItemLocation, MaxDumpDepth, IndentationLevel + k_IndentationWidth, true);
+			std::clog << std::endl;
 
-			std::string ItemIndent(IndentationLevel + k_IndentationWidth, ' ');
-			for (size_t i = 0; i < VectorSize; ++i)
+			if (i == k_MaxItemDisplayCount && VectorSize > 1)
 			{
-				std::clog << ItemIndent << "[" << i << "]: ";
-				const void* ItemLocation = GetItem(Data, i);
-				ItemType->Dump_Internal(ItemLocation, IndentationLevel + k_IndentationWidth);
-				std::clog << std::endl;
-
-				if (i == k_MaxItemDisplayCount && VectorSize > 1)
-				{
-					i = VectorSize - 1;
-					std::clog << "..." << std::endl;
-				}
+				i = VectorSize - 1;
+				std::clog << "..." << std::endl;
 			}
-
-			std::clog << Indent << "}";
 		}
+
+		std::clog << Indent << "}";
 	}
 
 	const OType* ItemType;
@@ -178,28 +187,10 @@ public:
 
 protected:
 
-	virtual void Dump_Internal(const void* Data, int IndentationLevel) const override
-	{
-		std::clog << GetFullName();
-		const void * const * PtrAtData = static_cast<const void * const *>(Data);
-
-		if (*PtrAtData == nullptr)
-		{
-			std::clog << " (" << std::hex << "0x" << *PtrAtData << ")";
-		}
-		else
-		{
-			std::string Indent(IndentationLevel, ' ');
-			std::clog << " (" << std::hex << "0x" << *PtrAtData << "):";
-			std::clog << std::endl << Indent << "{" << std::endl;
-
-			// todo: Dump pointer types with actual type instead of pointer type
-
-			ItemType->Dump_Internal(*PtrAtData, IndentationLevel + k_IndentationWidth);
-
-			std::clog << Indent << "}";
-		}
-	}
+	virtual void Dump_Internal(const void* Data, 
+							   size_t MaxDumpDepth, 
+							   int IndentationLevel, 
+							   bool bShouldPrintName) const override;
 
 	const OType* ItemType;
 

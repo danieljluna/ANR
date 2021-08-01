@@ -18,21 +18,42 @@ OType_Struct::OType_Struct()
 	, ParentClass(nullptr)
 	, ClassDepth(0)
 	, _InitializationState(EInitializationState::Uninitialized)
+	, _InitializeFunc(nullptr)
 {
 	bIsStructType = true;
 }
 
-void OType_Struct::Initialize(void(*Initialize)(OType_Struct*))
+OType_Struct::OType_Struct(void(*Initialize)(OType_Struct*))
+	: OType_Struct()
 {
+	bIsStructType = true;
+
 	check(Initialize != nullptr);
-	if (_InitializationState == EInitializationState::Uninitialized)
+
+	_InitializeFunc = Initialize;
+}
+
+void OType_Struct::EnsureInitialization() const
+{
+	if (_InitializeFunc != nullptr)
 	{
-		_InitializationState = EInitializationState::MidInitialization;
+		check(_InitializationState == OType_Struct::EInitializationState::Uninitialized);
 
-		Initialize(this);
-
-		_InitializationState = EInitializationState::FullyInitialized;
+		// This is ugly, but makes for cleaner code in other areas
+		OType_Struct* NonConstThis = const_cast<OType_Struct*>(this);
+		NonConstThis->_InternalInitialize();
 	}
+}
+
+void OType_Struct::_InternalInitialize()
+{
+	_InitializationState = EInitializationState::MidInitialization;
+
+	_InitializeFunc(this);
+
+	_InitializationState = EInitializationState::FullyInitialized;
+
+	_InitializeFunc = nullptr;
 }
 
 bool OType_Struct::IsChildClassOf(const OType_Struct* PossibleParent) const
@@ -54,14 +75,20 @@ bool OType_Struct::IsChildClassOf(const OType_Struct* PossibleParent) const
 	return false;
 }
 
-void OType_Struct::Dump_Internal(const void* Data, int IndentationLevel) const
+void OType_Struct::Dump_Internal(const void* Data, 
+								 size_t MaxDumpDepth, 
+								 int IndentationLevel, 
+								 bool bShouldPrintName) const
 {
 	std::string Indent(IndentationLevel, ' ');
-	std::clog << Indent << GetName();
 
-	if (ParentClass != nullptr)
+	if (bShouldPrintName)
 	{
-		std::clog << " : " << ParentClass->GetName();
+		std::clog << Indent << GetName();
+		if (ParentClass != nullptr)
+		{
+			std::clog << " : " << ParentClass->GetName();
+		}
 	}
 
 	std::clog << " {" << std::hex << "0x" << Data << "}";
@@ -75,11 +102,11 @@ void OType_Struct::Dump_Internal(const void* Data, int IndentationLevel) const
 	{
 		std::clog << MemberIndent << MemberInfo.Name << " = ";
 		void* MemberData = (char*)(Data) + MemberInfo.Offset;
-		MemberInfo.Type->Dump_Internal(MemberData, IndentationLevel + k_IndentationWidth);
+		MemberInfo.Type->Dump_Internal(MemberData, MaxDumpDepth, IndentationLevel + k_IndentationWidth, true);
 		std::clog << std::endl;
 	}
 
-	std::clog << Indent << "}"<< std::endl;
+	std::clog << Indent << "}";
 }
 
 RCLASS_INITIALIZE(OType_Struct)

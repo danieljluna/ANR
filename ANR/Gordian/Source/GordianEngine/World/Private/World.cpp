@@ -13,6 +13,7 @@ OWorld::OWorld(const std::string& InName, OObject* InOwningObject)
 	, _CurrentlyLoadedLevel(nullptr)
 	, TestActorSpecification(nullptr)
 {
+	GetStaticType()->EnsureInitialization();
 }
 
 const OWorld* OWorld::GetWorld() const
@@ -33,12 +34,14 @@ void OWorld::BeginPlay()
 		SpawnActor<AActor>(TestActorSpecification, "TestActor");
 	}
 
+	SpawnActor<AActor>(AActor::GetStaticType(), "TestActor");
+
 	for (AActor* Actor : _Actors)
 	{
 		Actor->BeginPlay();
 	}
 
-	OWorld::GetStaticType()->Dump(this);
+	OWorld::GetStaticType()->Dump(this, 3);
 	check(SetFlagIfNotSet(EObjectFlags::HasCompleteBeginPlay));
 }
 

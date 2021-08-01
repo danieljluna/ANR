@@ -69,7 +69,7 @@ sf::Int32 FEngineLoop::Init(int argc, char** argv)
 	// Initialize classes
 
 	InputManager = new FInputManager();
-	GameWorld = new OWorld("GameWorld", nullptr);
+	GameWorld = FGlobalObjectLibrary::CreateObject<OWorld>(nullptr, OWorld::GetStaticType(), "GameWorld");
     bIsRequestingExit = false;
     TickDurationClock.restart();
 
@@ -235,4 +235,43 @@ const sf::Vector2u& FEngineLoop::GetWindowSize() const
 {
 	check(GameWindow != nullptr);
 	return GameWindow->getSize();
+}
+
+// A node in a sorted binary tree
+struct BinaryTreeNode
+{
+	// Points to the parent of this node in the tree
+	BinaryTreeNode* Parent;
+	// Points to the left child of this node
+	// In ascending sort, this always points to a node with a smaller value
+	BinaryTreeNode* Left;
+	// Points to the right child of this node
+	// In ascending sort, this always points to a node with a larger value
+	BinaryTreeNode* Right;
+
+	char Value;
+};
+
+
+// Given a root node, searches for a descendant node with the given value
+const BinaryTreeNode* FindValue(const BinaryTreeNode* Root, char InValue)
+{
+	const BinaryTreeNode* CurrentSearchNode = Root;
+	while (CurrentSearchNode != nullptr)
+	{
+		if (InValue == CurrentSearchNode->Value)
+		{
+			return CurrentSearchNode;
+		}
+		else if (InValue < CurrentSearchNode->Value)
+		{
+			CurrentSearchNode = CurrentSearchNode->Left;
+		}
+		else // InValue > CurrentSearchNode->Value
+		{
+			CurrentSearchNode = CurrentSearchNode->Right;
+		}
+	}
+
+	return nullptr;
 }

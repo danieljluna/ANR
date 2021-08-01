@@ -3,6 +3,7 @@
 #include "../Public/CommandPrompt.h"
 
 #include <algorithm>
+#include <filesystem>
 
 #include "SFML/Graphics/RenderTarget.hpp"
 
@@ -18,8 +19,8 @@ DECLARE_LOG_CATEGORY_STATIC(LogCommandPrompt, All, Verbose)
 namespace
 {
 	// Console settings
-	static const char* k_PreviousCommandsFilepath = "../Netrunner/Saved/PreviousCommands.txt";
-	static const char* k_CommandPromptFontFilepath = "../Netrunner/Resources/Default/CommandPrompt.ttf";
+	static const char* k_PreviousCommandsFilepath = "Saved/PreviousCommands.txt";
+	static const char* k_CommandPromptFontFilepath = "/Netrunner/Resources/Default/CommandPrompt.ttf";
 
 	static const size_t k_MaxRecentCommands = 31;
 	static const size_t k_MaxCommandLength = 1020;
@@ -65,6 +66,9 @@ FCommandPrompt::FCommandPrompt()
 	fclose(PreviousCommandsFile);
 
 	if (!PromptFont.loadFromFile(k_CommandPromptFontFilepath))
+	std::experimental::filesystem::path CurrentPath = std::experimental::filesystem::current_path().parent_path();
+	std::string FullFontPath =  CurrentPath.generic_string().append(k_CommandPromptFontFilepath);
+	if (!PromptFont.loadFromFile(FullFontPath))
 	{
 		GE_LOG(LogFileIO, Fatal, "CommandPrompt could not find it's font %s to load!", k_CommandPromptFontFilepath)
 	}
