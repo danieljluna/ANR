@@ -142,8 +142,10 @@ public:
 
 private:
 
+	// The next free node in the allocation
 	TPrefixTreeNode<MappedT>* _NextUnusedNode;
 
+	// Allocated Array of all nodes
 	TPrefixTreeNode<MappedT>* _ReservedNodeSpace;
 
 	size_t _ReserveSize;

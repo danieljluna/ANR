@@ -162,6 +162,7 @@
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type.cpp" />
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Struct.cpp" />
     <ClCompile Include="Source\GordianEngine\Reflection\Private\Type_Primitives.cpp" />
+    <ClCompile Include="Source\GordianEngine\Utility\Private\StringUtility.cpp" />
     <ClCompile Include="Source\GordianEngine\World\Private\Level.cpp" />
     <ClCompile Include="Source\GordianEngine\World\Private\World.cpp" />
     <ClCompile Include="Source\inih\ini.c" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Source\GordianEngine\ActorComponents\Public\SimpleSpriteComponent.h" />
     <ClInclude Include="Source\GordianEngine\Actor\Public\Actor.h" />
     <ClInclude Include="Source\GordianEngine\Actor\Public\ActorComponent.h" />
+    <ClInclude Include="Source\GordianEngine\Containers\Public\TCircularBuffer.h" />
     <ClInclude Include="Source\GordianEngine\Containers\Public\TBitSet.h" />
     <ClInclude Include="Source\GordianEngine\Containers\Public\TPrefixTree.h" />
     <ClInclude Include="Source\GordianEngine\Containers\Public\TSimpleSet.h" />
@@ -210,6 +212,7 @@
     <ClInclude Include="Source\GordianEngine\Reflection\Public\TypeResolver.h" />
     <ClInclude Include="Source\GordianEngine\Reflection\Public\Type_Struct.h" />
     <ClInclude Include="Source\GordianEngine\Utility\Public\CommonMacros.h" />
+    <ClInclude Include="Source\GordianEngine\Utility\Public\StringUtility.h" />
     <ClInclude Include="Source\GordianEngine\Utility\Public\TypeTraits.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\Level.h" />
     <ClInclude Include="Source\GordianEngine\World\Public\World.h" />
@@ -218,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\Engine.ini" />
+    <None Include="Source\GordianEngine\Containers\Private\TCircularBuffer.inl" />
     <None Include="Source\GordianEngine\Containers\Private\TPrefixTree.inl" />
     <None Include="Source\GordianEngine\Containers\Private\TOptional.inl" />
     <None Include="Source\GordianEngine\GlobalLibraries\Private\GlobalObjectLibrary.inl" />

@@ -2,6 +2,8 @@
 
 #include "../Public/CommandPrompt.h"
 
+#include <algorithm>
+
 #include "SFML/Graphics/RenderTarget.hpp"
 
 #include "GordianEngine/Debug/Public/Asserts.h"
@@ -11,11 +13,17 @@
 
 using namespace Gordian;
 
+DECLARE_LOG_CATEGORY_STATIC(LogCommandPrompt, All, Verbose)
+
 namespace
 {
 	// Console settings
-	static const char* k_PreviousCommandsFilepath = "Saved/PreviousCommands.txt";
-	static const char* k_CommandPromptFontFilepath = "Resources/Default/CommandPrompt.ttf";
+	static const char* k_PreviousCommandsFilepath = "../Netrunner/Saved/PreviousCommands.txt";
+	static const char* k_CommandPromptFontFilepath = "../Netrunner/Resources/Default/CommandPrompt.ttf";
+
+	static const size_t k_MaxRecentCommands = 31;
+	static const size_t k_MaxCommandLength = 1020;
+
 	static const unsigned int k_CommandPromptFontSize = 16;
 	static const sf::Uint16 k_ConsoleBackgroundAlpha = 127;
 
@@ -29,15 +37,32 @@ namespace
 
 FCommandPrompt::FCommandPrompt()
 {
+	RecentCommandsIndex = -1;
+	PreviousCommands.Resize(k_MaxRecentCommands);
 	TestTrie.Reserve(15);
 	CurrentInputString = "";
+
 	errno_t ErrorCode = 0;
+	FILE* PreviousCommandsFile = nullptr;
 	ErrorCode = fopen_s(&PreviousCommandsFile, k_PreviousCommandsFilepath, "r");
 	if (ErrorCode != 0)
 	{
 		GE_LOG(LogFileIO, Log, "PreviousCommands file could not be found or does not exist. (Code: %d)", ErrorCode);
 		PreviousCommandsFile = nullptr;
 	}
+
+	char CommandBuffer[k_MaxCommandLength];
+	std::string BufferString;
+
+	// Populate Recent Commands with data in file
+	while (fgets(CommandBuffer, k_MaxCommandLength, PreviousCommandsFile) != nullptr)
+	{
+
+		BufferString = CommandBuffer;
+		BufferString.erase();
+		PreviousCommands.Enqueue(BufferString);
+	}
+	fclose(PreviousCommandsFile);
 
 	if (!PromptFont.loadFromFile(k_CommandPromptFontFilepath))
 	{
@@ -70,6 +95,32 @@ FCommandPrompt::FCommandPrompt()
 	SetCurrentInputString("");
 }
 
+FCommandPrompt::~FCommandPrompt()
+{
+	errno_t ErrorCode = 0;
+	FILE* PreviousCommandsFile = nullptr;
+	ErrorCode = fopen_s(&PreviousCommandsFile, k_PreviousCommandsFilepath, "w");
+	if (ErrorCode == 0)
+	{
+		std::string CStringBuffer;
+
+		// Populate Recent Commands with data in file
+		while (!PreviousCommands.IsEmpty())
+		{
+			CStringBuffer = PreviousCommands.Front()->toAnsiString();
+			PreviousCommands.Dequeue();
+			fputs(CStringBuffer.c_str(), PreviousCommandsFile);
+			fputc('\n', PreviousCommandsFile);
+		}
+		fclose(PreviousCommandsFile);
+	}
+	else
+	{
+		GE_LOG(LogFileIO, Log, "PreviousCommands file could not be created. (Code: %d)", ErrorCode);
+		PreviousCommandsFile = nullptr;
+	}
+}
+
 /*static*/ FCommandPrompt& FCommandPrompt::Get()
 {
 	static FCommandPrompt Singleton;
@@ -89,32 +140,58 @@ void FCommandPrompt::Initialize()
 
 bool FCommandPrompt::ParseRawInput(const sf::Event& RawInput)
 {
+	bool bConsumedInput = false;
+
+	// Handle input ignoring if we're open
 	if (RawInput.type == sf::Event::KeyPressed)
-		//&& RawInput.key.code == sf::Keyboard::Tilde)
 	{
 		const sf::Keyboard::Key& InputKey = RawInput.key.code;
 		if (InputKey == InputKeys::EKeyboardKeys::Tilde)
 		{
 			Toggle();
-			return true;
-		}
-		else if (InputKey == InputKeys::EKeyboardKeys::Enter)
-		{
-			DigestCommand();
-			return true;
+			bConsumedInput = true;
 		}
 	}
 
 	if (!bIsPromptOpen)
 	{
-		return false;
+		return bConsumedInput;
 	}
 
-	if (RawInput.type == sf::Event::TextEntered)
+	// Handle input only if open
+
+	if (RawInput.type == sf::Event::KeyPressed)
+	{
+		const sf::Keyboard::Key& InputKey = RawInput.key.code;
+		switch (InputKey)
+		{
+			case InputKeys::EKeyboardKeys::Enter:
+			{
+				DigestCommand();
+				break;
+			}
+			case InputKeys::EKeyboardKeys::Up:
+			{
+				TraverseRecentCommands(-1);
+				break;
+			}
+			case InputKeys::EKeyboardKeys::Down:
+			{
+				TraverseRecentCommands(1);
+				break;
+			}
+			case InputKeys::EKeyboardKeys::Tab:
+			{
+				//AutoCompleteCommand();
+			}
+		}
+	}
+	else if (RawInput.type == sf::Event::TextEntered)
 	{
 		AppendCurrentInputString(RawInput.text.unicode);
 	}
 
+	// Always consume input if open
 	return true;
 }
 
@@ -135,7 +212,11 @@ void FCommandPrompt::Close()
 
 void FCommandPrompt::DigestCommand()
 {
+	GE_LOG(LogCommandPrompt, Verbose, "Digesting Command %s", CurrentInputString.toAnsiString().c_str());
+
 	TestTrie.Insert(CurrentInputString, CurrentInputString.getSize());
+	PreviousCommands.Enqueue(CurrentInputString);
+	RecentCommandsIndex = -1;
 
 	SetCurrentInputString("");
 }
@@ -171,6 +252,48 @@ void FCommandPrompt::AppendCurrentInputString(const sf::Uint32& UnicodeValue)
 
 	// Update Visualization
 	CurrentInputText.setString(CurrentInputString + "_");
+}
+
+void FCommandPrompt::TraverseRecentCommands(int DirectionOfTraversal)
+{
+	if (PreviousCommands.IsEmpty())
+	{
+		// No previous commands listed.
+		return;
+	}
+
+	if (RecentCommandsIndex == 0 && DirectionOfTraversal < 0)
+	{
+		// Already at the most recent command
+		return;
+	}
+
+	if (RecentCommandsIndex == k_MaxRecentCommands && DirectionOfTraversal > 0)
+	{
+		// Already at the oldest command
+		return;
+	}
+
+	const int MaxIndex = PreviousCommands.Num() - 1;
+	if (RecentCommandsIndex == -1)
+	{
+		RecentCommandsIndex = MaxIndex;
+	}
+	else
+	{
+		RecentCommandsIndex += DirectionOfTraversal;
+	}
+
+	if (RecentCommandsIndex < 0)
+	{
+		RecentCommandsIndex = 0;
+	}
+	else if (RecentCommandsIndex > MaxIndex)
+	{
+		RecentCommandsIndex = MaxIndex;
+	}
+
+	SetCurrentInputString(PreviousCommands.At(RecentCommandsIndex));
 }
 
 void FCommandPrompt::draw(sf::RenderTarget& target, sf::RenderStates states) const

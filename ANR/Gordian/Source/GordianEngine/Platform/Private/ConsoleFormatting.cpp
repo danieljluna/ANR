@@ -243,7 +243,7 @@ FScopedConsoleFormat::~FScopedConsoleFormat()
 	}
 
 	bHasInitializedFormatting = true;
-	GE_LOG(LogFileIO, Log, "Successfully iniated ConsoleFormatting");
+	GE_LOG(LogFileIO, Log, "Successfully initiated ConsoleFormatting");
 #else
 	// We don't know our OS, so assume we can't get this to work! (although linux generally supports this)
 #endif

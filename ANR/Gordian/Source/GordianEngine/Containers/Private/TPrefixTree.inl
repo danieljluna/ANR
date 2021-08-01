@@ -5,7 +5,7 @@
 
 #include <algorithm>
 
-DECLARE_LOG_CATEGORY_STATIC(LogPrefixTree, Log, Verbose)
+DECLARE_LOG_CATEGORY_STATIC(LogPrefixTree, Verbose, Verbose)
 
 namespace Gordian
 {
@@ -113,6 +113,7 @@ bool Gordian::TPrefixTreeNode<T>::AddWord(const KeyType& InWordDivergingSubKey,
 			return false;
 		}
 
+		GE_LOG(LogPrefixTree, Verbose, "...Marking existing node (%s) as full word.", CachedFullKey.c_str());
 		WordValue.Set(InWordValue);
 		return true;
 	}
@@ -123,54 +124,101 @@ bool Gordian::TPrefixTreeNode<T>::AddWord(const KeyType& InWordDivergingSubKey,
 		return false;
 	}
 
-	const std::map<CharType, TPrefixTreeNode<T>*>::const_iterator ExistingChildNode = ChildrenNodes.find(InWordDivergingSubKey[0]);
-	if (ExistingChildNode != ChildrenNodes.cend())
+	if (GE_IS_LOG_ACTIVE(LogPrefixTree, Verbose))
 	{
-		check(ExistingChildNode->second != nullptr);
-		TPrefixTreeNode<T>& RelatedChildNode = *ExistingChildNode->second;
-
-		// If the existing child node has a matching diverging key...
-		if (RelatedChildNode.HasMatchingDivergingKey(InWordDivergingSubKey))
+		std::string LogFormat = "Children:";
+		if (ChildrenNodes.size() == 0)
 		{
-			//...Simply pass the call along!
-			const KeyType& NewWordDivergingSubKey = InWordDivergingSubKey.substr(RelatedChildNode.DivergingSubKey.length());
-			return RelatedChildNode.AddWord(NewWordDivergingSubKey, InWordValue, InOutNextFreeNode);
+			LogFormat.append("None");
 		}
 		else
 		{
-			//...Split the child node so both sub-trees can exist...
-			if (RelatedChildNode.SplitNode(InWordDivergingSubKey, InOutNextFreeNode))
+			for (auto const& Pair : ChildrenNodes)
 			{
-				//...Then we can pass the call to the intermediate node
-				TPrefixTreeNode<T>& NewIntermediateNode = *RelatedChildNode.ParentNode;
-
-				const KeyType& NewWordDivergingSubKey = InWordDivergingSubKey.substr(NewIntermediateNode.DivergingSubKey.length());
-				return NewIntermediateNode.AddWord(NewWordDivergingSubKey, InWordValue, InOutNextFreeNode);
-			}
-			else
-			{
-				GE_LOG(LogPrefixTree,
-					   Warning,
-					   "Failed to split child (%s) with diverging sub-key (%s)!",
-					   RelatedChildNode.CachedFullKey.c_str(),
-					   InWordDivergingSubKey.c_str());
-
-				return false;
+				LogFormat.append("(");
+				LogFormat.push_back(Pair.first);
+				LogFormat.append(",");
+				LogFormat.append(Pair.second->DivergingSubKey);
+				LogFormat.append(") ");
 			}
 		}
+
+		GE_LOG(LogPrefixTree, Verbose, "%s", LogFormat.c_str());
 	}
 
-	TPrefixTreeNode<T>& NewChildNode = GetNextFreeNode(InOutNextFreeNode);
 
-	NewChildNode.ParentNode = this;
-	NewChildNode.DivergingSubKey = InWordDivergingSubKey;
-	NewChildNode.CachedFullKey = CachedFullKey.append(InWordDivergingSubKey);
-	NewChildNode.WordValue.Set(InWordValue);
+	const std::map<CharType, TPrefixTreeNode<T>*>::const_iterator ExistingChildNode = ChildrenNodes.find(InWordDivergingSubKey[0]);
+	if (ExistingChildNode == ChildrenNodes.cend())
+	{
+		// No child exists with a matching next character
+		TPrefixTreeNode<T>& NewChildNode = GetNextFreeNode(InOutNextFreeNode);
 
-	ChildrenNodes[InWordDivergingSubKey[0]] = &NewChildNode;
-	CachedDescendantWords.insert(NewChildNode.CachedFullKey);
+		NewChildNode.ParentNode = this;
+		NewChildNode.DivergingSubKey = InWordDivergingSubKey;
+		NewChildNode.CachedFullKey = CachedFullKey;
+		NewChildNode.CachedFullKey.append(InWordDivergingSubKey);
+		NewChildNode.WordValue.Set(InWordValue);
 
-	return true;
+		ChildrenNodes.emplace(NewChildNode.DivergingSubKey[0], &NewChildNode);
+		CachedDescendantWords.insert(NewChildNode.CachedFullKey);
+
+		GE_LOG(LogPrefixTree,
+			   Verbose,
+			   "...Tree ends without matching child node, adding leaf node. [DivergingSubKey - %s, CachedFullKey - %s]",
+			   NewChildNode.DivergingSubKey.c_str(), 
+			   NewChildNode.CachedFullKey.c_str());
+
+		return true;
+	}
+	
+	// If we get here, there is an existing competing node
+	check(ExistingChildNode->second != nullptr);
+	TPrefixTreeNode<T>& RelatedChildNode = *ExistingChildNode->second;
+
+	// If the existing child node has a matching diverging key...
+	if (RelatedChildNode.HasMatchingDivergingKey(InWordDivergingSubKey))
+	{
+		//...Simply pass the call along!
+		GE_LOG(LogPrefixTree, 
+			   Verbose, 
+			   "...Passing call to child node (%s) with matching diverging key (%s)...", 
+			   RelatedChildNode.DivergingSubKey.c_str(),
+			   InWordDivergingSubKey.c_str());
+
+		const KeyType& NewWordDivergingSubKey = InWordDivergingSubKey.substr(RelatedChildNode.DivergingSubKey.length());
+		return RelatedChildNode.AddWord(NewWordDivergingSubKey, InWordValue, InOutNextFreeNode);
+	}
+	else
+	{
+		//...Split the child node so both sub-trees can exist...
+		GE_LOG(LogPrefixTree,
+			   Verbose,
+			   "...Splitting node so the existing key (%s) can exist side by side with the new competing key (%s)...",
+			   RelatedChildNode.DivergingSubKey.c_str(),
+			   InWordDivergingSubKey.c_str());
+
+		const CharType ChildKey = InWordDivergingSubKey[0];
+
+		if (RelatedChildNode.SplitNode(InWordDivergingSubKey, InOutNextFreeNode))
+		{
+			//...Then we can pass the call to the intermediate node
+			// Note we have to regrab the node because it has been altered by the SpliteNode call
+			TPrefixTreeNode<T>& NewIntermediateNode = *ChildrenNodes[ChildKey]->ParentNode;
+
+			const KeyType& NewWordDivergingSubKey = InWordDivergingSubKey.substr(NewIntermediateNode.DivergingSubKey.length());
+			return NewIntermediateNode.AddWord(NewWordDivergingSubKey, InWordValue, InOutNextFreeNode);
+		}
+		else
+		{
+			GE_LOG(LogPrefixTree,
+					Warning,
+					"Failed to split child (%s) with diverging sub-key (%s)!",
+					RelatedChildNode.CachedFullKey.c_str(),
+					InWordDivergingSubKey.c_str());
+
+			return false;
+		}
+	}
 }
 
 template<typename T>
@@ -225,11 +273,12 @@ bool Gordian::TPrefixTreeNode<T>::SplitNode(const KeyType& SplitSubKey,
 
 	NewChildNode.ParentNode = ParentNode;
 	NewChildNode.DivergingSubKey = MatchingSubString;
-	NewChildNode.CachedFullKey = ParentNode->CachedFullKey.append(MatchingSubString);
+	NewChildNode.CachedFullKey = ParentNode->CachedFullKey;
+	NewChildNode.CachedFullKey.append(MatchingSubString);
 	NewChildNode.CachedDescendantWords = CachedDescendantWords;
-	NewChildNode.ChildrenNodes[ContestedSubString[0]] = &NewChildNode;
 
 	// Update this node to be a child of new intermediate node
+	NewChildNode.ChildrenNodes[ContestedSubString[0]] = this;
 	ParentNode = &NewChildNode;
 	DivergingSubKey = ContestedSubString;
 
@@ -322,12 +371,18 @@ inline bool Gordian::TPrefixTree<T>::Reserve(size_t InReserveSize)
 		_ReservedNodeSpace[0].bIsActive = true;
 
 		// Set up linked list of unused nodes
-		for (size_t i = InReserveSize - 1; i > 0; --i)
+		size_t i = InReserveSize;
+		do
 		{
+			--i;
 			_ReservedNodeSpace[i].NextUnusedNode = _NextUnusedNode;
 			_NextUnusedNode = &_ReservedNodeSpace[i];
 			_ReservedNodeSpace[i].bIsActive = false;
-		}
+		} while (i > 0);
+
+		// Always use the root
+		_ReservedNodeSpace[0].bIsActive = true;
+		_NextUnusedNode = _ReservedNodeSpace[0].NextUnusedNode;
 
 		return true;
 	}

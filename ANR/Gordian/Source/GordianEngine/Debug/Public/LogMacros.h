@@ -34,19 +34,17 @@ namespace Gordian
 
 	namespace PrivateLogHelpers
 	{
-		// If our category has compile time verbosity below the passed velocity, we can decide 
-		//	at compile-time that this is suppressed.
+		// If CompileTimeVerbosity is larger or equal to log verbosity, make runtime check
 		template<ELogVerbosity Verbosity, typename Category>
-		typename std::enable_if<(Category::CompileTimeVerbosity > Verbosity), bool>::type
+		typename std::enable_if<(Category::CompileTimeVerbosity >= Verbosity), bool>::type
 			IsLogActive(const Category& LogCategory)
 		{
 			return !LogCategory.IsSuppressed(Verbosity);
 		}
 
-		// If our category has compile time verbosity above the passed velocity, we can decide 
-		//	at compile-time that this is suppressed.
+		// If CompileTimeVerbosity is less than log verbosity, we know at compile time
 		template<ELogVerbosity Verbosity, typename Category>
-		typename std::enable_if<(Category::CompileTimeVerbosity <= Verbosity), bool>::type
+		typename std::enable_if<(Category::CompileTimeVerbosity < Verbosity), bool>::type
 			IsLogActive(const Category& LogCategory)
 		{
 			return false;
@@ -71,6 +69,12 @@ namespace Gordian
 									   __GE_LOG_LOCATION__(__FILE__, __FUNCTIONSIG__, __TOSTRING(__LINE__)),	\
 									   LogFormat,																\
 									   ##__VA_ARGS__);															\
+		}																										\
+																												\
+		if (Verbosity == ELogVerbosity::Fatal)																	\
+		{																										\
+			_GE_DEBUG_BREAK();																					\
+			_GE_DEBUG_HALT();																					\
 		}																										\
 	} while (0);
 

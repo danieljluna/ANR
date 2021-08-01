@@ -180,6 +180,9 @@
     <ClCompile Include="Source\GordianEngine\FileIO\Private\IniManager.cpp">
       <Filter>Source Files\Gordian\FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Utility\Private\StringUtility.cpp">
+      <Filter>Source Files\Gordian\Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GordianEngine\World\Public\World.h">
@@ -323,6 +326,12 @@
     <ClInclude Include="Source\GordianEngine\FileIO\Public\StackableIniReader.h">
       <Filter>Header Files\Gordian\FileIO</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Containers\Public\TCircularBuffer.h">
+      <Filter>Header Files\Gordian\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Utility\Public\StringUtility.h">
+      <Filter>Header Files\Gordian\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\GordianEngine\Input\Private\InputManager.inl">
@@ -339,6 +348,9 @@
     </None>
     <None Include="Config\Engine.ini">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Source\GordianEngine\Containers\Private\TCircularBuffer.inl">
+      <Filter>Source Files\Gordian\Containers</Filter>
     </None>
   </ItemGroup>
 </Project>

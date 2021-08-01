@@ -10,6 +10,7 @@
 #include "SFML/Window/Event.hpp"
 
 #include "GordianEngine/Containers/Public/TPrefixTree.h"
+#include "GordianEngine/Containers/Public/TCircularBuffer.h"
 
 namespace Gordian
 {
@@ -22,6 +23,8 @@ class FCommandPrompt : public sf::NonCopyable
 					 , public sf::Drawable
 {
 public:
+
+	virtual ~FCommandPrompt();
 
 	static FCommandPrompt& Get();
 
@@ -57,6 +60,11 @@ protected:
 	// Appends a character to the current input string
 	void AppendCurrentInputString(const sf::Uint32& UnicodeValue);
 
+	// Used to navigate recent commands.
+	// Will replace existing text with the recent command selected. The index
+	// of the current recent command is reset when a command is digested.
+	void TraverseRecentCommands(int DirectionOfTraversal);
+
 private:
 
 	FCommandPrompt();
@@ -76,16 +84,22 @@ private:
 
 	TPrefixTree<int> TestTrie;
 
-	// Will eventually be used to read / cache previous commands so 
-	FILE* PreviousCommandsFile;
+	// List of Recent Digested Commands
+	TCircularBuffer<sf::String> PreviousCommands;
+
 	// Current user input string 
 	sf::String CurrentInputString;
+
 	// Stores the height of a line of text
 	float StringHeight;
 	// Stores the distance between the divider line and the text
 	float DividerSpacing;
 	// Spacing between text and the edge of the window
 	float BorderSpacing;
+
+	// Current index when navigating recent commands
+	int RecentCommandsIndex;
+
 	// True if the prompt is currently open
 	bool bIsPromptOpen;
 
