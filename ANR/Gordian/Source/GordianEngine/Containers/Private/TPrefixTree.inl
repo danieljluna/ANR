@@ -2,6 +2,7 @@
 
 #include "GordianEngine/Debug/Public/Asserts.h"
 #include "GordianEngine/Debug/Public/LogMacros.h"
+#include "GordianEngine/Debug/Public/LogCategory.h"
 
 #include <algorithm>
 
@@ -352,6 +353,18 @@ Gordian::TPrefixTree<T>::~TPrefixTree()
 }
 
 template<typename T>
+inline size_t Gordian::TPrefixTree<T>::Capacity() const
+{
+	return _ReserveSize;
+}
+
+template<typename T>
+inline size_t Gordian::TPrefixTree<T>::Num() const
+{
+	return _Num;
+}
+
+template<typename T>
 inline bool Gordian::TPrefixTree<T>::Reserve(size_t InReserveSize)
 {
 	if (InReserveSize <= _ReserveSize)
@@ -395,7 +408,13 @@ inline bool Gordian::TPrefixTree<T>::Insert(const KeyType& Key, const T& Value)
 {
 	check(_ReservedNodeSpace != nullptr && _ReservedNodeSpace[0].bIsActive);
 
-	return _ReservedNodeSpace[0].AddWord(Key, Value, _NextUnusedNode);
+	const bool bAddedWord = _ReservedNodeSpace[0].AddWord(Key, Value, _NextUnusedNode);
+	if (bAddedWord)
+	{
+		++_Num;
+	}
+
+	return bAddedWord;
 }
 
 template<typename T>

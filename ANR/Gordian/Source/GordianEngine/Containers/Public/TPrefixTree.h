@@ -120,6 +120,9 @@ public:
 
 	~TPrefixTree();
 
+	size_t Capacity() const;
+	size_t Num() const;
+
 	// Ensures there is enough space for ReserveSize nodes.
 	// Note that n unique keys can require anywhere between n + 1 and 2n nodes.
 	bool Reserve(size_t InReserveSize);
@@ -149,6 +152,7 @@ private:
 	TPrefixTreeNode<MappedT>* _ReservedNodeSpace;
 
 	size_t _ReserveSize;
+	size_t _Num;
 
 
 };	// class TPrefixTree

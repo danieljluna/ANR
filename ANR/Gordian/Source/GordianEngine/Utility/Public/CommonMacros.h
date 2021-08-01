@@ -60,13 +60,13 @@ namespace Gordian
 // ----------------------------------------------------------------
 #ifndef TEXT
 
-	#define TEXT(string) _TEXT(string)
-
 	#ifdef UNICODE
 		#define __TEXT(string) L##string
 	#else	// ifndef UNICODE
-		#define _TEXT(string) string
+		#define __TEXT(string) string
 	#endif	// UNICODE
+
+	#define TEXT(string) __TEXT(string)
 
 #endif	// ifndef TEXT
 // ----------------------------------------------------------------
