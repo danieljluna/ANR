@@ -3,6 +3,8 @@
 #pragma once
 
 #include "LogMacros.h"
+#include "LogCategory.h"
+#include "LogVerbosity.h"
 
 // Used for temporary logs
 DECLARE_LOG_CATEGORY_EXTERN(LogTemp, Log, Verbose);

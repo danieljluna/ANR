@@ -1,8 +1,7 @@
 // Gordian by Daniel Luna (2019)
 
 #include "GordianEngine/Debug/Public/Asserts.h"
-#include "GordianEngine/Debug/Public/LogMacros.h"
-#include "GordianEngine/Debug/Public/LogCategory.h"
+#include "GordianEngine/Debug/Public/Logging.h"
 
 #include <algorithm>
 
@@ -310,6 +309,7 @@ Gordian::TPrefixTree<T>::TPrefixTree()
 	_NextUnusedNode = nullptr;
 	_ReservedNodeSpace = nullptr;
 	_ReserveSize = 0;
+	_Num = 0;
 }
 
 template<typename T>
