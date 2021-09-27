@@ -100,3 +100,63 @@ c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\debug\
 [2020.01.16 01:14:07 -0800] LogFileIO - PreviousCommands file could not be found or does not exist. (Code: 2)
 c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\debug\private\commandprompt.cpp(44): __thiscall Gordian::FCommandPrompt::FCommandPrompt(void)
 [2020.01.16 01:14:07 -0800] LogFileIO - CommandPrompt could not find it's font Resources/Default/CommandPrompt.ttf to load!
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:16:14 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:16:14 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:16:15 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(224): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2021.09.26 22:16:16 -0700] LogCore - A request was made to exit the core loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(185): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2021.09.26 22:16:16 -0700] LogCore - Exiting Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(214): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2021.09.26 22:16:16 -0700] LogCore - Exited Core Loop.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:17:11 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:17:11 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:17:11 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:17:39 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:17:39 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:17:39 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:17:56 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:17:56 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:17:56 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:20:41 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:20:41 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:20:41 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:20:45 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:20:45 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:20:46 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:21:34 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:21:34 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:21:34 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:22:31 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:22:31 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:22:32 -0700] LogCore - Core Loop Initialized Successfully.
+f:\programming\github\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.09.26 22:23:42 -0700] LogFileIO - Successfully initiated ConsoleFormatting
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:23:42 -0700] LogCore - Initializing Core Loop...
+f:\programming\github\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.09.26 22:23:42 -0700] LogCore - Core Loop Initialized Successfully.
