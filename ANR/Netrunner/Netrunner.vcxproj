@@ -59,26 +59,22 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="SQLite.props" />
-    <Import Project="..\Gordian\SFML - Debug.props" />
-    <Import Project="Gordian_Base.props" />
+    <Import Project="..\Gordian\Gordian - Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="SQLite.props" />
-    <Import Project="..\Gordian\SFML - Release.props" />
-    <Import Project="Gordian_Base.props" />
+    <Import Project="..\Gordian\Gordian - Release.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="SQLite.props" />
-    <Import Project="..\Gordian\SFML - Debug.props" />
-    <Import Project="Gordian_Base.props" />
+    <Import Project="..\Gordian\Gordian - Debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="SQLite.props" />
-    <Import Project="..\Gordian\SFML - Release.props" />
-    <Import Project="Gordian_Base.props" />
+    <Import Project="..\Gordian\Gordian - Release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -142,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\SQLite\sqlite3.c" />
+    <ClCompile Include="Source\Core\Private\main.cpp" />
     <ClCompile Include="Source\Test\TestCardActor.cpp" />
     <ClCompile Include="Source\Test\TestCardSpriteComponent.cpp" />
   </ItemGroup>

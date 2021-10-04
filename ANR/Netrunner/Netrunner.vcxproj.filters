@@ -40,6 +40,12 @@
     <Filter Include="Header Files\ANR\Core">
       <UniqueIdentifier>{60cf313b-91cf-41c3-a8bd-fee0c78fbb05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ANR\Core\Public">
+      <UniqueIdentifier>{54d40e79-dc6e-4e48-930b-900b39f59a5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ANR\Core\Private">
+      <UniqueIdentifier>{f81bcfc7-0c8e-4ce8-8c65-5543571fbda2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\SQLite\sqlite3.h">
@@ -64,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="Source\Test\TestCardActor.cpp">
       <Filter>Source Files\ANR\Temp</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Private\main.cpp">
+      <Filter>Source Files\ANR\Core\Private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

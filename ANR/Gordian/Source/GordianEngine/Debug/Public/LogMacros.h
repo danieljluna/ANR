@@ -17,6 +17,8 @@ namespace Gordian
 // ----------------------------------------------------------------
 // Log macro definitions
 // ----------------------------------------------------------------
+#define __GE_LOG_LOCATION__(File, Function, LineNumber) File "(" LineNumber "): " Function
+
 #ifdef GE_FATAL_LOGS_ONLY
 
 	// Returns true if the given log category is active at the given verbosity.
@@ -24,11 +26,22 @@ namespace Gordian
 	#define GE_IS_LOG_ACTIVE(Category, Verbosity) (ELogVerbosity::Verbosity == ELogVerbosity::Fatal)
 
 	// Outputs Text to the default log handler in Category at Verbosity.
-	#define GE_LOG(Category, Verbosity, Text)									\
-		if (GE_IS_LOG_ACTIVE(Category))											\
-		{																		\
-																				\
-		}																		\
+	#define GE_LOG(Category, Verbosity, LogFormat, ...)															\
+	do {																										\
+		static_assert(IS_CHAR_ARRAY(LogFormat), "Expects Text to be a char array!");							\
+		static_assert(Verbosity >= 0 && Verbosity < ELogVerbosity::Count, "Expects legal verbosity!");			\
+		if (Verbosity == ELogVerbosity::Fatal)																	\
+		{																										\
+			GLogOutputManager.PrintLog(Category.GetCategoryName(),												\
+									   ELogVerbosity::Verbosity,												\
+									   __GE_LOG_LOCATION__(__FILE__, __FUNCTIONSIG__, __TOSTRING(__LINE__)),	\
+									   LogFormat,																\
+									   ##__VA_ARGS__);															\
+																												\
+			_GE_DEBUG_BREAK();																					\
+			_GE_DEBUG_HALT();																					\
+		}																										\
+	} while (0);
 
 #else // !GE_FATAL_LOGS_ONLY
 
@@ -54,8 +67,6 @@ namespace Gordian
 	// Returns true if the given log category is active at the given verbosity.
 	// Hides the templated helper in a macro for simplicity.
 	#define GE_IS_LOG_ACTIVE(Category, Verbosity)	(Gordian::PrivateLogHelpers::IsLogActive<ELogVerbosity::Verbosity>(Category))
-
-	#define __GE_LOG_LOCATION__(File, Function, LineNumber) File "(" LineNumber "): " Function
 
 	// Outputs Text to the default log handler in Category at Verbosity.
 	#define GE_LOG(Category, Verbosity, LogFormat, ...)															\

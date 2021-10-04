@@ -218,6 +218,9 @@
     <ClCompile Include="Source\inih\ini.c">
       <Filter>Source Files\inih\Private</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Core\Private\EntryPoint.cpp">
+      <Filter>Source Files\Gordian\Core\Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GordianEngine\World\Public\World.h">
@@ -366,6 +369,9 @@
     </ClInclude>
     <ClInclude Include="Source\inih\ini.h">
       <Filter>Source Files\inih\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Core\Public\EntryPoint.h">
+      <Filter>Source Files\Gordian\Core\Public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
