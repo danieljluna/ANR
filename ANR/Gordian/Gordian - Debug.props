@@ -2,12 +2,12 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <SFML_Dir>F:\Programming\SFML\SFML-2.5.0</SFML_Dir>
+    <SFML_Dir>C:\Programming\SFML-2.5.1</SFML_Dir>
   </PropertyGroup>
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SFML_Dir)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_Dir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -19,6 +19,7 @@
   <ItemGroup>
     <BuildMacro Include="SFML_Dir">
       <Value>$(SFML_Dir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
     </BuildMacro>
   </ItemGroup>
 </Project>

@@ -2,15 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <Catch_Dir>C:\Programming\Catch-2\</Catch_Dir>
+    <SFML_Dir>C:\Programming\SFML-2.5.1</SFML_Dir>
+    <Catch_Dir>C:\Programming\Catch-2</Catch_Dir>
   </PropertyGroup>
   <PropertyGroup />
-  <ItemDefinitionGroup>
-    <ClCompile>
-      <AdditionalIncludeDirectories>$(Catch_Dir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-  </ItemDefinitionGroup>
+  <ItemDefinitionGroup />
   <ItemGroup>
+    <BuildMacro Include="SFML_Dir">
+      <Value>$(SFML_Dir)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
     <BuildMacro Include="Catch_Dir">
       <Value>$(Catch_Dir)</Value>
       <EnvironmentVariable>true</EnvironmentVariable>
