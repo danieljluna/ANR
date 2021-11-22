@@ -10,26 +10,25 @@ Gordian::TOptional<T>::TOptional()
 
 template<typename T>
 Gordian::TOptional<T>::TOptional(const T& Value)
+	: TOptional<T>()
 {
 	Set(Value);
 }
 
 template<typename T>
 Gordian::TOptional<T>::TOptional(const Gordian::TOptional<T>& CopySource)
+	: TOptional<T>()
 {
-	Clear();
-
 	if (CopySource.IsSet())
 	{
-		Set(CopySource._OptionalValue);
+		Set(CopySource.Get());
 	}
 }
 
 template<typename T>
 Gordian::TOptional<T>::TOptional(Gordian::TOptional<T>&& MoveSource)
+	: TOptional<T>()
 {
-	Clear();
-
 	_OptionalValue = MoveSource._OptionalValue;
 	MoveSource._OptionalValue = nullptr;
 }
@@ -38,6 +37,76 @@ template<typename T>
 Gordian::TOptional<T>::~TOptional()
 {
 	Clear();
+}
+
+template<typename T>
+Gordian::TOptional<T>& Gordian::TOptional<T>::operator=(const T& Other)
+{
+	Set(Other);
+
+	return *this;
+}
+
+template<typename T>
+Gordian::TOptional<T>& Gordian::TOptional<T>::operator=(const Gordian::TOptional<T>& Other)
+{
+	if (Other.IsSet())
+	{
+		Set(Other.Get());
+	}
+	else
+	{
+		Clear();
+	}
+
+	return *this;
+}
+
+template<typename T>
+bool Gordian::TOptional<T>::operator==(const T& Other) const
+{
+	if (!IsSet())
+	{
+		return false;
+	}
+
+	if (Get() != Other)
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+template<typename T>
+bool Gordian::TOptional<T>::operator==(const Gordian::TOptional<T>& Other) const
+{
+	if (IsSet() != Other.IsSet())
+	{
+		return false;
+	}
+
+	if (IsSet())
+	{
+		if (Get() != Other.Get())
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+template<typename T>
+T* Gordian::TOptional<T>::operator->()
+{
+	return _OptionalValue;
+}
+
+template<typename T>
+const T* Gordian::TOptional<T>::operator->() const
+{
+	return _OptionalValue;
 }
 
 template<typename T>

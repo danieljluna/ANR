@@ -13,17 +13,21 @@ class TOptional
 {
 public:
 
-	// Default Constructor
 	TOptional();
-	// Value Constructor
 	TOptional(const T& Value);
-	// Copy Constructor
-	TOptional(const TOptional<T>& CopySource);
-	// Move Constructor
-	TOptional(TOptional<T>&& MoveSource);
+	TOptional(const TOptional& CopySource);
+	TOptional(TOptional&& MoveSource);
 
-	// Destructor
 	~TOptional();
+
+	TOptional& operator=(const T& Other);
+	TOptional& operator=(const TOptional& Other);
+
+	bool operator==(const T& Other) const;
+	bool operator==(const TOptional& Other) const;
+
+	T* operator->();
+	const T* operator->() const;
 
 	// Returns true iff the value has been set.
 	bool IsSet() const;

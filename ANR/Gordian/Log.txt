@@ -172,3 +172,39 @@ c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\p
 [2021.10.21 12:34:54 -0700] LogCore - Exiting Core Loop...
 c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(214): void __thiscall Gordian::FEngineLoop::Exit(bool)
 [2021.10.21 12:34:54 -0700] LogCore - Exited Core Loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.11.08 21:29:55 -0800] LogFileIO - Successfully initiated ConsoleFormatting
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.08 21:29:55 -0800] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.08 21:29:56 -0800] LogCore - Core Loop Initialized Successfully.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.11.19 20:28:10 -0800] LogFileIO - Successfully initiated ConsoleFormatting
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.19 20:28:10 -0800] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.19 20:28:11 -0800] LogCore - Core Loop Initialized Successfully.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.11.19 20:29:56 -0800] LogFileIO - Successfully initiated ConsoleFormatting
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.19 20:29:56 -0800] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.19 20:29:57 -0800] LogCore - Core Loop Initialized Successfully.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.11.19 20:30:33 -0800] LogFileIO - Successfully initiated ConsoleFormatting
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.19 20:30:33 -0800] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.19 20:30:33 -0800] LogCore - Core Loop Initialized Successfully.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(246): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2021.11.19 20:34:22 -0800] LogFileIO - Successfully initiated ConsoleFormatting
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.19 20:34:22 -0800] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(76): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2021.11.19 20:34:23 -0800] LogCore - Core Loop Initialized Successfully.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(224): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2021.11.19 20:36:13 -0800] LogCore - A request was made to exit the core loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(185): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2021.11.19 20:36:13 -0800] LogCore - Exiting Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(214): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2021.11.19 20:36:13 -0800] LogCore - Exited Core Loop.

@@ -62,12 +62,17 @@ private:
 	// Returns whether or not the child was successfully added.
 	bool AddWord(const KeyType& InWordDivergingSubKey,
 				 const MappedT& InWordValue,
-				 TPrefixTreeNode<MappedT>*& InOutNextFreeNode);
+				 TPrefixTreeNode<MappedT>*& InOutNextFreeNode,
+				 size_t& OutNodesAdded);
 
 	// Splits the node that overlaps the passed in key so both nodes can exist.
 	// SplitSubKey should be the desired DivergingSubKey that this node competes with.
 	bool SplitNode(const KeyType& SplitSubKey,
-				   TPrefixTreeNode<MappedT>*& InOutNextFreeNode);
+				   TPrefixTreeNode<MappedT>*& InOutNextFreeNode,
+				   size_t& OutNodesAdded);
+
+	// Copies all data in this node to the passed node, ignoring pointer specific values
+	bool DeepCopy(TPrefixTreeNode<MappedT>& InDestination, TPrefixTreeNode<MappedT>*& OutNextFreeNode) const;
 
 	// Map of all child nodes
 	std::map<CharType, TPrefixTreeNode<MappedT>*> ChildrenNodes;
@@ -120,17 +125,28 @@ public:
 
 	~TPrefixTree();
 
-	size_t Capacity() const;
+	// Minimum number of words this tree can hold
+	size_t MinCapacity() const;
+
+	// Maximum number of words this tree can hold
+	size_t MaxCapacity() const;
+
+	// Number of complete words in this tree
 	size_t Num() const;
 
-	// Ensures there is enough space for ReserveSize nodes.
-	// Note that n unique keys can require anywhere between n + 1 and 2n nodes.
-	bool Reserve(size_t InReserveSize);
+	// Ensures there is enough space for ReserveSize words.
+	bool Reserve(size_t SizeInWords);
 
 	// Inserts a new pairing into the tree.
 	// Returns true if the insert was successful.
 	bool Insert(const KeyType& Key, 
 				const MappedT& Value);
+
+	// Inserts a new pairing into the tree.
+	// Fails if there is not enough room to add the value
+	// Returns true if the insert was successful.
+	bool InsertRigid(const KeyType& Key,
+					const MappedT& Value);
 
 	// Returns true if the Prefix Tree contains a key-value pair at the specified key
 	bool Contains(const KeyType& Key) const;
@@ -143,7 +159,32 @@ public:
 	// Asserts if there was no mapped value at the specified key.
 	const MappedT& At(const KeyType& Key) const;
 
+protected:
+
+	bool Insert_Internal(const KeyType& Key,
+						const MappedT& Value,
+						bool bAllowResize);
+
 private:
+
+	enum EAccountForRootParam
+	{
+		AllocateRootNode = 0,
+		IgnoreRootNode = 1
+	};
+
+	static TPrefixTreeNode<MappedT>* CreateAndFormatTreeAllocation(size_t DesiredSize);
+
+	// Returns the max number of nodes required to store WordCount words
+	static size_t GetMaxNodesRequired(size_t WordCount, EAccountForRootParam AccountForRoot);
+
+	bool EnlargeTree(size_t DesiredIncrement);
+	bool ResizeTree(size_t DesiredSize);
+
+	// Returns true if the node space was increased
+	bool EnsureUnusedNodeSpace(size_t DesiredUnusedSpace);
+
+	bool HasAllocatedTree() const;
 
 	// The next free node in the allocation
 	TPrefixTreeNode<MappedT>* _NextUnusedNode;
@@ -152,7 +193,8 @@ private:
 	TPrefixTreeNode<MappedT>* _ReservedNodeSpace;
 
 	size_t _ReserveSize;
-	size_t _Num;
+	size_t _NumWords;
+	size_t _NumNodes;
 
 
 };	// class TPrefixTree
