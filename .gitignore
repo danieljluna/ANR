@@ -5,6 +5,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Compiler logs
+*.tlog
+
 # User-specific files
 *.suo
 *.user
@@ -438,4 +441,8 @@ ANR/NDB_Scraper/Intermediate/Scrapes/ScrapeData.dat
 *.db
 *.jpg
 *.txt
-ANR/Gordian/Log.txt
+*.exe
+*.iobj
+*.ipdb
+*.idb
+*.lib

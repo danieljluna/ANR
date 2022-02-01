@@ -117,6 +117,12 @@ T& Gordian::TCircularBuffer<T>::At(size_t Index)
 }
 
 template<typename T>
+size_t Gordian::TCircularBuffer<T>::Capacity() const
+{
+	return BufferSize;
+}
+
+template<typename T>
 size_t Gordian::TCircularBuffer<T>::Num() const
 {
 	return EntityCount;

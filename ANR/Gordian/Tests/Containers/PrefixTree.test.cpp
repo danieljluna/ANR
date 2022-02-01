@@ -1,9 +1,9 @@
 #include <Catch.hpp>
 #include "GordianEngine/Containers/Public/TPrefixTree.h"
 
-using PrefixTreeTypeList = std::tuple<float, int*>;
+using PrefixTreeTypeList = std::tuple<float, int>;
 
-TEMPLATE_LIST_TEST_CASE("Prefix Trees can be resized", "[template]", PrefixTreeTypeList)
+TEMPLATE_LIST_TEST_CASE("Prefix Trees can be resized", "[template][containers]", PrefixTreeTypeList)
 {
 	GIVEN("an empty Prefix Tree with some initial capacity")
 	{
@@ -98,23 +98,27 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees can be resized", "[template]", PrefixTreeT
 	}
 }
 
-TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion", "[template]", PrefixTreeTypeList)
+TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion and lookup", "[template]", PrefixTreeTypeList)
 {
 	GIVEN("an empty Prefix Tree with some initial capacity")
 	{
 		const size_t InitialReserveSize = 5;
 		Gordian::TPrefixTree<TestType> PrefixTree(InitialReserveSize);
 
+		REQUIRE(PrefixTree.MinCapacity() == InitialReserveSize);
+
 		const size_t InitialSize = PrefixTree.Num();
 		REQUIRE(InitialSize == 0);
 
 		const size_t InitialMinCapacity = PrefixTree.MinCapacity();
 		const size_t InitialMaxCapacity = PrefixTree.MaxCapacity();
-		REQUIRE(InitialMinCapacity > InitialSize);
+		REQUIRE(InitialMaxCapacity >= InitialMinCapacity);
 
-		WHEN("inserting one element")
+		WHEN("inserting a new element")
 		{
-			REQUIRE(PrefixTree.Insert("test", TestType()));
+			const char* TestKey = "test";
+			const TestType TestValue = TestType(60);
+			REQUIRE(PrefixTree.Insert(TestKey, TestValue));
 
 			THEN("size increases, but capacity remains the same")
 			{
@@ -122,17 +126,45 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion", "[template]",
 				REQUIRE(PrefixTree.MinCapacity() == InitialMinCapacity);
 				REQUIRE(PrefixTree.MaxCapacity() == InitialMaxCapacity);
 			}
+
+			THEN("inserted element is persistent and fetchable")
+			{
+				REQUIRE(PrefixTree.Contains(TestKey));
+
+				const TestType& FoundValue = PrefixTree.At(TestKey);
+				REQUIRE(FoundValue == TestValue);
+
+				const TestType* FoundValuePtr = PrefixTree.Find(TestKey);
+				REQUIRE(FoundValuePtr != nullptr);
+				REQUIRE(&FoundValue == FoundValuePtr);
+			}
+		}
+
+		WHEN("looking up any key")
+		{
+			const char* AnyKey = "AnyKey";
+
+			THEN("lookup will fail")
+			{
+				REQUIRE(!PrefixTree.Contains(AnyKey));
+				REQUIRE(PrefixTree.Find(AnyKey) == nullptr);
+				REQUIRE_THROWS(PrefixTree.At(AnyKey));
+			}
 		}
 	}
 
-	GIVEN("a Prefix Tree with one element and excessive capacity")
+	GIVEN("a Prefix Tree with some elements and excessive capacity")
 	{
 		const size_t InitialReserveSize = 5;
 		Gordian::TPrefixTree<TestType> PrefixTree(InitialReserveSize);
 
-		PrefixTree.Insert("alli", TestType());
+		const char* TestKey = "alli";
+		const TestType TestValue = TestType(60);
+		REQUIRE(PrefixTree.Insert("zzz", TestType(15)));
+		REQUIRE(PrefixTree.Insert(TestKey, TestValue));
+
 		const size_t InitialSize = PrefixTree.Num();
-		REQUIRE(InitialSize == 1);
+		REQUIRE(InitialSize == 2);
 
 		const size_t InitialMinCapacity = PrefixTree.MinCapacity();
 		const size_t InitialMaxCapacity = PrefixTree.MaxCapacity();
@@ -140,8 +172,8 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion", "[template]",
 
 		WHEN("making two insertions with a unique leading key")
 		{
-			REQUIRE(PrefixTree.Insert("basket", TestType()));
-			REQUIRE(PrefixTree.Insert("carb", TestType()));
+			REQUIRE(PrefixTree.Insert("basket", TestType(3)));
+			REQUIRE(PrefixTree.Insert("carb", TestType(6)));
 
 			// Small insertion - we will end up with a better 'worst case' capacity
 			THEN("size and min cap increases, max cap remains the same")
@@ -154,8 +186,8 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion", "[template]",
 
 		WHEN("making two insertions with a key that extends an existing key")
 		{
-			REQUIRE(PrefixTree.Insert("alligator", TestType()));
-			REQUIRE(PrefixTree.Insert("alligators", TestType()));
+			REQUIRE(PrefixTree.Insert("alligator", TestType(9)));
+			REQUIRE(PrefixTree.Insert("alligators", TestType(35)));
 
 			// Small insertion - we will end up with a better 'worst case' capacity
 			THEN("size and min cap increases, max cap remains the same")
@@ -168,8 +200,8 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion", "[template]",
 
 		WHEN("making one extension insertion and one unique insertion")
 		{
-			REQUIRE(PrefixTree.Insert("alligator", TestType()));
-			REQUIRE(PrefixTree.Insert("carb", TestType()));
+			REQUIRE(PrefixTree.Insert("alligator", TestType(65)));
+			REQUIRE(PrefixTree.Insert("carb", TestType(29)));
 
 			// Small insertion - we will end up with a better 'worst case' capacity
 			THEN("size and min cap increases, max cap remains the same")
@@ -182,7 +214,7 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion", "[template]",
 
 		WHEN("making an insertion that shares a leading substring with an existing key")
 		{
-			REQUIRE(PrefixTree.Insert("alia", TestType()));
+			REQUIRE(PrefixTree.Insert("alia", TestType(300)));
 
 			// Large insertion - we will end up with a worse 'best case' capacity
 			THEN("size increases, max cap decreases, min cap remains the same")
@@ -190,6 +222,38 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion", "[template]",
 				REQUIRE(PrefixTree.Num() == InitialSize + 1);
 				REQUIRE(PrefixTree.MinCapacity() == InitialMinCapacity);
 				REQUIRE(PrefixTree.MaxCapacity() == InitialMaxCapacity - 1);
+			}
+		}
+
+		WHEN("making additional insertions")
+		{
+			REQUIRE(PrefixTree.Insert("alia", TestType(234)));
+			REQUIRE(PrefixTree.Insert("vuvuzela", TestType(1)));
+
+			THEN("persistence is still maintained")
+			{
+				REQUIRE(PrefixTree.Contains(TestKey));
+
+				const TestType& FoundValue = PrefixTree.At(TestKey);
+				REQUIRE(FoundValue == TestValue);
+
+				const TestType* FoundValuePtr = PrefixTree.Find(TestKey);
+				REQUIRE(FoundValuePtr != nullptr);
+				REQUIRE(&FoundValue == FoundValuePtr);
+			}
+		}
+
+		WHEN("looking up any key")
+		{
+			THEN("keys are only found if they were inserted")
+			{
+				REQUIRE(PrefixTree.Contains(TestKey));
+
+				const char* NewTestKey = "tramp";
+
+				REQUIRE(!PrefixTree.Contains(NewTestKey));
+				REQUIRE(PrefixTree.Insert(NewTestKey, TestType(457)));
+				REQUIRE(PrefixTree.Contains(NewTestKey));
 			}
 		}
 	}

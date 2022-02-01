@@ -3,11 +3,18 @@
 #pragma once
 
 #include <SFML/Config.hpp>
+#include "GordianEngine/Delegates/Delegate.h"
 
 #include "GordianEngine/Utility/Public/CommonMacros.h"
 
 namespace Gordian
 {
+
+// Move to new header (Exceptions.h)
+struct EnsureFailure : public std::runtime_error
+{
+	
+};
 
 
 //
@@ -19,7 +26,7 @@ public:
 	enum class EAssertBehavior : sf::Uint8
 	{
 		Ignore,
-		Pause,
+		Pause,		
 		PauseThenAbort,
 		Abort,
 	};
@@ -31,6 +38,13 @@ public:
 	static EAssertBehavior OnAssertFail(const char* LogText,
 										const char* FileName,
 										int LineNumber);
+
+
+
+private:
+
+	// SET THIS UP TO HAVE TOGGLE-ABLE THROWS ON FAILURE
+	static delegate<bool(const char*, const char*, int)> OnAnyFailure;
 };
 
 
@@ -54,15 +68,18 @@ public:
 // ----------------------------------------------------------------
 // Ensure macro definitions
 // 
-// Ensures trigger debug breakpoints when compiling the engine in
-//	debug config, and are ignored when compiling in release config.
-//	Ensures only fire once per execution (Except ensureAlways()).
+// Ensures are intended to verify an expected boolean expression
+//	that is not fatal when it fails. When the expression is false,
+//	the ensure will break in non-shipping builds - although the
+//	expression is always evaluated.
+// Ensures only fire once per execution (Except ensureAlways()).
 // ----------------------------------------------------------------
 #ifdef GE_SHIPPING
 
-	#define ensure(Condition)				(!!(Condition))
-	#define ensureAlways()					(!!(Condition))
-    #define ensureMsgf(Condition, Message)	(!!(Condition))
+	#define ensure(Condition)						(!!(Condition))
+	#define ensureAlways()							(!!(Condition))
+    #define ensureMsgf(Condition, Message)			(!!(Condition))
+	#define ensureAlwaysMsgf(Condition, Message)	(!!(Condition))
 
 #else	// !GE_SHIPPING
 
@@ -91,38 +108,58 @@ public:
 			}																				\
         } while (0)
 
+	#define ensureAlwaysMsgf(Condition, LogText) do											\
+		{																					\
+			if (!(Condition))																\
+			{																				\
+				switch (FAssert::OnEnsureFail(#LogText, __FILE__, __LINE__))				\
+					__DEBUG_ASSERT_SWITCH()													\
+			}																				\
+        } while (0)
+
 #endif // GE_SHIPPING
 
 
 // ----------------------------------------------------------------
 // Check macro definitions
 //
-// Checks will terminate the program upon failure. If you have a debugger attached,
-//	they will also pause the program for easier debugging.
+// Checks are intended to catch fatal state. If the boolean statement
+//	is false, the assert will break (if possible) and then terminate
+//	the program. If a check is inactive, it will NOT evaluate the statement
+//	inside of it.
 // ----------------------------------------------------------------
-#define checkNoEntry() do 																\
-	{																					\
-		switch (FAssert::OnAssertFail("", __FILE__, __LINE__))							\
-			__DEBUG_ASSERT_SWITCH()														\
-    } while (0)
+#ifdef GE_SHIPPING
 
-#define check(Condition) do 																\
-	{																						\
-        if (!(Condition))																	\
-		{																					\
-			switch (FAssert::OnAssertFail(#Condition, __FILE__, __LINE__))					\
-				__DEBUG_ASSERT_SWITCH()														\
-		}																					\
-    } while (0)
+	#define checkNoEntry() 
+	#define check(Condition) 
+	#define checkMsgf(Condition, LogText) 
 
-#define checkMsgf(Condition, LogText) do 													\
-    {																						\
-        if (!(Condition))																	\
+#else // !GE_SHIPPING
+
+	#define checkNoEntry() do 																\
 		{																					\
-			switch (FAssert::OnAssertFail(#LogText, __FILE__, __LINE__))					\
+			switch (FAssert::OnAssertFail("", __FILE__, __LINE__))							\
 				__DEBUG_ASSERT_SWITCH()														\
-		}																					\
-    } while (0)
+		} while (0)
+
+	#define check(Condition) do 																\
+		{																						\
+			if (!(Condition))																	\
+			{																					\
+				switch (FAssert::OnAssertFail(#Condition, __FILE__, __LINE__))					\
+					__DEBUG_ASSERT_SWITCH()														\
+			}																					\
+		} while (0)
+
+	#define checkMsgf(Condition, LogText) do 													\
+		{																						\
+			if (!(Condition))																	\
+			{																					\
+				switch (FAssert::OnAssertFail(#LogText, __FILE__, __LINE__))					\
+					__DEBUG_ASSERT_SWITCH()														\
+			}																					\
+		} while (0)
+#endif	// #GE_SHIPPING
 
 
 };	// namespace Gordian

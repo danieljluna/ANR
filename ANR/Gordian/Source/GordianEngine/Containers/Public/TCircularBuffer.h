@@ -31,13 +31,13 @@ public:
 	// Fetches element at Index if it has been set.
 	T& At(size_t Index);
 
-	// Returns the number of items in the buffer
+	// Max number of items the buffer can hold
+	inline size_t Capacity() const;
+
+	// Number of items in the buffer
 	inline size_t Num() const;
 
-	// Returns true if the buffer is at max capacity
 	inline bool IsEmpty() const;
-
-	// Returns true if the buffer is at max capacity
 	inline bool IsFull() const;
 
 	// Resizes the buffer, clearing all contents.

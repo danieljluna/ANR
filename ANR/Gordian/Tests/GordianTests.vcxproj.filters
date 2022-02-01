@@ -13,8 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Containers">
+    <Filter Include="Source Files\Tests">
+      <UniqueIdentifier>{37e8684d-6b01-4757-bd9f-37d9c0f78076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tests\Containers">
       <UniqueIdentifier>{80a9ec35-9290-458b-924a-810625f3ed51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{d897ae90-06c2-46bb-a0e3-c2ecfc0f946d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22,7 +28,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Containers\PrefixTree.test.cpp">
-      <Filter>Source Files\Containers</Filter>
+      <Filter>Source Files\Tests\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="Containers\CircularBuffer.test.cpp">
+      <Filter>Source Files\Tests\Containers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

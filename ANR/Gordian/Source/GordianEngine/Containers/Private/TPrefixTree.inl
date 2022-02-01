@@ -93,7 +93,7 @@ const Gordian::TPrefixTreeNode<T>* Gordian::TPrefixTreeNode<T>::Find(const KeyTy
 		if (RelatedChildNode.HasMatchingDivergingKey(InDivergingSubKey))
 		{
 			const KeyType& NewDivergingSubKey = InDivergingSubKey.substr(RelatedChildNode.DivergingSubKey.length());
-			return RelatedChildNode.Find(InDivergingSubKey);
+			return RelatedChildNode.Find(NewDivergingSubKey);
 		}
 	}
 
@@ -529,7 +529,7 @@ const T& Gordian::TPrefixTree<T>::At(const KeyType& Key) const
 {
 	const T* FindResult = Find(Key);
 	check(FindResult != nullptr);
-	return *T;
+	return *FindResult;
 }
 
 template<typename T>
