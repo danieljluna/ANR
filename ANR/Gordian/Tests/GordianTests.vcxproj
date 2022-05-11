@@ -163,7 +163,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>F:\Programming\SFML\SFML-2.5.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WINDOWS;GE_ASSERTS_THROW;GE_ENSURES_THROW;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SFML_STATIC;GE_ASSERTS_THROW;GE_ENSURES_THROW;GE_SKIP_BREAKPOINTS;_MBCS;WINDOWS;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>

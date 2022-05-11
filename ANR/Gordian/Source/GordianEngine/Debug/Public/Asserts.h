@@ -10,12 +10,6 @@
 namespace Gordian
 {
 
-// Move to new header (Exceptions.h)
-struct EnsureFailure : public std::runtime_error
-{
-	
-};
-
 
 //
 // Assert helpers.
@@ -39,18 +33,15 @@ public:
 										const char* FileName,
 										int LineNumber);
 
-
-
-private:
-
-	// SET THIS UP TO HAVE TOGGLE-ABLE THROWS ON FAILURE
-	static delegate<bool(const char*, const char*, int)> OnAnyFailure;
+	static delegate<void(const char*, const char*, int)> OnAnyFailure;
 };
 
 
 // Body of switch on EAssertBehavior that handles any breaks / halts
 #define __DEBUG_ASSERT_SWITCH()							\
 	{													\
+		case FAssert::EAssertBehavior::Ignore:			\
+			break;										\
 		case FAssert::EAssertBehavior::Pause:			\
 			_GE_DEBUG_BREAK();							\
 			break;										\

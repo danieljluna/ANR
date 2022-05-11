@@ -230,6 +230,7 @@
     <ClCompile Include="Source\GordianEngine\Core\Private\Object.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\Asserts.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\CommandPrompt.cpp" />
+    <ClCompile Include="Source\GordianEngine\Debug\Private\Exceptions.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\LogCategory.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\Logging.cpp" />
     <ClCompile Include="Source\GordianEngine\Debug\Private\LogOutputManager.cpp" />
@@ -268,6 +269,7 @@
     <ClInclude Include="Source\GordianEngine\Debug\Public\AssertMacros.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\Asserts.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\CommandPrompt.h" />
+    <ClInclude Include="Source\GordianEngine\Debug\Public\Exceptions.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogCategory.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\Logging.h" />
     <ClInclude Include="Source\GordianEngine\Debug\Public\LogMacros.h" />

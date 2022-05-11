@@ -221,6 +221,9 @@
     <ClCompile Include="Source\GordianEngine\Core\Private\EntryPoint.cpp">
       <Filter>Source Files\Gordian\Core\Private</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GordianEngine\Debug\Private\Exceptions.cpp">
+      <Filter>Source Files\Gordian\Debug\Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GordianEngine\World\Public\World.h">
@@ -372,6 +375,9 @@
     </ClInclude>
     <ClInclude Include="Source\GordianEngine\Core\Public\EntryPoint.h">
       <Filter>Source Files\Gordian\Core\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GordianEngine\Debug\Public\Exceptions.h">
+      <Filter>Source Files\Gordian\Debug\Public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

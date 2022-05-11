@@ -2,11 +2,12 @@
 
 #include "../Public/Asserts.h"
 
+#include "../Public/Exceptions.h"
 #include "../Public/LogOutputManager.h"
 
 using namespace Gordian;
 
-delegate<void(const char*, const char*, int LineNumber)> FAssert::OnAnyFailure;
+delegate<void(const char*, const char*, int)> FAssert::OnAnyFailure;
 
 /*static*/ FAssert::EAssertBehavior FAssert::OnEnsureFail(const char* LogText,
 													   const char* FileName,
@@ -19,9 +20,9 @@ delegate<void(const char*, const char*, int LineNumber)> FAssert::OnAnyFailure;
 		OnAnyFailure(LogText, FileName, LineNumber);
 	}
 
-#ifdef GE_RELEASE
-	return EAssertBehavior::Ignore;	// never pause in release!
-#else	// !GE_RELEASE
+#if defined(GE_RELEASE) || defined(GE_TEST) || defined(GE_SKIP_BREAKPOINTS)
+	return EAssertBehavior::Ignore;
+#else	// !GE_RELEASE && !GE_TEST
 	return EAssertBehavior::Pause;
 #endif	// GE_RELEASE
 }
@@ -37,9 +38,9 @@ delegate<void(const char*, const char*, int LineNumber)> FAssert::OnAnyFailure;
 		OnAnyFailure(LogText, FileName, LineNumber);
 	}
 
-#ifdef GE_RELEASE
-	return EAssertBehavior::Abort;	// never pause in release!
-#else // !GE_RELEASE
+#if defined(GE_RELEASE) || defined(GE_TEST) || defined(GE_SKIP_BREAKPOINTS)
+	return EAssertBehavior::Abort;
+#else // !GE_RELEASE && !GE_TEST
 	return EAssertBehavior::PauseThenAbort;
-#endif // GE_RELEASE
+#endif // GE_RELEASE || GE_TEST
 }

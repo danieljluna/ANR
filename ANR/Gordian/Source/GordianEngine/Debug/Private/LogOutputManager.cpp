@@ -71,9 +71,6 @@ void FLogOutputManager::PrintEnsure(const char* EnsureText,
 	EnsureFormat.SetFormatOption(EConsoleFormat::Bold, true);
 	EnsureFormat.Apply();
 
-	// Move this to use new console formatting fns.
-	//const char* EnsureColor = "\x1b[31m";
-	//std::cerr << EnsureColor << "Ensure Condition Failed: " << EnsureText << " [File: " << FileName << "] [Line: " << LineNumber << "]" << "\x1b[37m" << std::endl;
 	std::cerr << "Ensure Condition Failed: " << EnsureText << " [File: " << FileName << "] [Line: " << LineNumber << "]" << std::endl;
 }
 
