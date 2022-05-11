@@ -1,5 +1,6 @@
 #include <Catch.hpp>
 #include "GordianEngine/Containers/Public/TPrefixTree.h"
+#include "GordianEngine/Debug/Public/Exceptions.h"
 
 using PrefixTreeTypeList = std::tuple<float, int>;
 
@@ -148,7 +149,7 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion and lookup", "[
 			{
 				REQUIRE(!PrefixTree.Contains(AnyKey));
 				REQUIRE(PrefixTree.Find(AnyKey) == nullptr);
-				REQUIRE_THROWS(PrefixTree.At(AnyKey));
+				REQUIRE_THROWS_AS(PrefixTree.At(AnyKey), Gordian::AssertionFailure);
 			}
 		}
 	}
