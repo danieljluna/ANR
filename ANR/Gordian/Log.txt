@@ -208,3 +208,203 @@ c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\p
 [2021.11.19 20:36:13 -0800] LogCore - Exiting Core Loop...
 c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(214): void __thiscall Gordian::FEngineLoop::Exit(bool)
 [2021.11.19 20:36:13 -0800] LogCore - Exited Core Loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:24:15 -0700] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(234): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2022.07.23 19:24:27 -0700] LogFileIO - Failed to get console mode!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(56): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:24:27 -0700] LogCore - Failed to initialize console formatting, code: 6
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(185): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2022.07.23 19:24:27 -0700] LogCore - Exiting Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(224): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2022.07.23 19:24:27 -0700] LogCore - A request was made to exit the core loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(214): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2022.07.23 19:24:27 -0700] LogCore - Exited Core Loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:24:29 -0700] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:24:57 -0700] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(234): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2022.07.23 19:24:57 -0700] LogFileIO - Failed to get console mode!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(56): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:24:57 -0700] LogCore - Failed to initialize console formatting, code: 6
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(185): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2022.07.23 19:24:57 -0700] LogCore - Exiting Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(224): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2022.07.23 19:24:57 -0700] LogCore - A request was made to exit the core loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(214): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2022.07.23 19:24:57 -0700] LogCore - Exited Core Loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:25:06 -0700] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:25:29 -0700] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:28:16 -0700] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:29:38 -0700] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\platform\private\consoleformatting.cpp(234): int __cdecl Gordian::FConsoleFormatting::InitializeFormatting(void)
+[2022.07.23 19:29:38 -0700] LogFileIO - Failed to get console mode!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(57): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:29:38 -0700] LogCore - Failed to initialize console formatting, code: 6
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(41): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:40:04 -0700] LogCore - Initializing Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(78): int __thiscall Gordian::FEngineLoop::Init(int,char **)
+[2022.07.23 19:40:05 -0700] LogCore - Core Loop Initialized Successfully.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(226): void __thiscall Gordian::FEngineLoop::RequestExit(void)
+[2022.07.23 19:40:19 -0700] LogCore - A request was made to exit the core loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(187): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2022.07.23 19:40:19 -0700] LogCore - Exiting Core Loop...
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\core\private\engineloop.cpp(216): void __thiscall Gordian::FEngineLoop::Exit(bool)
+[2022.07.23 19:40:19 -0700] LogCore - Exited Core Loop.
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:38:27 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:38:27 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:38:27 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:38:27 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:38:28 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:38:28 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:38:28 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:38:28 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:38:43 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:38:43 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:38:43 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:38:43 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:38:44 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:38:44 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:38:44 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:38:44 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:41:53 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:41:53 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:41:53 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:41:53 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:41:53 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:41:53 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:41:53 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:41:53 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:03 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:03 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:03 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:03 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:03 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:03 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:03 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:03 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:30 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:30 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:30 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:30 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:31 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:31 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:31 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:31 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:36 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:36 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:36 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:36 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:37 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:42:37 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:37 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:42:37 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:47:57 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:47:57 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:47:57 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:47:57 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:47:57 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 21:47:57 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:47:57 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 21:47:57 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:10:18 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:33:05 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:33:05 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:33:05 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:33:05 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:33:05 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<float>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const float &,class Gordian::TPrefixTreeNode<float> *&,unsigned int &)
+[2022.07.23 22:33:05 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:33:05 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!
+c:\users\danvg\documents\programming\anr\anr\gordian\source\gordianengine\containers\private\tprefixtree.inl(124): bool __thiscall Gordian::TPrefixTreeNode<int>::AddWord(const class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > &,const int &,class Gordian::TPrefixTreeNode<int> *&,unsigned int &)
+[2022.07.23 22:33:05 -0700] LogPrefixTree - Could not add to prefix tree, not enough free nodes!

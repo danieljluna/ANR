@@ -65,7 +65,7 @@ public:
 //	expression is always evaluated.
 // Ensures only fire once per execution (Except ensureAlways()).
 // ----------------------------------------------------------------
-#ifdef GE_SHIPPING
+#if GE_SHIPPING
 
 	#define ensure(Condition)						(!!(Condition))
 	#define ensureAlways()							(!!(Condition))
@@ -119,7 +119,7 @@ public:
 //	the program. If a check is inactive, it will NOT evaluate the statement
 //	inside of it.
 // ----------------------------------------------------------------
-#ifdef GE_SHIPPING
+#if GE_SHIPPING
 
 	#define checkNoEntry() 
 	#define check(Condition) 

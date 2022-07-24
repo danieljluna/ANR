@@ -35,6 +35,8 @@ public:
 				  const char* LogFormat,
 				  ...) const;
 
+	void SetIsEnabled(bool bInIsEnabled);
+
 private:
 
 	// Prints log to all appropriate streams.
@@ -55,6 +57,8 @@ private:
 
 	// Fetches the current time as a string for log lines
 	void FetchLogTimestamp(char* OutString) const;
+
+	bool bIsEnabled;
 
 	FILE* LogOutputFile;
 };

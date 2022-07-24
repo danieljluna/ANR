@@ -8,6 +8,8 @@
 
 #include "GordianEngine/Containers/Public/TOptional.h"
 
+#define GE_USE_CONSOLE (!GE_TEST && !GE_RELEASE)
+
 namespace Gordian
 {
 

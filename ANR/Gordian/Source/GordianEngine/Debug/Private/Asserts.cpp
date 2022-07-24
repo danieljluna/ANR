@@ -38,9 +38,9 @@ delegate<void(const char*, const char*, int)> FAssert::OnAnyFailure;
 		OnAnyFailure(LogText, FileName, LineNumber);
 	}
 
-#if defined(GE_RELEASE) || defined(GE_TEST) || defined(GE_SKIP_BREAKPOINTS)
+#if GE_RELEASE || GE_TEST || GE_SKIP_BREAKPOINTS
 	return EAssertBehavior::Abort;
-#else // !GE_RELEASE && !GE_TEST
+#else // !GE_RELEASE && !GE_TEST && !GE_SKIP_BREAKPOINTS
 	return EAssertBehavior::PauseThenAbort;
-#endif // GE_RELEASE || GE_TEST
+#endif // GE_RELEASE || GE_TEST || GE_SKIP_BREAKPOINTS
 }

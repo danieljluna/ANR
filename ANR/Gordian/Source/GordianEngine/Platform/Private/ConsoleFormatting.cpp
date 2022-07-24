@@ -129,8 +129,7 @@ void FScopedConsoleFormat::RevertFormatOption(EConsoleFormat FormatOption)
 
 void FScopedConsoleFormat::Apply()
 {
-// We only have a console in debug mode
-#ifdef GE_DEBUG
+#if GE_USE_CONSOLE
 	const FScopedConsoleFormat* const CurrentConsoleFormat = &FConsoleFormatting::GetCurrentConsoleFormat();
 
 	// We cannot handle updating a format after it has been overridden by another
@@ -149,14 +148,12 @@ void FScopedConsoleFormat::Apply()
 		FConsoleFormatting::SetCurrentConsoleFormat(*this);
 	}
 
-#endif	// GE_DEBUG
+#endif	// GE_USE_CONSOLE
 }
 
 void FScopedConsoleFormat::RevertAll()
 {
-// We only have a console in debug mode
-#ifdef GE_DEBUG
-
+#if GE_USE_CONSOLE
 	if (_PreviousScopeFormat == nullptr)
 	{
 		// This was never applied, no need to revert
@@ -219,13 +216,13 @@ FScopedConsoleFormat::~FScopedConsoleFormat()
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	if (hOut == INVALID_HANDLE_VALUE)
 	{
-#ifdef GE_DEBUG
+#if GE_USE_CONSOLE
 		GE_LOG(LogFileIO, Display, "Failed to get a handle to the console!");
 		return GetLastError();
-#else	// !GE_DEBUG
+#else	// !GE_USE_CONSOLE
 		GE_LOG(LogFileIO, Display, "No console found while attempting to format.");
 		return 0;
-#endif	// GE_DEBUG
+#endif	// GE_USE_CONSOLE
 	}
 
 	DWORD dwMode = 0;

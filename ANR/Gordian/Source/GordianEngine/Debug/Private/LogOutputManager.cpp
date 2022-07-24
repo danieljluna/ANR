@@ -30,6 +30,7 @@ namespace
 FLogOutputManager Gordian::GLogOutputManager;
 
 FLogOutputManager::FLogOutputManager()
+	: bIsEnabled(true)
 {
 	errno_t ErrorCode;
 	ErrorCode = fopen_s(&LogOutputFile, k_LogFilepath, "a");
@@ -66,6 +67,11 @@ void FLogOutputManager::PrintEnsure(const char* EnsureText,
 									const char* FileName, 
 									int LineNumber) const
 {
+	if (!bIsEnabled)
+	{
+		return;
+	}
+
 	FScopedConsoleFormat EnsureFormat;
 	EnsureFormat.SetTextColor(EConsoleColor::Yellow);
 	EnsureFormat.SetFormatOption(EConsoleFormat::Bold, true);
@@ -78,6 +84,11 @@ void FLogOutputManager::PrintCheck(const char* AssertText,
 								   const char* FileName,
 								   int LineNumber) const
 {
+	if (!bIsEnabled)
+	{
+		return;
+	}
+
 	FScopedConsoleFormat CheckFormat;
 	CheckFormat.SetTextColor(EConsoleColor::Red);
 	CheckFormat.SetFormatOption(EConsoleFormat::Bold, true);
@@ -92,6 +103,11 @@ void FLogOutputManager::PrintLog(const char* Category,
 								 const char* LogFormat,
 								 ...) const
 {
+	if (!bIsEnabled)
+	{
+		return;
+	}
+
 	FScopedConsoleFormat CheckFormat;
 	switch (Verbosity)
 	{
@@ -119,6 +135,11 @@ void FLogOutputManager::PrintLog(const char* Category,
 	va_start(Args, LogFormat);
 	vFullLogf(LogLocation, FinalLogFormat, Args);
 	va_end(Args);
+}
+
+void FLogOutputManager::SetIsEnabled(bool bInIsEnabled)
+{
+	bIsEnabled = bInIsEnabled;
 }
 
 void FLogOutputManager::Logf(const char* LogFormat, ...) const

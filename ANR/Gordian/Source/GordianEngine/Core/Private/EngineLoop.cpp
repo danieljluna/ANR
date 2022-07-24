@@ -49,6 +49,7 @@ sf::Int32 FEngineLoop::Init(int argc, char** argv)
 		return ErrorCode;
 	}
 
+#if GE_USE_CONSOLE
 	// Ensure console formatting has been initialized
 	ErrorCode = FConsoleFormatting::InitializeFormatting();
 	if (ErrorCode != 0)
@@ -56,6 +57,7 @@ sf::Int32 FEngineLoop::Init(int argc, char** argv)
 		GE_LOG(LogCore, Error, "Failed to initialize console formatting, code: %d", ErrorCode);
 		return ErrorCode;
 	}
+#endif
 
 	char FilenameFromPath[50];
 	_splitpath_s(argv[0], NULL, 0, NULL, 0, FilenameFromPath, 50, NULL, 0);

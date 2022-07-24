@@ -3,9 +3,12 @@
 
 #include "GordianEngine/Debug/Public/Exceptions.h"
 #include "GordianEngine/Debug/Public/Asserts.h"
+#include "GordianEngine/Debug/Public/LogOutputManager.h"
 
 int main(int argc, char* argv[]) {
 	// global setup...
+
+	Gordian::GLogOutputManager.SetIsEnabled(false);
 
 	Gordian::FAssert::OnAnyFailure = 
 		[](const char* InLogText, const char* InFileName, int InLineNumber)

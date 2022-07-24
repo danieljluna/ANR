@@ -6,7 +6,7 @@
   <ItemDefinitionGroup>
     <PreLinkEvent>
       <Command>@ECHO ON
-@ECHO "$(VC_ExecutablePath_x86)\lib.exe" /out:"$(OutDir)$(ProjectName).lib" "$(IntermediateOutputPath)*.obj"
+@ECHO "$(VC_ExecutablePath_x86)\lib.exe" /out:"$(OutDir)$(ProjectName)-t.lib" "$(IntermediateOutputPath)*.obj"
 "$(VC_ExecutablePath_x86)\lib.exe" /out:"$(OutDir)$(ProjectName)-t.lib" "$(IntermediateOutputPath)*.obj"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>

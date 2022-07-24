@@ -3,7 +3,7 @@
 
 using CircularBufferTypeList = std::tuple<float, int>;
 
-TEMPLATE_LIST_TEST_CASE("Circular Buffer can be resized", "[template][containers]", CircularBufferTypeList)
+TEMPLATE_LIST_TEST_CASE("Circular Buffer can be resized", "[template][containers][circular_buffer]", CircularBufferTypeList)
 {
 	GIVEN("an empty circular buffer with some initial capacity")
 	{

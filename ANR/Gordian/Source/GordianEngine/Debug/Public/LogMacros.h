@@ -19,7 +19,7 @@ namespace Gordian
 // ----------------------------------------------------------------
 #define __GE_LOG_LOCATION__(File, Function, LineNumber) File "(" LineNumber "): " Function
 
-#ifdef GE_FATAL_LOGS_ONLY
+#if GE_FATAL_LOGS_ONLY
 
 	// Returns true if the given log category is active at the given verbosity.
 	// With GE_NO_LOG set this is only true for fatal logs

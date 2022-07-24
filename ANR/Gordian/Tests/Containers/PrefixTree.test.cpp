@@ -4,7 +4,7 @@
 
 using PrefixTreeTypeList = std::tuple<float, int>;
 
-TEMPLATE_LIST_TEST_CASE("Prefix Trees can be resized", "[template][containers]", PrefixTreeTypeList)
+TEMPLATE_LIST_TEST_CASE("Prefix Trees can be resized", "[template][containers][prefix_tree]", PrefixTreeTypeList)
 {
 	GIVEN("an empty Prefix Tree with some initial capacity")
 	{
@@ -99,7 +99,7 @@ TEMPLATE_LIST_TEST_CASE("Prefix Trees can be resized", "[template][containers]",
 	}
 }
 
-TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion and lookup", "[template]", PrefixTreeTypeList)
+TEMPLATE_LIST_TEST_CASE("Prefix Trees allow persistent insertion and lookup", "[template][containers][prefix_tree]", PrefixTreeTypeList)
 {
 	GIVEN("an empty Prefix Tree with some initial capacity")
 	{
